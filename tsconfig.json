@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "module": "commonjs",
+        "target": "es5",
+        "jsx": "react",
+        "skipLibCheck": true
+    },
+    "files": [
+        "./src/index.tsx",
+        "./src/components/NewForm.tsx",
+        "./src/components/MyTextField.tsx"
+    ]
+}

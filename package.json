@@ -1,0 +1,33 @@
+{
+  "name": "react-fabric-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielruss/ReactFabricPractice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^0.14.57",
+    "@types/react-dom": "^0.14.20",
+    "es6-promise": "^4.0.5",
+    "jquery": "^3.1.1",
+    "office-ui-fabric-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "source-map-loader": "latest",
+    "ts-loader": "latest"
+  },
+  "bugs": {
+    "url": "https://github.com/gabrielruss/ReactFabricPractice/issues"
+  },
+  "homepage": "https://github.com/gabrielruss/ReactFabricPractice#readme"
+}
