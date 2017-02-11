@@ -5,6 +5,7 @@ import { Promise } from "es6-promise";
 import { Button, ButtonType } from '../../node_modules/office-ui-fabric-react/lib/index';
 
 import { MyTextField } from './MyTextField';
+import { PeoplePickerTypesExample } from './MyPeoplePicker';
 
 import { RestUtil } from '../../utils/RestUtil';
 
@@ -30,7 +31,7 @@ export class NewForm extends React.Component<any, any> {
             }, (error: any) => {
                 alert(`There was a problem submitting your request: ${error}`);
             });
-        
+
         // RestUtil.submit(this.state.columns).then((response) => {
         //     alert("success");
         // }, (error: any) => {
@@ -63,6 +64,7 @@ export class NewForm extends React.Component<any, any> {
                     name="Title"
                     required={true}
                     onChanged={this._handleChanged} />
+                <PeoplePickerTypesExample />
                 <Button
                     onClick={this._onSave}
                     type={"submit"}

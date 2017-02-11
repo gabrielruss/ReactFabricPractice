@@ -11,6 +11,7 @@
     "files": [
         "./src/index.tsx",
         "./src/components/NewForm.tsx",
-        "./src/components/MyTextField.tsx"
+        "./src/components/MyTextField.tsx",
+        "./src/components/MyPeoplePicker.tsx"
     ]
 }
