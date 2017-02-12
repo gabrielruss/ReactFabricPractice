@@ -16,6 +16,7 @@
     "@types/react": "^0.14.57",
     "@types/react-dom": "^0.14.20",
     "es6-promise": "^4.0.5",
+    "gd-sprest": "^1.2.5",
     "jquery": "^3.1.1",
     "office-ui-fabric-react": "latest",
     "react": "latest",

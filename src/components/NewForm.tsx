@@ -31,12 +31,6 @@ export class NewForm extends React.Component<any, any> {
             }, (error: any) => {
                 alert(`There was a problem submitting your request: ${error}`);
             });
-
-        // RestUtil.submit(this.state.columns).then((response) => {
-        //     alert("success");
-        // }, (error: any) => {
-        //     alert(`There was a problem submitting your request: ${error}`);
-        // });
     }
 
     private _handleChanged(name: string, value: any, errorThrown?: string) {
