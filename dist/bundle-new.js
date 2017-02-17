@@ -10312,7 +10312,8 @@
 	var index_1 = __webpack_require__(8);
 	var MyTextField_1 = __webpack_require__(291);
 	var MyPeoplePicker_1 = __webpack_require__(292);
-	var RestUtil_1 = __webpack_require__(295);
+	var MyPeoplePickerOriginal_1 = __webpack_require__(295);
+	var RestUtil_1 = __webpack_require__(296);
 	var NewForm = (function (_super) {
 	    __extends(NewForm, _super);
 	    function NewForm(props) {
@@ -10355,7 +10356,11 @@
 	    NewForm.prototype.render = function () {
 	        return (React.createElement("div", null,
 	            React.createElement(MyTextField_1.MyTextField, { label: "Title", name: "Title", required: true, onChanged: this._handleChanged }),
-	            React.createElement(MyPeoplePicker_1.PeoplePickerTypesExample, null),
+	            React.createElement(index_1.Label, null, "Gabriel Trimmed"),
+	            React.createElement(MyPeoplePicker_1.PeoplePickerExample, null),
+	            React.createElement(index_1.Label, null, "Original"),
+	            React.createElement(MyPeoplePickerOriginal_1.PeoplePickerTypesExample, { label: "Original" }),
+	            React.createElement("br", null),
 	            React.createElement(index_1.Button, { onClick: this._onSave, type: "submit", buttonType: index_1.ButtonType.primary, disabled: Object.keys(this.state.fieldsWithErrors).length !== 0 }, "Save")));
 	    };
 	    return NewForm;
@@ -29345,7 +29350,6 @@
 	};
 	/* tslint:disable */
 	var React = __webpack_require__(1);
-	var es6_promise_1 = __webpack_require__(5);
 	/* tslint:enable */
 	var Utilities_1 = __webpack_require__(12);
 	var Pickers_1 = __webpack_require__(236);
@@ -29356,9 +29360,9 @@
 	    noResultsFoundText: 'No results found',
 	    loadingText: 'Loading'
 	};
-	var PeoplePickerTypesExample = (function (_super) {
-	    __extends(PeoplePickerTypesExample, _super);
-	    function PeoplePickerTypesExample() {
+	var PeoplePickerExample = (function (_super) {
+	    __extends(PeoplePickerExample, _super);
+	    function PeoplePickerExample() {
 	        var _this = _super.call(this) || this;
 	        _this.contextualMenuItems = [
 	            {
@@ -29396,86 +29400,48 @@
 	            _this._peopleList.push(target);
 	        });
 	        _this.state = {
-	            currentPicker: 1,
 	            delayResults: false
 	        };
 	        return _this;
 	    }
-	    PeoplePickerTypesExample.prototype.render = function () {
+	    PeoplePickerExample.prototype.render = function () {
 	        return (React.createElement("div", null,
 	            React.createElement(Pickers_1.CompactPeoplePicker, { onResolveSuggestions: this._onFilterChanged, getTextFromItem: function (persona) { return persona.primaryText; }, pickerSuggestionsProps: suggestionProps, className: 'ms-PeoplePicker' })));
 	    };
-	    PeoplePickerTypesExample.prototype._renderPreselectedItemsPicker = function () {
-	        return (React.createElement(Pickers_1.CompactPeoplePicker, { onResolveSuggestions: this._onFilterChanged, getTextFromItem: function (persona) { return persona.primaryText; }, className: 'ms-PeoplePicker', defaultSelectedItems: PeoplePickerExampleData_1.people.splice(0, 3), key: 'list', pickerSuggestionsProps: suggestionProps }));
-	    };
-	    PeoplePickerTypesExample.prototype._renderLimitedSearch = function () {
-	        var limitedSearchSuggestionProps = suggestionProps;
-	        limitedSearchSuggestionProps.searchForMoreText = 'Load all Results';
-	        return (React.createElement(Pickers_1.CompactPeoplePicker, { onResolveSuggestions: this._onFilterChangedWithLimit, getTextFromItem: function (persona) { return persona.primaryText; }, className: 'ms-PeoplePicker', onGetMoreResults: this._onFilterChanged, pickerSuggestionsProps: limitedSearchSuggestionProps }));
-	    };
-	    PeoplePickerTypesExample.prototype._onFilterChanged = function (filterText, currentPersonas, limitResults) {
+	    PeoplePickerExample.prototype._onFilterChanged = function (filterText, currentPersonas, limitResults) {
 	        if (filterText) {
 	            var filteredPersonas = this._filterPersonasByText(filterText);
 	            filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
 	            filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-	            return this._filterPromise(filteredPersonas);
+	            return filteredPersonas;
 	        }
 	        else {
 	            return [];
 	        }
 	    };
-	    PeoplePickerTypesExample.prototype._onFilterChangedWithLimit = function (filterText, currentPersonas) {
-	        return this._onFilterChanged(filterText, currentPersonas, 3);
-	    };
-	    PeoplePickerTypesExample.prototype._filterPromise = function (personasToReturn) {
-	        if (this.state.delayResults) {
-	            return this._convertResultsToPromise(personasToReturn);
-	        }
-	        else {
-	            return personasToReturn;
-	        }
-	    };
-	    PeoplePickerTypesExample.prototype._listContainsPersona = function (persona, personas) {
+	    PeoplePickerExample.prototype._listContainsPersona = function (persona, personas) {
 	        if (!personas || !personas.length || personas.length === 0) {
 	            return false;
 	        }
 	        return personas.filter(function (item) { return item.primaryText === persona.primaryText; }).length > 0;
 	    };
-	    PeoplePickerTypesExample.prototype._filterPersonasByText = function (filterText) {
+	    PeoplePickerExample.prototype._filterPersonasByText = function (filterText) {
 	        var _this = this;
 	        return this._peopleList.filter(function (item) { return _this._doesTextStartWith(item.primaryText, filterText); });
 	    };
-	    PeoplePickerTypesExample.prototype._doesTextStartWith = function (text, filterText) {
+	    PeoplePickerExample.prototype._doesTextStartWith = function (text, filterText) {
 	        return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
 	    };
-	    PeoplePickerTypesExample.prototype._convertResultsToPromise = function (results) {
-	        return new es6_promise_1.Promise(function (resolve, reject) { return setTimeout(function () { return resolve(results); }, 2000); });
-	    };
-	    PeoplePickerTypesExample.prototype._removeDuplicates = function (personas, possibleDupes) {
+	    PeoplePickerExample.prototype._removeDuplicates = function (personas, possibleDupes) {
 	        var _this = this;
 	        return personas.filter(function (persona) { return !_this._listContainsPersona(persona, possibleDupes); });
 	    };
-	    PeoplePickerTypesExample.prototype._toggleChange = function (toggleState) {
-	        this.setState({ delayResults: toggleState });
-	    };
-	    PeoplePickerTypesExample.prototype._dropDownSelected = function (option) {
-	        this.setState({ currentPicker: option.key });
-	    };
-	    return PeoplePickerTypesExample;
+	    return PeoplePickerExample;
 	}(Utilities_1.BaseComponent));
 	__decorate([
 	    Utilities_1.autobind
-	], PeoplePickerTypesExample.prototype, "_onFilterChanged", null);
-	__decorate([
-	    Utilities_1.autobind
-	], PeoplePickerTypesExample.prototype, "_onFilterChangedWithLimit", null);
-	__decorate([
-	    Utilities_1.autobind
-	], PeoplePickerTypesExample.prototype, "_toggleChange", null);
-	__decorate([
-	    Utilities_1.autobind
-	], PeoplePickerTypesExample.prototype, "_dropDownSelected", null);
-	exports.PeoplePickerTypesExample = PeoplePickerTypesExample;
+	], PeoplePickerExample.prototype, "_onFilterChanged", null);
+	exports.PeoplePickerExample = PeoplePickerExample;
 
 
 /***/ },
@@ -29723,8 +29689,159 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	/* tslint:disable */
+	var React = __webpack_require__(1);
 	var es6_promise_1 = __webpack_require__(5);
-	var constants_1 = __webpack_require__(296);
+	/* tslint:enable */
+	var Utilities_1 = __webpack_require__(12);
+	var Pickers_1 = __webpack_require__(236);
+	var PeoplePickerExampleData_1 = __webpack_require__(293);
+	__webpack_require__(294);
+	var suggestionProps = {
+	    suggestionsHeaderText: 'Suggested People',
+	    noResultsFoundText: 'No results found',
+	    loadingText: 'Loading'
+	};
+	var PeoplePickerTypesExample = (function (_super) {
+	    __extends(PeoplePickerTypesExample, _super);
+	    function PeoplePickerTypesExample() {
+	        var _this = _super.call(this) || this;
+	        _this.contextualMenuItems = [
+	            {
+	                key: 'newItem',
+	                icon: 'circlePlus',
+	                name: 'New'
+	            },
+	            {
+	                key: 'upload',
+	                icon: 'upload',
+	                name: 'Upload'
+	            },
+	            {
+	                key: 'divider_1',
+	                name: '-',
+	            },
+	            {
+	                key: 'rename',
+	                name: 'Rename'
+	            },
+	            {
+	                key: 'properties',
+	                name: 'Properties'
+	            },
+	            {
+	                key: 'disabled',
+	                name: 'Disabled item',
+	                disabled: true
+	            }
+	        ];
+	        _this._peopleList = [];
+	        PeoplePickerExampleData_1.people.forEach(function (persona) {
+	            var target = {};
+	            Utilities_1.assign(target, persona, { menuItems: _this.contextualMenuItems });
+	            _this._peopleList.push(target);
+	        });
+	        _this.state = {
+	            currentPicker: 1,
+	            delayResults: false
+	        };
+	        return _this;
+	    }
+	    PeoplePickerTypesExample.prototype.render = function () {
+	        return (React.createElement("div", null,
+	            React.createElement(Pickers_1.CompactPeoplePicker, { onResolveSuggestions: this._onFilterChanged, getTextFromItem: function (persona) { return persona.primaryText; }, pickerSuggestionsProps: suggestionProps, className: 'ms-PeoplePicker' })));
+	    };
+	    PeoplePickerTypesExample.prototype._renderPreselectedItemsPicker = function () {
+	        return (React.createElement(Pickers_1.CompactPeoplePicker, { onResolveSuggestions: this._onFilterChanged, getTextFromItem: function (persona) { return persona.primaryText; }, className: 'ms-PeoplePicker', defaultSelectedItems: PeoplePickerExampleData_1.people.splice(0, 3), key: 'list', pickerSuggestionsProps: suggestionProps }));
+	    };
+	    PeoplePickerTypesExample.prototype._renderLimitedSearch = function () {
+	        var limitedSearchSuggestionProps = suggestionProps;
+	        limitedSearchSuggestionProps.searchForMoreText = 'Load all Results';
+	        return (React.createElement(Pickers_1.CompactPeoplePicker, { onResolveSuggestions: this._onFilterChangedWithLimit, getTextFromItem: function (persona) { return persona.primaryText; }, className: 'ms-PeoplePicker', onGetMoreResults: this._onFilterChanged, pickerSuggestionsProps: limitedSearchSuggestionProps }));
+	    };
+	    PeoplePickerTypesExample.prototype._onFilterChanged = function (filterText, currentPersonas, limitResults) {
+	        if (filterText) {
+	            var filteredPersonas = this._filterPersonasByText(filterText);
+	            filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
+	            filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+	            return this._filterPromise(filteredPersonas);
+	        }
+	        else {
+	            return [];
+	        }
+	    };
+	    PeoplePickerTypesExample.prototype._onFilterChangedWithLimit = function (filterText, currentPersonas) {
+	        return this._onFilterChanged(filterText, currentPersonas, 3);
+	    };
+	    PeoplePickerTypesExample.prototype._filterPromise = function (personasToReturn) {
+	        if (this.state.delayResults) {
+	            return this._convertResultsToPromise(personasToReturn);
+	        }
+	        else {
+	            return personasToReturn;
+	        }
+	    };
+	    PeoplePickerTypesExample.prototype._listContainsPersona = function (persona, personas) {
+	        if (!personas || !personas.length || personas.length === 0) {
+	            return false;
+	        }
+	        return personas.filter(function (item) { return item.primaryText === persona.primaryText; }).length > 0;
+	    };
+	    PeoplePickerTypesExample.prototype._filterPersonasByText = function (filterText) {
+	        var _this = this;
+	        return this._peopleList.filter(function (item) { return _this._doesTextStartWith(item.primaryText, filterText); });
+	    };
+	    PeoplePickerTypesExample.prototype._doesTextStartWith = function (text, filterText) {
+	        return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
+	    };
+	    PeoplePickerTypesExample.prototype._convertResultsToPromise = function (results) {
+	        return new es6_promise_1.Promise(function (resolve, reject) { return setTimeout(function () { return resolve(results); }, 2000); });
+	    };
+	    PeoplePickerTypesExample.prototype._removeDuplicates = function (personas, possibleDupes) {
+	        var _this = this;
+	        return personas.filter(function (persona) { return !_this._listContainsPersona(persona, possibleDupes); });
+	    };
+	    PeoplePickerTypesExample.prototype._toggleChange = function (toggleState) {
+	        this.setState({ delayResults: toggleState });
+	    };
+	    PeoplePickerTypesExample.prototype._dropDownSelected = function (option) {
+	        this.setState({ currentPicker: option.key });
+	    };
+	    return PeoplePickerTypesExample;
+	}(Utilities_1.BaseComponent));
+	__decorate([
+	    Utilities_1.autobind
+	], PeoplePickerTypesExample.prototype, "_onFilterChanged", null);
+	__decorate([
+	    Utilities_1.autobind
+	], PeoplePickerTypesExample.prototype, "_onFilterChangedWithLimit", null);
+	__decorate([
+	    Utilities_1.autobind
+	], PeoplePickerTypesExample.prototype, "_toggleChange", null);
+	__decorate([
+	    Utilities_1.autobind
+	], PeoplePickerTypesExample.prototype, "_dropDownSelected", null);
+	exports.PeoplePickerTypesExample = PeoplePickerTypesExample;
+
+
+/***/ },
+/* 296 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var es6_promise_1 = __webpack_require__(5);
+	var constants_1 = __webpack_require__(297);
 	var RestUtil;
 	(function (RestUtil) {
 	    var LIST_NAME = constants_1.constants.listName;
@@ -29785,7 +29902,7 @@
 
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports) {
 
 	"use strict";

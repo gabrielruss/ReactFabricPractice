@@ -2,10 +2,11 @@
 import * as React from "react";
 import { Promise } from "es6-promise";
 
-import { Button, ButtonType } from '../../node_modules/office-ui-fabric-react/lib/index';
+import { Button, ButtonType, Label } from '../../node_modules/office-ui-fabric-react/lib/index';
 
 import { MyTextField } from './MyTextField';
-import { PeoplePickerTypesExample } from './MyPeoplePicker';
+import { PeoplePickerExample } from './MyPeoplePicker';
+import { PeoplePickerTypesExample } from './MyPeoplePickerOriginal';
 
 import { RestUtil } from '../../utils/RestUtil';
 
@@ -58,7 +59,11 @@ export class NewForm extends React.Component<any, any> {
                     name="Title"
                     required={true}
                     onChanged={this._handleChanged} />
-                <PeoplePickerTypesExample />
+                <Label>Gabriel Trimmed</Label>    
+                <PeoplePickerExample />
+                <Label>Original</Label>  
+                <PeoplePickerTypesExample label="Original"/>
+                <br/>   
                 <Button
                     onClick={this._onSave}
                     type={"submit"}

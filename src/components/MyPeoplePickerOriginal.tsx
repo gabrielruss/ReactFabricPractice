@@ -7,6 +7,8 @@ import {
     assign,
     autobind
 } from '../../node_modules/office-ui-fabric-react/lib/Utilities';
+import { Dropdown, IDropdownOption } from '../../node_modules/office-ui-fabric-react/lib/index';
+import { Toggle } from '../../node_modules/office-ui-fabric-react/lib/index';
 import { IPersonaProps } from '../../node_modules/office-ui-fabric-react/lib/Persona';
 import { IContextualMenuItem } from '../../node_modules/office-ui-fabric-react/lib/ContextualMenu';
 import {
@@ -19,8 +21,8 @@ import { IPersonaWithMenu } from '../../node_modules/office-ui-fabric-react/lib/
 import { people } from '../../node_modules/office-ui-fabric-react/lib/demo/pages/PeoplePickerPage/examples/PeoplePickerExampleData';
 import '../../node_modules/office-ui-fabric-react/lib/demo/pages/PeoplePickerPage/examples/PeoplePicker.Types.Example.scss';
 
-//keeping this in for example state
 export interface IPeoplePickerExampleState {
+    currentPicker?: number | string;
     delayResults?: boolean;
 }
 
@@ -30,7 +32,7 @@ const suggestionProps: IBasePickerSuggestionsProps = {
     loadingText: 'Loading'
 };
 
-export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExampleState> {
+export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
     private _peopleList;
     private contextualMenuItems: IContextualMenuItem[] = [
         {
@@ -72,6 +74,7 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
             this._peopleList.push(target);
         });
         this.state = {
+            currentPicker: 1,
             delayResults: false
         };
     }
@@ -89,6 +92,33 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
         );
     }
 
+    public _renderPreselectedItemsPicker() {
+        return (
+            <CompactPeoplePicker
+                onResolveSuggestions={this._onFilterChanged}
+                getTextFromItem={(persona: IPersonaProps) => persona.primaryText}
+                className={'ms-PeoplePicker'}
+                defaultSelectedItems={people.splice(0, 3)}
+                key={'list'}
+                pickerSuggestionsProps={suggestionProps}
+            />
+        );
+    }
+
+    public _renderLimitedSearch() {
+        let limitedSearchSuggestionProps = suggestionProps;
+        limitedSearchSuggestionProps.searchForMoreText = 'Load all Results';
+        return (
+            <CompactPeoplePicker
+                onResolveSuggestions={this._onFilterChangedWithLimit}
+                getTextFromItem={(persona: IPersonaProps) => persona.primaryText}
+                className={'ms-PeoplePicker'}
+                onGetMoreResults={this._onFilterChanged}
+                pickerSuggestionsProps={limitedSearchSuggestionProps}
+            />
+        );
+    }
+
     @autobind
     private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
         if (filterText) {
@@ -96,9 +126,22 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
 
             filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
             filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-            return filteredPersonas;
+            return this._filterPromise(filteredPersonas);
         } else {
             return [];
+        }
+    }
+
+    @autobind
+    private _onFilterChangedWithLimit(filterText: string, currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+        return this._onFilterChanged(filterText, currentPersonas, 3);
+    }
+
+    private _filterPromise(personasToReturn: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+        if (this.state.delayResults) {
+            return this._convertResultsToPromise(personasToReturn);
+        } else {
+            return personasToReturn;
         }
     }
 
@@ -117,7 +160,22 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
         return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
     }
 
+    private _convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {
+        return new Promise<IPersonaProps[]>((resolve, reject) => setTimeout(() => resolve(results), 2000));
+    }
+
     private _removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]) {
         return personas.filter(persona => !this._listContainsPersona(persona, possibleDupes));
     }
+
+    @autobind
+    private _toggleChange(toggleState: boolean) {
+        this.setState({ delayResults: toggleState });
+    }
+
+    @autobind
+    private _dropDownSelected(option: IDropdownOption) {
+        this.setState({ currentPicker: option.key });
+    }
+
 }
