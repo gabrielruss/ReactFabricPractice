@@ -13,15 +13,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/react": "^0.14.57",
-    "@types/react-dom": "^0.14.20",
-    "es6-promise": "^4.0.5",
-    "gd-sprest": "^1.2.5",
-    "jquery": "^3.1.1",
-    "office-ui-fabric-react": "latest",
+    "@types/react": "^15.0.12",
+    "@types/react-dom": "^0.14.23",
+    "es6-promise": "latest",
+    "gd-sprest": "^1.2.6",
+    "jquery": "latest",
+    "office-ui-fabric-react": "^1.12.0",
     "react": "latest",
     "react-dom": "latest",
-    "typescript": "latest"
+    "ts-loader": "^2.0.1",
+    "typescript": "^2.2.1"
   },
   "devDependencies": {
     "source-map-loader": "latest",
