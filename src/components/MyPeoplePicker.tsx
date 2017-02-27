@@ -17,6 +17,7 @@ import {
 } from '../../node_modules/office-ui-fabric-react/lib/Pickers';
 import { IPersonaWithMenu } from '../../node_modules/office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people } from '../../node_modules/office-ui-fabric-react/lib/demo/pages/PeoplePickerPage/examples/PeoplePickerExampleData';
+import { RestUtil } from '../../utils/RestUtil';
 import '../../node_modules/office-ui-fabric-react/lib/demo/pages/PeoplePickerPage/examples/PeoplePicker.Types.Example.scss';
 
 //keeping this in for example state
@@ -93,20 +94,15 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
     private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
         if (filterText) {
             let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
-
+            RestUtil.getUsers(filterText).then((result) => {
+                console.log(result);
+            });
             filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
             filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
             return filteredPersonas;
         } else {
             return [];
         }
-    }
-
-    private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]) {
-        if (!personas || !personas.length || personas.length === 0) {
-            return false;
-        }
-        return personas.filter(item => item.primaryText === persona.primaryText).length > 0;
     }
 
     private _filterPersonasByText(filterText: string): IPersonaProps[] {
@@ -119,5 +115,12 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
 
     private _removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]) {
         return personas.filter(persona => !this._listContainsPersona(persona, possibleDupes));
+    }
+
+    private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]) {
+        if (!personas || !personas.length || personas.length === 0) {
+            return false;
+        }
+        return personas.filter(item => item.primaryText === persona.primaryText).length > 0;
     }
 }

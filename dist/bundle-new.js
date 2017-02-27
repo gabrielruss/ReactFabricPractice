@@ -10310,10 +10310,10 @@
 	var React = __webpack_require__(1);
 	var es6_promise_1 = __webpack_require__(5);
 	var index_1 = __webpack_require__(8);
-	var MyTextField_1 = __webpack_require__(291);
-	var MyPeoplePicker_1 = __webpack_require__(292);
-	var MyPeoplePickerOriginal_1 = __webpack_require__(295);
-	var RestUtil_1 = __webpack_require__(296);
+	var MyTextField_1 = __webpack_require__(290);
+	var MyPeoplePicker_1 = __webpack_require__(291);
+	var MyPeoplePickerOriginal_1 = __webpack_require__(296);
+	var RestUtil_1 = __webpack_require__(293);
 	var NewForm = (function (_super) {
 	    __extends(NewForm, _super);
 	    function NewForm(props) {
@@ -11737,46 +11737,46 @@
 	}
 	__export(__webpack_require__(9));
 	__export(__webpack_require__(71));
-	__export(__webpack_require__(87));
+	__export(__webpack_require__(86));
 	__export(__webpack_require__(43));
-	__export(__webpack_require__(95));
-	__export(__webpack_require__(99));
-	__export(__webpack_require__(105));
-	__export(__webpack_require__(121));
+	__export(__webpack_require__(94));
+	__export(__webpack_require__(98));
+	__export(__webpack_require__(104));
+	__export(__webpack_require__(120));
 	__export(__webpack_require__(38));
-	__export(__webpack_require__(125));
-	__export(__webpack_require__(129));
-	__export(__webpack_require__(175));
-	__export(__webpack_require__(188));
-	__export(__webpack_require__(209));
+	__export(__webpack_require__(124));
+	__export(__webpack_require__(128));
+	__export(__webpack_require__(174));
+	__export(__webpack_require__(187));
+	__export(__webpack_require__(208));
 	__export(__webpack_require__(56));
-	__export(__webpack_require__(213));
-	__export(__webpack_require__(218));
+	__export(__webpack_require__(212));
+	__export(__webpack_require__(217));
 	__export(__webpack_require__(34));
-	__export(__webpack_require__(150));
+	__export(__webpack_require__(149));
 	__export(__webpack_require__(61));
-	__export(__webpack_require__(102));
-	__export(__webpack_require__(111));
+	__export(__webpack_require__(101));
+	__export(__webpack_require__(110));
 	__export(__webpack_require__(53));
-	__export(__webpack_require__(155));
-	__export(__webpack_require__(167));
-	__export(__webpack_require__(219));
-	__export(__webpack_require__(224));
-	__export(__webpack_require__(227));
-	__export(__webpack_require__(181));
-	__export(__webpack_require__(231));
-	__export(__webpack_require__(236));
-	__export(__webpack_require__(196));
-	__export(__webpack_require__(253));
-	__export(__webpack_require__(259));
-	__export(__webpack_require__(263));
-	__export(__webpack_require__(268));
-	__export(__webpack_require__(272));
-	__export(__webpack_require__(161));
-	__export(__webpack_require__(276));
-	__export(__webpack_require__(108));
-	__export(__webpack_require__(281));
-	__export(__webpack_require__(285));
+	__export(__webpack_require__(154));
+	__export(__webpack_require__(166));
+	__export(__webpack_require__(218));
+	__export(__webpack_require__(223));
+	__export(__webpack_require__(226));
+	__export(__webpack_require__(180));
+	__export(__webpack_require__(230));
+	__export(__webpack_require__(235));
+	__export(__webpack_require__(195));
+	__export(__webpack_require__(252));
+	__export(__webpack_require__(258));
+	__export(__webpack_require__(262));
+	__export(__webpack_require__(267));
+	__export(__webpack_require__(271));
+	__export(__webpack_require__(160));
+	__export(__webpack_require__(275));
+	__export(__webpack_require__(107));
+	__export(__webpack_require__(280));
+	__export(__webpack_require__(284));
 	__export(__webpack_require__(12));
 
 	//# sourceMappingURL=index.js.map
@@ -11867,22 +11867,14 @@
 	                        React.createElement("div", { className: 'ms-Breadcrumb-overflowButton ms-Icon ms-Icon--More', onClick: this._onOverflowClicked, "data-is-focusable": true, role: 'button', "aria-haspopup": 'true', "aria-owns": isOverflowOpen ? overflowMenuId : null }),
 	                        React.createElement("i", { className: Utilities_1.css('ms-Breadcrumb-chevron ms-Icon', Utilities_1.getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }))) : (null),
 	                    renderedItems.map(function (item, index) { return (React.createElement("li", { className: 'ms-Breadcrumb-listItem', key: item.key || String(index), ref: item.key || String(index) },
-	                        _this._renderItem(item),
+	                        React.createElement("a", { className: 'ms-Breadcrumb-itemLink', onClick: item.onClick ? _this._onBreadcrumbClicked.bind(_this, item) : null, href: item.href, role: item.onClick ? 'button' : 'link' }, item.text),
 	                        React.createElement("i", { className: Utilities_1.css('ms-Breadcrumb-chevron ms-Icon', Utilities_1.getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }))); }))),
 	            isOverflowOpen ? (React.createElement(ContextualMenu_1.ContextualMenu, { targetElement: overflowAnchor, isBeakVisible: true, items: renderedOverflowItems.map(function (item, index) { return ({
 	                    name: item.text,
 	                    key: item.key,
-	                    onClick: item.onClick ? _this._onBreadcrumbClicked.bind(_this, item) : null,
+	                    onClick: _this._onBreadcrumbClicked.bind(_this, item),
 	                    href: item.href
 	                }); }), id: overflowMenuId, directionalHint: DirectionalHint_1.DirectionalHint.bottomLeftEdge, onDismiss: this._onOverflowDismissed })) : (null)));
-	    };
-	    Breadcrumb.prototype._renderItem = function (item) {
-	        if (item.onClick || item.href) {
-	            return (React.createElement("a", { className: 'ms-Breadcrumb-itemLink', onClick: this._onBreadcrumbClicked.bind(this, item), href: item.href ? item.href : null, role: item.onClick ? 'button' : 'link' }, item.text));
-	        }
-	        else {
-	            return (React.createElement("span", { className: 'ms-Breadcrumb-item' }, item.text));
-	        }
 	    };
 	    Breadcrumb.prototype._onOverflowClicked = function (ev) {
 	        this.setState({
@@ -14738,13 +14730,13 @@
 	    };
 	    ContextualMenu.prototype.render = function () {
 	        var _this = this;
-	        var _a = this.props, className = _a.className, items = _a.items, isBeakVisible = _a.isBeakVisible, labelElementId = _a.labelElementId, targetElement = _a.targetElement, id = _a.id, targetPoint = _a.targetPoint, useTargetPoint = _a.useTargetPoint, beakWidth = _a.beakWidth, directionalHint = _a.directionalHint, gapSpace = _a.gapSpace, coverTarget = _a.coverTarget, ariaLabel = _a.ariaLabel, doNotLayer = _a.doNotLayer, arrowDirection = _a.arrowDirection, target = _a.target, bounds = _a.bounds, directionalHintFixed = _a.directionalHintFixed, shouldFocusOnMount = _a.shouldFocusOnMount;
+	        var _a = this.props, className = _a.className, items = _a.items, isBeakVisible = _a.isBeakVisible, labelElementId = _a.labelElementId, targetElement = _a.targetElement, id = _a.id, targetPoint = _a.targetPoint, useTargetPoint = _a.useTargetPoint, beakWidth = _a.beakWidth, directionalHint = _a.directionalHint, gapSpace = _a.gapSpace, coverTarget = _a.coverTarget, ariaLabel = _a.ariaLabel, doNotLayer = _a.doNotLayer, arrowDirection = _a.arrowDirection, target = _a.target, bounds = _a.bounds, directionalHintFixed = _a.directionalHintFixed;
 	        var submenuProps = this.state.submenuProps;
 	        var hasIcons = !!(items && items.some(function (item) { return !!item.icon || !!item.iconProps; }));
 	        var hasCheckmarks = !!(items && items.some(function (item) { return !!item.canCheck; }));
 	        // The menu should only return if items were provided, if no items were provided then it should not appear.
 	        if (items && items.length > 0) {
-	            return (React.createElement(Callout_1.Callout, { target: target, targetElement: targetElement, targetPoint: targetPoint, useTargetPoint: useTargetPoint, isBeakVisible: isBeakVisible, beakWidth: beakWidth, directionalHint: directionalHint, gapSpace: gapSpace, coverTarget: coverTarget, doNotLayer: doNotLayer, className: 'ms-ContextualMenu-Callout', setInitialFocus: shouldFocusOnMount, onDismiss: this.props.onDismiss, bounds: bounds, directionalHintFixed: directionalHintFixed },
+	            return (React.createElement(Callout_1.Callout, { target: target, targetElement: targetElement, targetPoint: targetPoint, useTargetPoint: useTargetPoint, isBeakVisible: isBeakVisible, beakWidth: beakWidth, directionalHint: directionalHint, gapSpace: gapSpace, coverTarget: coverTarget, doNotLayer: doNotLayer, className: 'ms-ContextualMenu-Callout', setInitialFocus: true, onDismiss: this.props.onDismiss, bounds: bounds, directionalHintFixed: directionalHintFixed },
 	                React.createElement("div", { ref: function (host) { return _this._host = host; }, id: id, className: Utilities_1.css('ms-ContextualMenu-container', className) },
 	                    (items && items.length) ? (React.createElement(FocusZone_1.FocusZone, { className: 'ms-ContextualMenu is-open', direction: arrowDirection, ariaLabelledBy: labelElementId, ref: function (focusZone) { return _this._focusZone = focusZone; }, rootProps: { role: 'menu' } },
 	                        React.createElement("ul", { className: 'ms-ContextualMenu-list is-open', onKeyDown: this._onKeyDown, "aria-label": ariaLabel }, items.map(function (item, index) { return (_this._renderMenuItem(item, index, hasCheckmarks, hasIcons)); })))) : (null),
@@ -16004,12 +15996,6 @@
 	    }
 	    return t;
 	};
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
 	/**
@@ -16024,6 +16010,7 @@
 	        this._originalFocusedElement = Utilities_1.getDocument().activeElement;
 	    };
 	    Popup.prototype.componentDidMount = function () {
+	        this._events.on(this.refs.root, 'keydown', this._onKeyDown);
 	        this._events.on(this.refs.root, 'focus', this._onFocus, true);
 	        this._events.on(this.refs.root, 'blur', this._onBlur, true);
 	        if (Utilities_1.doesElementContainFocus(this.refs.root)) {
@@ -16045,7 +16032,7 @@
 	    };
 	    Popup.prototype.render = function () {
 	        var _a = this.props, role = _a.role, className = _a.className, ariaLabelledBy = _a.ariaLabelledBy, ariaDescribedBy = _a.ariaDescribedBy;
-	        return (React.createElement("div", __assign({ ref: 'root' }, Utilities_1.getNativeProps(this.props, Utilities_1.divProperties), { className: className, role: role, "aria-labelledby": ariaLabelledBy, "aria-describedby": ariaDescribedBy, onKeyDown: this._onKeyDown }), this.props.children));
+	        return (React.createElement("div", __assign({ ref: 'root' }, Utilities_1.getNativeProps(this.props, Utilities_1.divProperties), { className: className, role: role, "aria-labelledby": ariaLabelledBy, "aria-describedby": ariaDescribedBy }), this.props.children));
 	    };
 	    Popup.prototype._onKeyDown = function (ev) {
 	        switch (ev.which) {
@@ -16069,9 +16056,6 @@
 	Popup.defaultProps = {
 	    shouldRestoreFocus: true
 	};
-	__decorate([
-	    Utilities_1.autobind
-	], Popup.prototype, "_onKeyDown", null);
 	exports.Popup = Popup;
 
 	//# sourceMappingURL=Popup.js.map
@@ -16757,12 +16741,6 @@
 	    }
 	    return t;
 	};
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
 	/* tslint:disable:no-unused-variable */
 	var React = __webpack_require__(1);
 	/* tslint:enable:no-unused-variable */
@@ -16794,8 +16772,15 @@
 	        };
 	        return _this;
 	    }
+	    Image.prototype.componentDidMount = function () {
+	        if (!this._evaluateImage()) {
+	            this._events.on(this._imageElement, 'load', this._evaluateImage);
+	            this._events.on(this._imageElement, 'error', this._setError);
+	        }
+	    };
 	    Image.prototype.componentWillReceiveProps = function (nextProps) {
 	        if (nextProps.src !== this.props.src) {
+	            this._events.off();
 	            this.setState({
 	                loadState: Image_Props_1.ImageLoadState.notLoaded
 	            });
@@ -16805,7 +16790,12 @@
 	        }
 	    };
 	    Image.prototype.componentDidUpdate = function (prevProps, prevState) {
-	        this._checkImageLoaded();
+	        if (prevProps.src !== this.props.src) {
+	            if (!this._evaluateImage()) {
+	                this._events.on(this._imageElement, 'load', this._evaluateImage);
+	                this._events.on(this._imageElement, 'error', this._setError);
+	            }
+	        }
 	        if (this.props.onLoadingStateChange
 	            && prevState.loadState !== this.state.loadState) {
 	            this.props.onLoadingStateChange(this.state.loadState);
@@ -16813,13 +16803,14 @@
 	    };
 	    Image.prototype.render = function () {
 	        var imageProps = Utilities_1.getNativeProps(this.props, Utilities_1.imageProperties, ['width', 'height']);
-	        var _a = this.props, src = _a.src, alt = _a.alt, width = _a.width, height = _a.height, shouldFadeIn = _a.shouldFadeIn, className = _a.className, imageFit = _a.imageFit, role = _a.role, maximizeFrame = _a.maximizeFrame;
+	        var _a = this.props, src = _a.src, alt = _a.alt, width = _a.width, height = _a.height, shouldFadeIn = _a.shouldFadeIn, className = _a.className, imageFit = _a.imageFit, errorSrc = _a.errorSrc, role = _a.role, maximizeFrame = _a.maximizeFrame;
 	        var loadState = this.state.loadState;
 	        var coverStyle = this._coverStyle;
-	        var loaded = loadState === Image_Props_1.ImageLoadState.loaded;
+	        var loaded = loadState === Image_Props_1.ImageLoadState.loaded || loadState === Image_Props_1.ImageLoadState.errorLoaded;
+	        var srcToDisplay = (loadState === Image_Props_1.ImageLoadState.error || loadState === Image_Props_1.ImageLoadState.errorLoaded) ? errorSrc : src;
 	        // If image dimensions aren't specified, the natural size of the image is used.
 	        return (React.createElement("div", { className: Utilities_1.css('ms-Image', className, { 'ms-Image--maximizeFrame': maximizeFrame }), style: { width: width, height: height }, ref: this._resolveRef('_frameElement') },
-	            React.createElement("img", __assign({}, imageProps, { onLoad: this._onImageLoaded, onError: this._onImageError, key: KEY_PREFIX + this.props.src || '', className: Utilities_1.css('ms-Image-image', (coverStyle !== undefined) && exports.CoverStyleMap[coverStyle], (imageFit !== undefined) && exports.ImageFitMap[imageFit], {
+	            React.createElement("img", __assign({}, imageProps, { key: KEY_PREFIX + this.props.src || '', className: Utilities_1.css('ms-Image-image', (coverStyle !== undefined) && exports.CoverStyleMap[coverStyle], (imageFit !== undefined) && exports.ImageFitMap[imageFit], {
 	                    'is-fadeIn': shouldFadeIn,
 	                    'is-notLoaded': !loaded,
 	                    'is-loaded': loaded,
@@ -16828,37 +16819,20 @@
 	                    'ms-Image-image--scaleWidth': (imageFit === undefined && !!width && !height),
 	                    'ms-Image-image--scaleHeight': (imageFit === undefined && !width && !!height),
 	                    'ms-Image-image--scaleWidthHeight': (imageFit === undefined && !!width && !!height),
-	                }), ref: this._resolveRef('_imageElement'), src: src, alt: alt, role: role }))));
+	                }), ref: this._resolveRef('_imageElement'), src: srcToDisplay, alt: alt, role: role }))));
 	    };
-	    Image.prototype._onImageLoaded = function (ev) {
-	        var _a = this.props, src = _a.src, onLoad = _a.onLoad;
-	        if (onLoad) {
-	            onLoad(ev);
-	        }
-	        this._computeCoverStyle(this.props);
-	        if (src) {
-	            this.setState({
-	                loadState: Image_Props_1.ImageLoadState.loaded
-	            });
-	        }
-	    };
-	    Image.prototype._checkImageLoaded = function () {
+	    Image.prototype._evaluateImage = function () {
 	        var src = this.props.src;
 	        var loadState = this.state.loadState;
-	        if (loadState === Image_Props_1.ImageLoadState.notLoaded) {
-	            // testing if naturalWidth and naturalHeight are greater than zero is better than checking
-	            // .complete, because .complete will also be set to true if the image breaks. However,
-	            // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
-	            // to checking .complete for these images.
-	            var isLoaded = src && (this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0) ||
-	                (this._imageElement.complete && Image._svgRegex.test(src));
-	            if (isLoaded) {
-	                this._computeCoverStyle(this.props);
-	                this.setState({
-	                    loadState: Image_Props_1.ImageLoadState.loaded
-	                });
-	            }
+	        var isLoaded = (src && this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0);
+	        this._computeCoverStyle(this.props);
+	        if (isLoaded && loadState !== Image_Props_1.ImageLoadState.loaded && loadState !== Image_Props_1.ImageLoadState.errorLoaded) {
+	            this._events.off();
+	            this.setState({
+	                loadState: loadState === Image_Props_1.ImageLoadState.error ? Image_Props_1.ImageLoadState.errorLoaded : Image_Props_1.ImageLoadState.loaded
+	            });
 	        }
+	        return isLoaded;
 	    };
 	    Image.prototype._computeCoverStyle = function (props) {
 	        var imageFit = props.imageFit, width = props.width, height = props.height;
@@ -16885,26 +16859,18 @@
 	            }
 	        }
 	    };
-	    Image.prototype._onImageError = function (ev) {
-	        if (this.props.onError) {
-	            this.props.onError(ev);
+	    Image.prototype._setError = function () {
+	        if (this.state.loadState !== Image_Props_1.ImageLoadState.error && this.state.loadState !== Image_Props_1.ImageLoadState.errorLoaded) {
+	            this.setState({
+	                loadState: Image_Props_1.ImageLoadState.error
+	            });
 	        }
-	        this.setState({
-	            loadState: Image_Props_1.ImageLoadState.error
-	        });
 	    };
 	    return Image;
 	}(Utilities_1.BaseComponent));
 	Image.defaultProps = {
 	    shouldFadeIn: true
 	};
-	Image._svgRegex = /\.svg$/i;
-	__decorate([
-	    Utilities_1.autobind
-	], Image.prototype, "_onImageLoaded", null);
-	__decorate([
-	    Utilities_1.autobind
-	], Image.prototype, "_onImageError", null);
 	exports.Image = Image;
 	var _a, _b;
 
@@ -16957,10 +16923,7 @@
 	     */
 	    ImageLoadState[ImageLoadState["error"] = 2] = "error";
 	    /**
-	     * @deprecated
-	     * Deprecated at v1.3.6, to be removed at >= v2.0.0.
-	     * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a
-	     * difference src.
+	     * The image was not successfully loaded due to an error.
 	     */
 	    ImageLoadState[ImageLoadState["errorLoaded"] = 3] = "errorLoaded";
 	})(ImageLoadState = exports.ImageLoadState || (exports.ImageLoadState = {}));
@@ -17001,7 +16964,7 @@
 	"use strict";
 	/* tslint:disable */
 	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Breadcrumb{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;margin:23px 0 1px}.ms-Breadcrumb-list{white-space:nowrap;padding:0;margin:0}.ms-Breadcrumb-chevron{font-size:12px;color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";vertical-align:top;margin:11px 7px;line-height:1}.ms-Breadcrumb-listItem{list-style-type:none;vertical-align:top;margin:0;padding:0;display:inline-block;position:relative}.ms-Breadcrumb-listItem:last-of-type .ms-Breadcrumb-chevron{display:none}.ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink::-moz-focus-inner{border:0}.ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}.ms-Breadcrumb-listItem .ms-Breadcrumb-item,.ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:21px;font-weight:100;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";display:inline-block;padding:0 8px;max-width:160px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;vertical-align:top}.ms-Breadcrumb-overflow{display:inline-block;position:relative}.ms-Breadcrumb-overflowButton{font-size:16px;display:inline-block;color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";padding:8px;cursor:pointer;vertical-align:top}.ms-Breadcrumb-item:hover{cursor:default}.ms-Breadcrumb-itemLink:hover{background-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";cursor:pointer}.ms-Breadcrumb-itemLink:focus{color:" }, { "theme": "neutralDark", "defaultValue": "#212121" }, { "rawString": "}.ms-Breadcrumb-itemLink:active{outline:transparent;background-color:" }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": ";color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-Breadcrumb-itemLink,.ms-Breadcrumb-overflowButton{text-decoration:none;outline:transparent}@media screen and (max-width:639px){margin: 11px 0 1px; .ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink{font-size:17px}.ms-Breadcrumb-chevron{font-size:10px;margin:8px 5px}.ms-Breadcrumb-overflowButton{font-size:15px;padding:5px 4px}}@media screen and (max-width:479px){.ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink{font-size:14px;max-width:116px}.ms-Breadcrumb-chevron{margin:5px 4px}.ms-Breadcrumb-overflowButton{padding:2px 4px}}" }]);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Breadcrumb{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;margin:23px 0 1px}.ms-Breadcrumb-list{white-space:nowrap;padding:0;margin:0}.ms-Breadcrumb-chevron{font-size:12px;color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";vertical-align:top;margin:11px 7px;line-height:1}.ms-Breadcrumb-listItem{list-style-type:none;vertical-align:top;margin:0;padding:0;display:inline-block;position:relative}.ms-Breadcrumb-listItem:last-of-type .ms-Breadcrumb-chevron{display:none}.ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:21px;font-weight:100;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";display:inline-block;padding:0 8px;max-width:160px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;vertical-align:top}.ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink::-moz-focus-inner{border:0}.ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}.ms-Breadcrumb-overflow{display:inline-block;position:relative}.ms-Breadcrumb-overflowButton{font-size:16px;display:inline-block;color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";padding:8px;cursor:pointer;vertical-align:top}.ms-Breadcrumb-itemLink,.ms-Breadcrumb-overflowButton{text-decoration:none;outline:transparent}.ms-Breadcrumb-itemLink:hover,.ms-Breadcrumb-overflowButton:hover{background-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";cursor:pointer}.ms-Breadcrumb-itemLink:focus,.ms-Breadcrumb-overflowButton:focus{color:" }, { "theme": "neutralDark", "defaultValue": "#212121" }, { "rawString": "}.ms-Breadcrumb-itemLink:active,.ms-Breadcrumb-overflowButton:active{outline:transparent;background-color:" }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": ";color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}@media screen and (max-width:639px){margin: 11px 0 1px; .ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink{font-size:17px}.ms-Breadcrumb-chevron{font-size:10px;margin:8px 5px}.ms-Breadcrumb-overflowButton{font-size:15px;padding:5px 4px}}@media screen and (max-width:479px){.ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink{font-size:14px;max-width:116px}.ms-Breadcrumb-chevron{margin:5px 4px}.ms-Breadcrumb-overflowButton{padding:2px 4px}}" }]);
 	/* tslint:enable */ 
 
 	//# sourceMappingURL=Breadcrumb.scss.js.map
@@ -17030,12 +16993,11 @@
 	}
 	__export(__webpack_require__(73));
 	__export(__webpack_require__(74));
-	__export(__webpack_require__(75));
-	__export(__webpack_require__(79));
 	__export(__webpack_require__(81));
-	__export(__webpack_require__(76));
-	__export(__webpack_require__(85));
+	__export(__webpack_require__(82));
 	__export(__webpack_require__(83));
+	__export(__webpack_require__(84));
+	__export(__webpack_require__(85));
 
 	//# sourceMappingURL=index.js.map
 
@@ -17052,40 +17014,62 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var BaseButton = (function (_super) {
-	    __extends(BaseButton, _super);
-	    function BaseButton(props, rootClassName, deprecationMap) {
+	var Button_Props_1 = __webpack_require__(74);
+	__webpack_require__(75);
+	__webpack_require__(76);
+	__webpack_require__(77);
+	__webpack_require__(78);
+	__webpack_require__(79);
+	__webpack_require__(80);
+	var Button = (function (_super) {
+	    __extends(Button, _super);
+	    function Button(props) {
 	        var _this = _super.call(this, props, { 'rootProps': null }) || this;
-	        /**
-	         * _baseClassName can be overridden by subclasses to provide a unique class prefix to the class name used for
-	         * sub parts of the render template.
-	         */
-	        _this._baseClassName = 'ms-Button';
-	        /**
-	         * _variantClassName can be overridden by subclasses to add an extra default class name to the root element.
-	         */
-	        _this._variantClassName = '';
-	        _this._labelId = Utilities_1.getId();
-	        _this._descriptionId = Utilities_1.getId();
-	        _this._ariaDescriptionId = Utilities_1.getId();
+	        _this.state = {
+	            labelId: Utilities_1.getId('Button'),
+	            descriptionId: Utilities_1.getId('Button'),
+	            ariaDescriptionId: Utilities_1.getId('Button')
+	        };
 	        return _this;
 	    }
-	    BaseButton.prototype.render = function () {
-	        var _a = this.props, className = _a.className, description = _a.description, ariaLabel = _a.ariaLabel, ariaDescription = _a.ariaDescription, href = _a.href, disabled = _a.disabled;
-	        var _b = this, _ariaDescriptionId = _b._ariaDescriptionId, _labelId = _b._labelId, _descriptionId = _b._descriptionId;
+	    Button.prototype.render = function () {
+	        var _this = this;
+	        var _a = this.props, buttonType = _a.buttonType, children = _a.children, icon = _a.icon, description = _a.description, ariaLabel = _a.ariaLabel, ariaDescription = _a.ariaDescription, href = _a.href, disabled = _a.disabled, onClick = _a.onClick;
+	        var _b = this.state, labelId = _b.labelId, descriptionId = _b.descriptionId, ariaDescriptionId = _b.ariaDescriptionId;
 	        var renderAsAnchor = !!href;
 	        var tag = renderAsAnchor ? 'a' : 'button';
-	        var nativeProps = Utilities_1.getNativeProps(this.props.rootProps || this.props, renderAsAnchor ? Utilities_1.anchorProperties : Utilities_1.buttonProperties, [
-	            'disabled' // Let disabled buttons be focused and styled as disabled.
-	        ]);
+	        var nativeProps = Utilities_1.getNativeProps(this.props.rootProps || this.props, renderAsAnchor ? Utilities_1.anchorProperties : Utilities_1.buttonProperties);
+	        var className = Utilities_1.css((this.props.className), {
+	            'ms-Button ms-Button--default': buttonType === Button_Props_1.ButtonType.default || buttonType === Button_Props_1.ButtonType.normal,
+	            'ms-Button ms-Button--primary': buttonType === Button_Props_1.ButtonType.primary,
+	            'ms-Button ms-Button--hero': buttonType === Button_Props_1.ButtonType.hero,
+	            'ms-Button ms-Button--compound': buttonType === Button_Props_1.ButtonType.compound,
+	            'ms-Button ms-Button--command': buttonType === Button_Props_1.ButtonType.command,
+	            'ms-Button ms-Button--icon': buttonType === Button_Props_1.ButtonType.icon,
+	            'disabled': (renderAsAnchor && disabled) // add disable styling if it is an anchor
+	        });
+	        var iconSpan = icon && (buttonType === Button_Props_1.ButtonType.command || buttonType === Button_Props_1.ButtonType.hero || buttonType === Button_Props_1.ButtonType.icon)
+	            ? React.createElement("span", { className: 'ms-Button-icon' },
+	                React.createElement("i", { className: "ms-Icon ms-Icon--" + icon }))
+	            : null;
+	        // ms-Button-description is only shown when the button type is compound.
+	        // In other cases it will not be displayed.
+	        var descriptionSpan = description
+	            ? React.createElement("span", { className: 'ms-Button-description', id: descriptionId }, description)
+	            : null;
+	        // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
+	        // otherwise it will be assigned to descriptionSpan.
+	        var ariaDescriptionSpan = ariaDescription
+	            ? React.createElement("span", { className: 'ms-u-screenReaderOnly', id: ariaDescriptionId }, ariaDescription)
+	            : null;
 	        // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
 	        // otherwise default to null.
 	        var ariaDescribedBy;
 	        if (ariaDescription) {
-	            ariaDescribedBy = _ariaDescriptionId;
+	            ariaDescribedBy = ariaDescriptionId;
 	        }
 	        else if (description) {
-	            ariaDescribedBy = _descriptionId;
+	            ariaDescribedBy = descriptionId;
 	        }
 	        else if (nativeProps['aria-describedby']) {
 	            ariaDescribedBy = nativeProps['aria-describedby'];
@@ -17093,63 +17077,34 @@
 	        else {
 	            ariaDescribedBy = null;
 	        }
-	        var buttonProps = Utilities_1.assign(nativeProps, {
-	            className: Utilities_1.css(className, this._baseClassName, this._variantClassName, { 'disabled': disabled }),
-	            ref: this._resolveRef('_buttonElement'),
+	        if (buttonType === Button_Props_1.ButtonType.clean) {
+	            return React.createElement(tag, Utilities_1.assign({}, nativeProps, href ? { href: href } : null, {
+	                'aria-label': ariaLabel,
+	                'aria-labelledby': ariaLabel ? null : labelId,
+	                'aria-describedby': ariaDescribedBy,
+	                'ref': function (c) { return _this._buttonElement = c; }
+	            }, onClick && { 'onClick': onClick }, disabled && { 'disabled': disabled }, { className: className }), children, ariaDescriptionSpan);
+	        }
+	        return React.createElement(tag, Utilities_1.assign({}, nativeProps, href ? { href: href } : null, {
 	            'aria-label': ariaLabel,
-	            'aria-labelledby': ariaLabel ? null : _labelId,
-	            'aria-describedby': ariaDescribedBy
-	        });
-	        return this.onRenderContent(tag, buttonProps);
+	            'aria-labelledby': ariaLabel ? null : labelId,
+	            'aria-describedby': ariaDescribedBy,
+	            'ref': function (c) { return _this._buttonElement = c; }
+	        }, onClick && { 'onClick': onClick }, disabled && { 'disabled': disabled }, { className: className }), iconSpan, React.createElement("span", { className: 'ms-Button-label', id: labelId }, children), descriptionSpan, ariaDescriptionSpan);
 	    };
-	    BaseButton.prototype.focus = function () {
+	    Button.prototype.focus = function () {
 	        if (this._buttonElement) {
 	            this._buttonElement.focus();
 	        }
 	    };
-	    BaseButton.prototype.onRenderContent = function (tag, buttonProps) {
-	        return React.createElement(tag, buttonProps, this.onRenderIcon(), this.onRenderLabel(), this.onRenderDescription(), this.onRenderAriaDescription(), this.onRenderChildren());
-	    };
-	    BaseButton.prototype.onRenderIcon = function () {
-	        var icon = this.props.icon;
-	        return icon ? (React.createElement("span", { className: this._baseClassName + "-icon" },
-	            React.createElement("i", { className: "ms-Icon ms-Icon--" + icon }))) : (null);
-	    };
-	    BaseButton.prototype.onRenderLabel = function () {
-	        var _a = this.props, children = _a.children, label = _a.label;
-	        // For backwards compat, we should continue to take in the label content from children.
-	        if (label === undefined && typeof (children) === 'string') {
-	            label = children;
-	        }
-	        return label ? (React.createElement("span", { className: this._baseClassName + "-label", id: this._labelId }, label)) : (null);
-	    };
-	    BaseButton.prototype.onRenderChildren = function () {
-	        var _a = this.props, children = _a.children, label = _a.label;
-	        // There is no label and the label will be rendered, we don't want the label to appear twice.
-	        // If there is a label and the children are of type string it was likely intentional and both
-	        // should render.
-	        if (label === undefined && typeof (children) === 'string') {
-	            return null;
-	        }
-	        return children;
-	    };
-	    BaseButton.prototype.onRenderDescription = function () {
-	        var description = this.props.description;
-	        // ms-Button-description is only shown when the button type is compound.
-	        // In other cases it will not be displayed.
-	        return description ? (React.createElement("span", { className: this._baseClassName + "-description", id: this._descriptionId }, description)) : (null);
-	    };
-	    BaseButton.prototype.onRenderAriaDescription = function () {
-	        var ariaDescription = this.props.ariaDescription;
-	        // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
-	        // otherwise it will be assigned to descriptionSpan.
-	        return ariaDescription ? (React.createElement("span", { className: 'ms-u-screenReaderOnly', id: this._ariaDescriptionId }, ariaDescription)) : (null);
-	    };
-	    return BaseButton;
+	    return Button;
 	}(Utilities_1.BaseComponent));
-	exports.BaseButton = BaseButton;
+	Button.defaultProps = {
+	    buttonType: Button_Props_1.ButtonType.default
+	};
+	exports.Button = Button;
 
-	//# sourceMappingURL=BaseButton.js.map
+	//# sourceMappingURL=Button.js.map
 
 
 /***/ },
@@ -17166,13 +17121,14 @@
 	})(ElementType = exports.ElementType || (exports.ElementType = {}));
 	var ButtonType;
 	(function (ButtonType) {
-	    ButtonType[ButtonType["normal"] = 0] = "normal";
-	    ButtonType[ButtonType["primary"] = 1] = "primary";
-	    ButtonType[ButtonType["hero"] = 2] = "hero";
-	    ButtonType[ButtonType["compound"] = 3] = "compound";
-	    ButtonType[ButtonType["command"] = 4] = "command";
-	    ButtonType[ButtonType["icon"] = 5] = "icon";
-	    ButtonType[ButtonType["default"] = 6] = "default";
+	    ButtonType[ButtonType["default"] = 0] = "default";
+	    ButtonType[ButtonType["normal"] = 1] = "normal";
+	    ButtonType[ButtonType["primary"] = 2] = "primary";
+	    ButtonType[ButtonType["hero"] = 3] = "hero";
+	    ButtonType[ButtonType["compound"] = 4] = "compound";
+	    ButtonType[ButtonType["command"] = 5] = "command";
+	    ButtonType[ButtonType["icon"] = 6] = "icon";
+	    ButtonType[ButtonType["clean"] = 7] = "clean";
 	})(ButtonType = exports.ButtonType || (exports.ButtonType = {}));
 
 	//# sourceMappingURL=Button.Props.js.map
@@ -17180,6 +17136,84 @@
 
 /***/ },
 /* 75 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	/* tslint:disable */
+	var load_themed_styles_1 = __webpack_require__(52);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Button{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;box-sizing:border-box;margin:0;padding:0;box-shadow:none;text-decoration:none;text-align:center;cursor:pointer;display:inline-block;border-style:solid}.ms-Button::-moz-focus-inner{border:0}.ms-Button{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-Button:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}html[dir=ltr] .ms-Button+.ms-Button{margin-left:6px}html[dir=rtl] .ms-Button+.ms-Button{margin-right:6px}@media screen and (-ms-high-contrast:active){.ms-Button{color:#1AEBFF;border-color:#1AEBFF}}@media screen and (-ms-high-contrast:black-on-white){.ms-Button{color:#37006E;border-color:#37006E}}.ms-Button.disabled,.ms-Button:disabled{background-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";border-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";cursor:default;pointer-events:none}.ms-Button.disabled .ms-Button-label,.ms-Button:disabled .ms-Button-label{color:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": "}.ms-Button.disabled:focus,.ms-Button.disabled:hover,.ms-Button:disabled:focus,.ms-Button:disabled:hover{outline:0}.ms-Button--hero{background-color:transparent;border:0;height:auto}.ms-Button--hero .ms-Button-icon{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";display:inline-block;padding-top:5px;font-size:20px;line-height:1}html[dir=ltr] .ms-Button--hero .ms-Button-icon{margin-right:8px}html[dir=rtl] .ms-Button--hero .ms-Button-icon{margin-left:8px}.ms-Button--hero .ms-Button-label{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";font-size:21px;font-weight:100;vertical-align:top}.ms-Button--hero:focus,.ms-Button--hero:hover{background-color:transparent}.ms-Button--hero:focus .ms-Button-icon,.ms-Button--hero:hover .ms-Button-icon{color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": "}.ms-Button--hero:focus .ms-Button-label,.ms-Button--hero:hover .ms-Button-label{color:" }, { "theme": "themeDarker", "defaultValue": "#004578" }, { "rawString": "}.ms-Button--hero:active .ms-Button-icon{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button--hero:active .ms-Button-label{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button--hero.is-disabled .ms-Button-icon,.ms-Button--hero:disabled .ms-Button-icon{color:" }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": "}.ms-Button--hero.is-disabled .ms-Button-label,.ms-Button--hero:disabled .ms-Button-label{color:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": "}" }]);
+	/* tslint:enable */ 
+
+	//# sourceMappingURL=ButtonCore.scss.js.map
+
+
+/***/ },
+/* 76 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	/* tslint:disable */
+	var load_themed_styles_1 = __webpack_require__(52);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Button--command{background-color:transparent;border:none;height:40px;padding:0 8px}html[dir=ltr] .ms-Button--command{text-align:left}html[dir=rtl] .ms-Button--command{text-align:right}html[dir=ltr] .ms-Button--command+.ms-Button--command{margin-left:14px}html[dir=rtl] .ms-Button--command+.ms-Button--command{margin-right:14px}.ms-Button--command .ms-Icon{line-height:40px}.ms-Button--command .ms-Button-label{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;font-weight:400;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";line-height:40px}.ms-Button--command .ms-Button-icon{vertical-align:top;color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";display:inline-block;position:relative;font-size:16px}html[dir=ltr] .ms-Button--command .ms-Button-icon{text-align:left}html[dir=rtl] .ms-Button--command .ms-Button-icon{text-align:right}html[dir=ltr] .ms-Button--command .ms-Button-icon{margin-right:8px}html[dir=rtl] .ms-Button--command .ms-Button-icon{margin-left:8px}.ms-Button--command:focus,.ms-Button--command:hover{background-color:transparent}.ms-Button--command:focus .ms-Button-icon,.ms-Button--command:focus .ms-Button-label,.ms-Button--command:hover .ms-Button-icon,.ms-Button--command:hover .ms-Button-label{color:" }, { "theme": "themeDarker", "defaultValue": "#004578" }, { "rawString": "}.ms-Button--command:active .ms-Button-icon,.ms-Button--command:active .ms-Button-label{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button--command.is-disabled .ms-Button-icon,.ms-Button--command:disabled .ms-Button-icon{color:" }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": "}html[dir=ltr] .ms-Button--command+.ms-Button--command{margin-left:14px}html[dir=rtl] .ms-Button--command+.ms-Button--command{margin-right:14px}" }]);
+	/* tslint:enable */ 
+
+	//# sourceMappingURL=CommandButton.scss.js.map
+
+
+/***/ },
+/* 77 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	/* tslint:disable */
+	var load_themed_styles_1 = __webpack_require__(52);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Button--compound{display:block;max-width:280px;min-height:72px;padding:20px;background:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";border:1px solid " }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": "}.ms-Button--compound .ms-Button-label{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;display:block;font-weight:600;color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": ";margin-top:-5px}html[dir=ltr] .ms-Button--compound .ms-Button-label{text-align:left}html[dir=rtl] .ms-Button--compound .ms-Button-label{text-align:right}.ms-Button--compound .ms-Button-description{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:12px;font-weight:400;color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";display:block;position:relative;top:3px}html[dir=ltr] .ms-Button--compound .ms-Button-description{text-align:left}html[dir=rtl] .ms-Button--compound .ms-Button-description{text-align:right}.ms-Button--compound:hover{background-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": ";border-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}.ms-Button--compound:hover .ms-Button-description{color:" }, { "theme": "neutralDark", "defaultValue": "#212121" }, { "rawString": "}.ms-Button--compound:focus{border-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";background-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": "}.ms-Button--compound:focus .ms-Button-label{color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-Button--compound:focus .ms-Button-description{color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}.ms-Button--compound:active{background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button--compound:active .ms-Button-description,.ms-Button--compound:active .ms-Button-label{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button--compound.disabled .ms-Button-description,.ms-Button--compound:disabled .ms-Button-description{color:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": "}.ms-Button--compound.disabled:active,.ms-Button--compound.disabled:focus,.ms-Button--compound:disabled:active,.ms-Button--compound:disabled:focus{border-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";background-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": "}.ms-Button--compound.disabled:active .ms-Button-description,.ms-Button--compound.disabled:active .ms-Button-label,.ms-Button--compound.disabled:focus .ms-Button-description,.ms-Button--compound.disabled:focus .ms-Button-label,.ms-Button--compound:disabled:active .ms-Button-description,.ms-Button--compound:disabled:active .ms-Button-label,.ms-Button--compound:disabled:focus .ms-Button-description,.ms-Button--compound:disabled:focus .ms-Button-label{color:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": "}" }]);
+	/* tslint:enable */ 
+
+	//# sourceMappingURL=CompoundButton.scss.js.map
+
+
+/***/ },
+/* 78 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	/* tslint:disable */
+	var load_themed_styles_1 = __webpack_require__(52);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Button--default{background-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";border:1px solid " }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";height:32px;min-width:80px;padding:4px 20px 6px}.ms-Button--default:hover{background-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": ";border-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}.ms-Button--default:hover .ms-Button-label{color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}.ms-Button--default:focus{background-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": ";border-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";outline:1px solid transparent}.ms-Button--default:focus .ms-Button-label{color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}.ms-Button--default:active{background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";border-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button--default:active .ms-Button-label{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button--default .ms-Button-label{color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";font-weight:600;font-size:14px}.ms-Fabric.is-focusVisible .ms-Button:focus{color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}.ms-Fabric.is-focusVisible .ms-Button:focus:before{border-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}" }]);
+	/* tslint:enable */ 
+
+	//# sourceMappingURL=DefaultButton.scss.js.map
+
+
+/***/ },
+/* 79 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	/* tslint:disable */
+	var load_themed_styles_1 = __webpack_require__(52);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Button--icon{background-color:transparent;color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";padding:0;border:0}.ms-Button--icon::-moz-focus-inner{border:0}.ms-Button--icon{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-Button--icon:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}.ms-Button--icon:active,.ms-Button--icon:hover{background-color:transparent;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-Button--icon:focus{background-color:transparent}.ms-Button--icon .ms-Icon{font-size:16px;padding:8px}.ms-Button--icon .ms-Button-icon{display:inline}.ms-Button--icon.is-disabled,.ms-Button--icon:disabled{color:" }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": ";background-color:transparent}@media screen and (-ms-high-contrast:active){.ms-Button--icon{color:" }, { "theme": "yellowLight", "defaultValue": "#fff100" }, { "rawString": "}}@media screen and (-ms-high-contrast:black-on-white){.ms-Button--icon{color:" }, { "theme": "blueMid", "defaultValue": "#00188f" }, { "rawString": "}}" }]);
+	/* tslint:enable */ 
+
+	//# sourceMappingURL=IconButton.scss.js.map
+
+
+/***/ },
+/* 80 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	/* tslint:disable */
+	var load_themed_styles_1 = __webpack_require__(52);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Button--primary{height:32px;min-width:80px;padding:4px 20px 6px;background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";border-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button--primary .ms-Button-label{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button--primary:hover{background-color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": ";border-color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": "}.ms-Button--primary:focus{background-color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": ";border-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button--primary:active{background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";border-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Fabric.is-focusVisible .ms-Button--primary:focus{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Fabric.is-focusVisible .ms-Button--primary:focus:before{border-color:" }, { "theme": "themeDarker", "defaultValue": "#004578" }, { "rawString": "}" }]);
+	/* tslint:enable */ 
+
+	//# sourceMappingURL=PrimaryButton.scss.js.map
+
+
+/***/ },
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17196,179 +17230,30 @@
 	    }
 	    return t;
 	};
-	/* tslint:disable:no-unused-variable */
+	/* tslint:disable:no-unused-variable no-unused-imports */
 	var React = __webpack_require__(1);
-	/* tslint:enable:no-unused-variable */
+	/* tslint:enable:no-unused-variable no-unused-imports*/
 	var Utilities_1 = __webpack_require__(12);
-	var Button_Props_1 = __webpack_require__(74);
-	var DefaultButton_1 = __webpack_require__(76);
-	var CommandButton_1 = __webpack_require__(79);
-	var CompoundButton_1 = __webpack_require__(81);
-	var IconButton_1 = __webpack_require__(83);
-	var PrimaryButton_1 = __webpack_require__(85);
-	/**
-	 * @deprecated
-	 * This class is deprecated. Use the individual *Button components instead.
-	 */
-	var Button = (function (_super) {
-	    __extends(Button, _super);
-	    function Button() {
-	        return _super !== null && _super.apply(this, arguments) || this;
-	    }
-	    Button.prototype.render = function () {
-	        var props = this.props;
-	        switch (props.buttonType) {
-	            case Button_Props_1.ButtonType.command:
-	                return React.createElement(CommandButton_1.CommandButton, __assign({}, props, { ref: this._resolveRef('_button') }));
-	            case Button_Props_1.ButtonType.compound:
-	                return React.createElement(CompoundButton_1.CompoundButton, __assign({}, props, { ref: this._resolveRef('_button') }));
-	            case Button_Props_1.ButtonType.icon:
-	                return React.createElement(IconButton_1.IconButton, __assign({}, props, { ref: this._resolveRef('_button') }));
-	            case Button_Props_1.ButtonType.primary:
-	                return React.createElement(PrimaryButton_1.PrimaryButton, __assign({}, props, { ref: this._resolveRef('_button') }));
-	            default:
-	                return React.createElement(DefaultButton_1.DefaultButton, __assign({}, props, { ref: this._resolveRef('_button') }));
-	        }
-	    };
-	    Button.prototype.focus = function () {
-	        if (this._button) {
-	            this._button.focus();
-	        }
-	    };
-	    return Button;
-	}(Utilities_1.BaseComponent));
-	exports.Button = Button;
-
-	//# sourceMappingURL=Button.js.map
-
-
-/***/ },
-/* 76 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var BaseButton_1 = __webpack_require__(73);
-	__webpack_require__(77);
-	__webpack_require__(78);
-	var DefaultButton = (function (_super) {
-	    __extends(DefaultButton, _super);
-	    function DefaultButton() {
-	        var _this = _super !== null && _super.apply(this, arguments) || this;
-	        _this._variantClassName = 'ms-Button--default';
-	        return _this;
-	    }
-	    DefaultButton.prototype.onRenderDescription = function () {
-	        return null;
-	    };
-	    return DefaultButton;
-	}(BaseButton_1.BaseButton));
-	exports.DefaultButton = DefaultButton;
-
-	//# sourceMappingURL=DefaultButton.js.map
-
-
-/***/ },
-/* 77 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	/* tslint:disable */
-	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Button--default{background-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";border:1px solid " }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";min-width:80px;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-Button--default,.ms-Button--default .ms-Button-icon,.ms-Button--default .ms-Button-label{height:32px;line-height:32px}.ms-Button--default:hover{background-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": ";border-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": ";color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}.ms-Button--default:focus{background-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": ";border-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";outline:1px solid transparent;color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}.ms-Button--default:active{background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";border-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button--default .ms-Button-label{font-weight:600;font-size:14px}.ms-Fabric.is-focusVisible .ms-Button:focus{color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}.ms-Fabric.is-focusVisible .ms-Button:focus:before{border-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}" }]);
-	/* tslint:enable */ 
-
-	//# sourceMappingURL=DefaultButton.scss.js.map
-
-
-/***/ },
-/* 78 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	/* tslint:disable */
-	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Button{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border-width:0;text-decoration:none;text-align:center;cursor:pointer;display:inline-block;padding:0 16px}.ms-Button::-moz-focus-inner{border:0}.ms-Button{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-Button:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}@media screen and (-ms-high-contrast:active){.ms-Button{color:#1AEBFF;border-color:#1AEBFF}}@media screen and (-ms-high-contrast:black-on-white){.ms-Button{color:#37006E;border-color:#37006E}}.ms-Button.disabled,.ms-Button:disabled{background-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";border-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";cursor:default;pointer-events:none;color:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": "}.ms-Button.disabled:focus,.ms-Button.disabled:hover,.ms-Button:disabled:focus,.ms-Button:disabled:hover{outline:0}.ms-Button-icon{margin:0 4px;width:16px;vertical-align:top;display:inline-block}.ms-Button-label{margin:0 4px;vertical-align:top;display:inline-block}.ms-Button--hero{background-color:transparent;border:0;height:auto}.ms-Button--hero .ms-Button-icon{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";display:inline-block;padding-top:5px;font-size:20px;line-height:1}html[dir=ltr] .ms-Button--hero .ms-Button-icon{margin-right:8px}html[dir=rtl] .ms-Button--hero .ms-Button-icon{margin-left:8px}.ms-Button--hero .ms-Button-label{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";font-size:21px;font-weight:100;vertical-align:top}.ms-Button--hero:focus,.ms-Button--hero:hover{background-color:transparent}.ms-Button--hero:focus .ms-Button-icon,.ms-Button--hero:hover .ms-Button-icon{color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": "}.ms-Button--hero:focus .ms-Button-label,.ms-Button--hero:hover .ms-Button-label{color:" }, { "theme": "themeDarker", "defaultValue": "#004578" }, { "rawString": "}.ms-Button--hero:active .ms-Button-icon{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button--hero:active .ms-Button-label{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button--hero.is-disabled .ms-Button-icon,.ms-Button--hero:disabled .ms-Button-icon{color:" }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": "}.ms-Button--hero.is-disabled .ms-Button-label,.ms-Button--hero:disabled .ms-Button-label{color:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": "}" }]);
-	/* tslint:enable */ 
-
-	//# sourceMappingURL=ButtonCore.scss.js.map
-
-
-/***/ },
-/* 79 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var BaseButton_1 = __webpack_require__(73);
-	__webpack_require__(80);
-	__webpack_require__(78);
+	var index_1 = __webpack_require__(72);
+	__webpack_require__(76);
+	__webpack_require__(75);
 	var CommandButton = (function (_super) {
 	    __extends(CommandButton, _super);
 	    function CommandButton() {
-	        var _this = _super !== null && _super.apply(this, arguments) || this;
-	        _this._variantClassName = 'ms-Button--command';
-	        return _this;
+	        return _super !== null && _super.apply(this, arguments) || this;
 	    }
-	    CommandButton.prototype.onRenderDescription = function () {
-	        return null;
+	    CommandButton.prototype.render = function () {
+	        var icon = this.props.icon;
+	        return (React.createElement(index_1.Button, __assign({ className: 'ms-Button--command', buttonType: index_1.ButtonType.clean }, Utilities_1.getNativeProps(this.props, Utilities_1.anchorProperties || Utilities_1.buttonProperties), this.props),
+	            React.createElement("span", { className: 'ms-Button-icon' },
+	                React.createElement("i", { className: "ms-Icon ms-Icon--" + icon })),
+	            React.createElement("span", { className: 'ms-Button-label' }, this.props.children)));
 	    };
 	    return CommandButton;
-	}(BaseButton_1.BaseButton));
+	}(Utilities_1.BaseComponent));
 	exports.CommandButton = CommandButton;
 
 	//# sourceMappingURL=CommandButton.js.map
-
-
-/***/ },
-/* 80 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	/* tslint:disable */
-	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Button--command{background-color:transparent;border:none;padding:0 4px}html[dir=ltr] .ms-Button--command{text-align:left}html[dir=rtl] .ms-Button--command{text-align:right}.ms-Button--command,.ms-Button--command .ms-Button-icon,.ms-Button--command .ms-Button-label{height:40px;line-height:40px}.ms-Button--command .ms-Button-label{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;font-weight:400;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-Button--command .ms-Button-icon{vertical-align:top;color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";display:inline-block;font-size:16px;position:relative}.ms-Button--command:focus,.ms-Button--command:hover{background-color:transparent}.ms-Button--command:focus,.ms-Button--command:focus .ms-Button-icon,.ms-Button--command:focus .ms-Button-label,.ms-Button--command:hover,.ms-Button--command:hover .ms-Button-icon,.ms-Button--command:hover .ms-Button-label{color:" }, { "theme": "themeDarker", "defaultValue": "#004578" }, { "rawString": "}.ms-Button--command:active,.ms-Button--command:active .ms-Button-icon,.ms-Button--command:active .ms-Button-label{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button--command.is-disabled,.ms-Button--command:disabled{background-color:transparent}.ms-Button--command.is-disabled,.ms-Button--command.is-disabled .ms-Button-icon,.ms-Button--command.is-disabled .ms-Button-label,.ms-Button--command:disabled,.ms-Button--command:disabled .ms-Button-icon,.ms-Button--command:disabled .ms-Button-label{color:" }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": "}" }]);
-	/* tslint:enable */ 
-
-	//# sourceMappingURL=CommandButton.scss.js.map
-
-
-/***/ },
-/* 81 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var BaseButton_1 = __webpack_require__(73);
-	__webpack_require__(82);
-	__webpack_require__(78);
-	var CompoundButton = (function (_super) {
-	    __extends(CompoundButton, _super);
-	    function CompoundButton() {
-	        var _this = _super !== null && _super.apply(this, arguments) || this;
-	        _this._variantClassName = 'ms-Button--compound';
-	        return _this;
-	    }
-	    CompoundButton.prototype.onRenderIcon = function () {
-	        return null;
-	    };
-	    return CompoundButton;
-	}(BaseButton_1.BaseButton));
-	exports.CompoundButton = CompoundButton;
-
-	//# sourceMappingURL=CompoundButton.js.map
 
 
 /***/ },
@@ -17376,12 +17261,42 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	/* tslint:disable */
-	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Button--compound{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;width:100%;max-width:280px;min-height:72px;padding:16px 20px;background:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": "}html[dir=ltr] .ms-Button--compound{text-align:left}html[dir=rtl] .ms-Button--compound{text-align:right}.ms-Button--compound .ms-Button-label{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;display:block;font-weight:600;color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": ";margin:0 0 2px}.ms-Button--compound .ms-Button-description{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:12px;font-weight:400;color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";display:block}.ms-Button--compound:hover{background-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": ";border-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}.ms-Button--compound:hover .ms-Button-description{color:" }, { "theme": "neutralDark", "defaultValue": "#212121" }, { "rawString": "}.ms-Button--compound:focus{border-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";background-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": "}.ms-Button--compound:focus .ms-Button-label{color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-Button--compound:focus .ms-Button-description{color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}.ms-Button--compound:active{background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button--compound:active .ms-Button-description,.ms-Button--compound:active .ms-Button-label{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button--compound.disabled .ms-Button-description,.ms-Button--compound.disabled .ms-Button-label,.ms-Button--compound:disabled .ms-Button-description,.ms-Button--compound:disabled .ms-Button-label{color:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": "}" }]);
-	/* tslint:enable */ 
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __assign = (this && this.__assign) || Object.assign || function(t) {
+	    for (var s, i = 1, n = arguments.length; i < n; i++) {
+	        s = arguments[i];
+	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+	            t[p] = s[p];
+	    }
+	    return t;
+	};
+	/* tslint:disable:no-unused-variable no-unused-imports */
+	var React = __webpack_require__(1);
+	/* tslint:enable:no-unused-variable no-unused-imports*/
+	var Utilities_1 = __webpack_require__(12);
+	var index_1 = __webpack_require__(72);
+	__webpack_require__(77);
+	__webpack_require__(75);
+	var CompoundButton = (function (_super) {
+	    __extends(CompoundButton, _super);
+	    function CompoundButton() {
+	        return _super !== null && _super.apply(this, arguments) || this;
+	    }
+	    CompoundButton.prototype.render = function () {
+	        var description = this.props.description;
+	        return (React.createElement(index_1.Button, __assign({ className: 'ms-Button--compound', buttonType: index_1.ButtonType.clean }, Utilities_1.getNativeProps(this.props, Utilities_1.anchorProperties || Utilities_1.buttonProperties), this.props),
+	            React.createElement("span", { className: 'ms-Button-label' }, this.props.children),
+	            React.createElement("span", { className: 'ms-Button-description' }, description)));
+	    };
+	    return CompoundButton;
+	}(Utilities_1.BaseComponent));
+	exports.CompoundButton = CompoundButton;
 
-	//# sourceMappingURL=CompoundButton.scss.js.map
+	//# sourceMappingURL=CompoundButton.js.map
 
 
 /***/ },
@@ -17394,30 +17309,35 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var BaseButton_1 = __webpack_require__(73);
-	__webpack_require__(84);
-	__webpack_require__(78);
-	var IconButton = (function (_super) {
-	    __extends(IconButton, _super);
-	    function IconButton() {
-	        var _this = _super !== null && _super.apply(this, arguments) || this;
-	        _this._variantClassName = 'ms-Button--icon';
-	        return _this;
+	var __assign = (this && this.__assign) || Object.assign || function(t) {
+	    for (var s, i = 1, n = arguments.length; i < n; i++) {
+	        s = arguments[i];
+	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+	            t[p] = s[p];
 	    }
-	    IconButton.prototype.onRenderLabel = function () {
-	        return null;
+	    return t;
+	};
+	/* tslint:disable:no-unused-variable no-unused-imports */
+	var React = __webpack_require__(1);
+	/* tslint:enable:no-unused-variable no-unused-imports*/
+	var Utilities_1 = __webpack_require__(12);
+	var index_1 = __webpack_require__(72);
+	__webpack_require__(78);
+	__webpack_require__(75);
+	var DefaultButton = (function (_super) {
+	    __extends(DefaultButton, _super);
+	    function DefaultButton() {
+	        return _super !== null && _super.apply(this, arguments) || this;
+	    }
+	    DefaultButton.prototype.render = function () {
+	        return (React.createElement(index_1.Button, __assign({ className: 'ms-Button--default ms-Button', buttonType: index_1.ButtonType.clean }, Utilities_1.getNativeProps(this.props, Utilities_1.anchorProperties || Utilities_1.buttonProperties), this.props),
+	            React.createElement("span", { className: 'ms-Button-label' }, this.props.children)));
 	    };
-	    IconButton.prototype.onRenderDescription = function () {
-	        return null;
-	    };
-	    IconButton.prototype.onRenderChildren = function () {
-	        return null;
-	    };
-	    return IconButton;
-	}(BaseButton_1.BaseButton));
-	exports.IconButton = IconButton;
+	    return DefaultButton;
+	}(Utilities_1.BaseComponent));
+	exports.DefaultButton = DefaultButton;
 
-	//# sourceMappingURL=IconButton.js.map
+	//# sourceMappingURL=DefaultButton.js.map
 
 
 /***/ },
@@ -17425,12 +17345,40 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	/* tslint:disable */
-	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Button--icon{background-color:transparent;color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";padding:0 4px;font-size:16px}.ms-Button--icon::-moz-focus-inner{border:0}.ms-Button--icon{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-Button--icon:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}.ms-Button--icon .ms-Button,.ms-Button--icon .ms-Button-icon,.ms-Button--icon .ms-Button-label{height:32px;line-height:32px}.ms-Button--icon:active,.ms-Button--icon:hover{background-color:transparent;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-Button--icon:focus{background-color:transparent}.ms-Button--icon.is-disabled,.ms-Button--icon:disabled{color:" }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": ";background-color:transparent}@media screen and (-ms-high-contrast:active){.ms-Button--icon{color:" }, { "theme": "yellowLight", "defaultValue": "#fff100" }, { "rawString": "}}@media screen and (-ms-high-contrast:black-on-white){.ms-Button--icon{color:" }, { "theme": "blueMid", "defaultValue": "#00188f" }, { "rawString": "}}" }]);
-	/* tslint:enable */ 
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __assign = (this && this.__assign) || Object.assign || function(t) {
+	    for (var s, i = 1, n = arguments.length; i < n; i++) {
+	        s = arguments[i];
+	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+	            t[p] = s[p];
+	    }
+	    return t;
+	};
+	/* tslint:disable:no-unused-variable no-unused-imports */
+	var React = __webpack_require__(1);
+	/* tslint:enable:no-unused-variable no-unused-imports*/
+	var Utilities_1 = __webpack_require__(12);
+	var index_1 = __webpack_require__(72);
+	__webpack_require__(80);
+	__webpack_require__(75);
+	var PrimaryButton = (function (_super) {
+	    __extends(PrimaryButton, _super);
+	    function PrimaryButton() {
+	        return _super !== null && _super.apply(this, arguments) || this;
+	    }
+	    PrimaryButton.prototype.render = function () {
+	        return (React.createElement(index_1.Button, __assign({ className: 'ms-Button--primary ms-Button', buttonType: index_1.ButtonType.clean }, Utilities_1.getNativeProps(this.props, Utilities_1.anchorProperties || Utilities_1.buttonProperties), this.props),
+	            React.createElement("span", { className: 'ms-Button-label' }, this.props.children)));
+	    };
+	    return PrimaryButton;
+	}(Utilities_1.BaseComponent));
+	exports.PrimaryButton = PrimaryButton;
 
-	//# sourceMappingURL=IconButton.scss.js.map
+	//# sourceMappingURL=PrimaryButton.js.map
 
 
 /***/ },
@@ -17443,24 +17391,37 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
-	var BaseButton_1 = __webpack_require__(73);
-	__webpack_require__(86);
-	__webpack_require__(78);
-	var PrimaryButton = (function (_super) {
-	    __extends(PrimaryButton, _super);
-	    function PrimaryButton() {
-	        var _this = _super !== null && _super.apply(this, arguments) || this;
-	        _this._variantClassName = 'ms-Button--primary';
-	        return _this;
+	var __assign = (this && this.__assign) || Object.assign || function(t) {
+	    for (var s, i = 1, n = arguments.length; i < n; i++) {
+	        s = arguments[i];
+	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+	            t[p] = s[p];
 	    }
-	    PrimaryButton.prototype.onRenderDescription = function () {
-	        return null;
+	    return t;
+	};
+	/* tslint:disable:no-unused-variable no-unused-imports */
+	var React = __webpack_require__(1);
+	/* tslint:enable:no-unused-variable no-unused-imports*/
+	var Utilities_1 = __webpack_require__(12);
+	var index_1 = __webpack_require__(72);
+	__webpack_require__(79);
+	__webpack_require__(75);
+	var IconButton = (function (_super) {
+	    __extends(IconButton, _super);
+	    function IconButton() {
+	        return _super !== null && _super.apply(this, arguments) || this;
+	    }
+	    IconButton.prototype.render = function () {
+	        var icon = this.props.icon;
+	        return (React.createElement(index_1.Button, __assign({ className: 'ms-Button--icon', buttonType: index_1.ButtonType.clean }, Utilities_1.getNativeProps(this.props, Utilities_1.anchorProperties || Utilities_1.buttonProperties), this.props),
+	            React.createElement("span", { className: 'ms-Button-icon' },
+	                React.createElement("i", { className: "ms-Icon ms-Icon--" + icon }))));
 	    };
-	    return PrimaryButton;
-	}(BaseButton_1.BaseButton));
-	exports.PrimaryButton = PrimaryButton;
+	    return IconButton;
+	}(Utilities_1.BaseComponent));
+	exports.IconButton = IconButton;
 
-	//# sourceMappingURL=PrimaryButton.js.map
+	//# sourceMappingURL=IconButton.js.map
 
 
 /***/ },
@@ -17468,12 +17429,12 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	/* tslint:disable */
-	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Button--primary{min-width:80px;background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";border-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button--primary::-moz-focus-inner{border:0}.ms-Button--primary{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-Button--primary:focus:after{content:'';position:absolute;top:1px;right:1px;bottom:1px;left:1px;pointer-events:none;border:1px solid " }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button--primary,.ms-Button--primary .ms-Button-icon,.ms-Button--primary .ms-Button-label{height:32px;line-height:32px}.ms-Button--primary .ms-Button-label{font-weight:600;font-size:14px}.ms-Button--primary:hover{background-color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": ";border-color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": "}.ms-Button--primary:focus{background-color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": ";border-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button--primary:active{background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";border-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Fabric.is-focusVisible .ms-Button--primary:focus{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Fabric.is-focusVisible .ms-Button--primary:focus:before{border-color:" }, { "theme": "themeLighter", "defaultValue": "#deecf9" }, { "rawString": "}" }]);
-	/* tslint:enable */ 
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(87));
 
-	//# sourceMappingURL=PrimaryButton.scss.js.map
+	//# sourceMappingURL=Calendar.js.map
 
 
 /***/ },
@@ -17485,26 +17446,13 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(88));
-
-	//# sourceMappingURL=Calendar.js.map
-
-
-/***/ },
-/* 88 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
 	__export(__webpack_require__(89));
-	__export(__webpack_require__(90));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 89 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17520,11 +17468,11 @@
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var React = __webpack_require__(1);
-	var Calendar_Props_1 = __webpack_require__(90);
-	var CalendarDay_1 = __webpack_require__(91);
-	var CalendarMonth_1 = __webpack_require__(93);
+	var Calendar_Props_1 = __webpack_require__(89);
+	var CalendarDay_1 = __webpack_require__(90);
+	var CalendarMonth_1 = __webpack_require__(92);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(94);
+	__webpack_require__(93);
 	var Calendar = (function (_super) {
 	    __extends(Calendar, _super);
 	    function Calendar(props) {
@@ -17657,7 +17605,7 @@
 
 
 /***/ },
-/* 90 */
+/* 89 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -17676,7 +17624,7 @@
 
 
 /***/ },
-/* 91 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17688,7 +17636,7 @@
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
 	var FocusZone_1 = __webpack_require__(34);
-	var DateMath_1 = __webpack_require__(92);
+	var DateMath_1 = __webpack_require__(91);
 	var DAYS_IN_WEEK = 7;
 	var CalendarDay = (function (_super) {
 	    __extends(CalendarDay, _super);
@@ -17823,7 +17771,7 @@
 
 
 /***/ },
-/* 92 */
+/* 91 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -17919,7 +17867,7 @@
 
 
 /***/ },
-/* 93 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -17931,7 +17879,7 @@
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
 	var FocusZone_1 = __webpack_require__(34);
-	var DateMath_1 = __webpack_require__(92);
+	var DateMath_1 = __webpack_require__(91);
 	var CalendarMonth = (function (_super) {
 	    __extends(CalendarMonth, _super);
 	    function CalendarMonth(props) {
@@ -17988,16 +17936,29 @@
 
 
 /***/ },
-/* 94 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	/* tslint:disable */
 	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-DatePicker{box-sizing:border-box;margin:0;padding:0;box-shadow:none;margin-bottom:17px}.ms-DatePicker-picker{color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": ";font-size:14px;position:relative}html[dir=ltr] .ms-DatePicker-picker{text-align:left}html[dir=rtl] .ms-DatePicker-picker{text-align:right}.ms-DatePicker-holder{-webkit-overflow-scrolling:touch;box-sizing:border-box;background:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";min-width:300px;display:none}.ms-DatePicker-picker.ms-DatePicker-picker--opened .ms-DatePicker-holder{-webkit-animation-name:fadeIn,slideDownIn10;animation-name:fadeIn,slideDownIn10;-webkit-animation-duration:167ms;-moz-animation-duration:167ms;-ms-animation-duration:167ms;-o-animation-duration:167ms;-webkit-animation-timing-function:cubic-bezier(.1,.25,.75,.9);animation-timing-function:cubic-bezier(.1,.25,.75,.9);-webkit-animation-fill-mode:both;animation-fill-mode:both;box-sizing:border-box;display:block}.ms-DatePicker-picker--opened{position:relative}.ms-DatePicker-frame{padding:1px}.ms-DatePicker-wrap{margin:-1px;padding:9px}.ms-DatePicker-dayPicker{display:block;margin-bottom:30px}.ms-DatePicker-header{height:40px;line-height:44px}.ms-DatePicker-month,.ms-DatePicker-year{display:inline-block;font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:21px;font-weight:100;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";margin-top:-1px}.ms-DatePicker-month:hover,.ms-DatePicker-year:hover{color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": ";cursor:pointer}html[dir=ltr] .ms-DatePicker-month{margin-left:15px}html[dir=rtl] .ms-DatePicker-month{margin-right:15px}html[dir=ltr] .ms-DatePicker-year{margin-left:15px}html[dir=rtl] .ms-DatePicker-year{margin-right:15px}.ms-DatePicker-table{text-align:center;border-collapse:collapse;border-spacing:0;table-layout:fixed;font-size:inherit}.ms-DatePicker-table td{margin:0;padding:0}.ms-DatePicker-table td:hover{outline:1px solid transparent}.ms-DatePicker-day,.ms-DatePicker-weekday{width:40px;height:40px;padding:0;line-height:40px;font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:15px;font-weight:400;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-DatePicker-day--today{position:relative;background-color:" }, { "theme": "themeLight", "defaultValue": "#c7e0f4" }, { "rawString": "}.ms-DatePicker-day--disabled:before{border-top-color:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": "}.ms-DatePicker-day--outfocus{color:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": ";font-weight:400}.ms-DatePicker-day--infocus:hover,.ms-DatePicker-day--outfocus:hover{cursor:pointer;color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": ";background:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}.ms-DatePicker-day--highlighted:hover,.ms-DatePicker-picker--focused .ms-DatePicker-day--highlighted{cursor:pointer;color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";background:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-DatePicker-day--highlighted.ms-DatePicker-day--disabled,.ms-DatePicker-day--highlighted.ms-DatePicker-day--disabled:hover{background:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": "}.ms-DatePicker-monthPicker,.ms-DatePicker-yearPicker{display:none}.ms-DatePicker-monthComponents{position:absolute;top:9px}html[dir=ltr] .ms-DatePicker-monthComponents{right:9px}html[dir=rtl] .ms-DatePicker-monthComponents{left:9px}html[dir=ltr] .ms-DatePicker-monthComponents{left:9px}html[dir=rtl] .ms-DatePicker-monthComponents{right:9px}.ms-DatePicker-decadeComponents,.ms-DatePicker-yearComponents{position:absolute;top:-2px}html[dir=ltr] .ms-DatePicker-decadeComponents,html[dir=ltr] .ms-DatePicker-yearComponents{right:10px}html[dir=rtl] .ms-DatePicker-decadeComponents,html[dir=rtl] .ms-DatePicker-yearComponents{left:10px}.ms-DatePicker-nextDecade,.ms-DatePicker-nextMonth,.ms-DatePicker-nextYear,.ms-DatePicker-prevDecade,.ms-DatePicker-prevMonth,.ms-DatePicker-prevYear{width:40px;height:40px;display:block;text-align:center;line-height:40px;text-align:center;font-size:16px;color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";position:relative;top:2px}html[dir=ltr] .ms-DatePicker-nextDecade,html[dir=ltr] .ms-DatePicker-nextMonth,html[dir=ltr] .ms-DatePicker-nextYear,html[dir=ltr] .ms-DatePicker-prevDecade,html[dir=ltr] .ms-DatePicker-prevMonth,html[dir=ltr] .ms-DatePicker-prevYear{margin-left:10px}html[dir=rtl] .ms-DatePicker-nextDecade,html[dir=rtl] .ms-DatePicker-nextMonth,html[dir=rtl] .ms-DatePicker-nextYear,html[dir=rtl] .ms-DatePicker-prevDecade,html[dir=rtl] .ms-DatePicker-prevMonth,html[dir=rtl] .ms-DatePicker-prevYear{margin-right:10px}.ms-DatePicker-nextDecade:hover,.ms-DatePicker-nextMonth:hover,.ms-DatePicker-nextYear:hover,.ms-DatePicker-prevDecade:hover,.ms-DatePicker-prevMonth:hover,.ms-DatePicker-prevYear:hover{color:" }, { "theme": "neutralDark", "defaultValue": "#212121" }, { "rawString": ";cursor:pointer;outline:1px solid transparent}.ms-DatePicker-headerToggleView{height:40px;position:absolute;top:0;width:140px;cursor:pointer}html[dir=ltr] .ms-DatePicker-headerToggleView{left:0}html[dir=rtl] .ms-DatePicker-headerToggleView{right:0}.ms-DatePicker-currentDecade,.ms-DatePicker-currentYear{display:block;font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:21px;font-weight:100;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";height:40px;line-height:40px}html[dir=ltr] .ms-DatePicker-currentDecade,html[dir=ltr] .ms-DatePicker-currentYear{margin-left:15px}html[dir=rtl] .ms-DatePicker-currentDecade,html[dir=rtl] .ms-DatePicker-currentYear{margin-right:15px}.ms-DatePicker-currentYear{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-DatePicker-currentYear:hover{color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": ";cursor:pointer}.ms-DatePicker-optionGrid{position:relative;height:210px;width:280px;margin:10px 0 30px 5px}html[dir=rtl] .ms-DatePicker-optionGrid{margin:10px 5px 30px 0}.ms-DatePicker-monthOption,.ms-DatePicker-yearOption{background-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";width:60px;height:60px;line-height:60px;cursor:pointer;margin:0 10px 10px 0;font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:13px;font-weight:400;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";text-align:center}html[dir=ltr] .ms-DatePicker-monthOption,html[dir=ltr] .ms-DatePicker-yearOption{float:left}html[dir=rtl] .ms-DatePicker-monthOption,html[dir=rtl] .ms-DatePicker-yearOption{float:right}html[dir=rtl] .ms-DatePicker-monthOption,html[dir=rtl] .ms-DatePicker-yearOption{margin:0 0 10px 10px}.ms-DatePicker-monthOption:hover,.ms-DatePicker-yearOption:hover{background-color:" }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": ";outline:1px solid transparent}.ms-DatePicker-monthOption.is-highlighted,.ms-DatePicker-yearOption.is-highlighted{background-color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-DatePicker-goToday{bottom:9px;color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";cursor:pointer;font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:13px;font-weight:400;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";height:30px;line-height:30px;padding:0 10px;position:absolute}html[dir=ltr] .ms-DatePicker-goToday{right:9px}html[dir=rtl] .ms-DatePicker-goToday{left:9px}.ms-DatePicker-goToday:hover{outline:1px solid transparent}.ms-DatePicker.is-pickingYears .ms-DatePicker-dayPicker,.ms-DatePicker.is-pickingYears .ms-DatePicker-monthComponents{display:none}.ms-DatePicker.is-pickingYears .ms-DatePicker-monthPicker{display:none}.ms-DatePicker.is-pickingYears .ms-DatePicker-yearPicker{display:block}@media (min-width:460px){.ms-DatePicker-header{height:30px;line-height:30px}.ms-DatePicker-day,.ms-DatePicker-weekday{width:30px;height:30px;line-height:28px;font-weight:600;font-size:12px}.ms-DatePicker-monthComponents{width:210px}.ms-DatePicker-nextDecade,.ms-DatePicker-nextMonth,.ms-DatePicker-nextYear,.ms-DatePicker-prevDecade,.ms-DatePicker-prevMonth,.ms-DatePicker-prevYear{font-size:12px;width:24px;height:24px;line-height:24px}.ms-DatePicker-holder{min-width:240px}.ms-DatePicker-month,.ms-DatePicker-year{font-weight:300}.ms-DatePicker-month,.ms-DatePicker-year{font-size:17px;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-DatePicker-month:hover,.ms-DatePicker-year:hover{color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";cursor:default}.is-monthPickerVisible .ms-DatePicker-dayPicker{margin:-10px 0;padding:10px 0}.is-monthPickerVisible .ms-DatePicker-dayPicker{box-sizing:border-box;width:220px;min-height:230px}html[dir=ltr] .is-monthPickerVisible .ms-DatePicker-dayPicker{border-right:1px solid " }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-dayPicker{border-left:1px solid " }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}.is-monthPickerVisible .ms-DatePicker-holder{width:440px}.is-monthPickerVisible .ms-DatePicker-monthPicker{display:block}.is-monthPickerVisible .ms-DatePicker-monthPicker,.is-monthPickerVisible .ms-DatePicker-yearPicker{top:9px;position:absolute}html[dir=ltr] .is-monthPickerVisible .ms-DatePicker-monthPicker,html[dir=ltr] .is-monthPickerVisible .ms-DatePicker-yearPicker{left:238px}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-monthPicker,html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-yearPicker{right:238px}html[dir=ltr] .is-monthPickerVisible .ms-DatePicker-month{margin-left:12px}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-month{margin-right:12px}.is-monthPickerVisible .ms-DatePicker-optionGrid{width:200px;height:auto;margin:10px 0 0 0}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-optionGrid{margin:10px 0 0 0}.is-monthPickerVisible .ms-DatePicker-toggleMonthView{display:none}.is-monthPickerVisible .ms-DatePicker-currentDecade,.is-monthPickerVisible .ms-DatePicker-currentYear{font-size:17px;margin:0;height:30px;line-height:26px;padding:0 10px;display:inline-block}.is-monthPickerVisible .ms-DatePicker-monthOption,.is-monthPickerVisible .ms-DatePicker-yearOption{width:40px;height:40px;line-height:38px;font-size:12px;margin:0 10px 10px 0}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-monthOption,html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-yearOption{margin:0 0 10px 10px}.is-monthPickerVisible .ms-DatePicker-monthOption:hover,.is-monthPickerVisible .ms-DatePicker-yearOption:hover{outline:1px solid transparent}.is-monthPickerVisible .ms-DatePicker-goToday{box-sizing:border-box;font-size:12px;height:30px;line-height:30px;padding:0 10px;top:199px;width:210px}html[dir=ltr] .is-monthPickerVisible .ms-DatePicker-goToday{right:10px}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-goToday{left:10px}html[dir=ltr] .is-monthPickerVisible .ms-DatePicker-goToday{text-align:right}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-goToday{text-align:left}.is-monthPickerVisible .ms-DatePicker.is-pickingYears .ms-DatePicker-dayPicker,.is-monthPickerVisible .ms-DatePicker.is-pickingYears .ms-DatePicker-monthComponents{display:block}.is-monthPickerVisible .ms-DatePicker.is-pickingYears .ms-DatePicker-monthPicker{display:none}.is-monthPickerVisible .ms-DatePicker.is-pickingYears .ms-DatePicker-yearPicker{display:block}}@media (max-width:459px){.ms-DatePicker.is-pickingMonths .ms-DatePicker-dayPicker,.ms-DatePicker.is-pickingMonths .ms-DatePicker-monthComponents{display:none}.ms-DatePicker.is-pickingMonths .ms-DatePicker-monthPicker{display:block}}.ms-DatePicker-wrap div:focus,.ms-DatePicker-wrap span:focus{outline:1px solid " }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-DatePicker-goToday{width:auto}.ms-DatePicker-nextMonth,.ms-DatePicker-nextYear,.ms-DatePicker-prevMonth,.ms-DatePicker-prevYear{display:inline-block}html[dir=ltr] .ms-DatePicker-navContainer{float:right}html[dir=rtl] .ms-DatePicker-navContainer{float:left}" }]);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-DatePicker{box-sizing:border-box;margin:0;padding:0;box-shadow:none;margin-bottom:17px}.ms-DatePicker-picker{color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": ";font-size:14px;position:relative}html[dir=ltr] .ms-DatePicker-picker{text-align:left}html[dir=rtl] .ms-DatePicker-picker{text-align:right}.ms-DatePicker-holder{-webkit-overflow-scrolling:touch;box-sizing:border-box;background:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";min-width:300px;display:none}.ms-DatePicker-picker.ms-DatePicker-picker--opened .ms-DatePicker-holder{-webkit-animation-name:fadeIn,slideDownIn10;animation-name:fadeIn,slideDownIn10;-webkit-animation-duration:167ms;-moz-animation-duration:167ms;-ms-animation-duration:167ms;-o-animation-duration:167ms;-webkit-animation-timing-function:cubic-bezier(.1,.25,.75,.9);animation-timing-function:cubic-bezier(.1,.25,.75,.9);-webkit-animation-fill-mode:both;animation-fill-mode:both;box-sizing:border-box;display:block}.ms-DatePicker-picker--opened{position:relative}.ms-DatePicker-frame{padding:1px}.ms-DatePicker-wrap{margin:-1px;padding:9px}.ms-DatePicker-dayPicker{display:block;margin-bottom:30px}.ms-DatePicker-header{height:40px;line-height:44px}.ms-DatePicker-month,.ms-DatePicker-year{display:inline-block;font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:21px;font-weight:100;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";margin-top:-1px}.ms-DatePicker-month:hover,.ms-DatePicker-year:hover{color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": ";cursor:pointer}html[dir=ltr] .ms-DatePicker-month{margin-left:15px}html[dir=rtl] .ms-DatePicker-month{margin-right:15px}html[dir=ltr] .ms-DatePicker-year{margin-left:15px}html[dir=rtl] .ms-DatePicker-year{margin-right:15px}.ms-DatePicker-table{text-align:center;border-collapse:collapse;border-spacing:0;table-layout:fixed;font-size:inherit}.ms-DatePicker-table td{margin:0;padding:0}.ms-DatePicker-table td:hover{outline:1px solid transparent}.ms-DatePicker-day,.ms-DatePicker-weekday{width:40px;height:40px;padding:0;line-height:40px;font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:15px;font-weight:400;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-DatePicker-day--today{position:relative;background-color:" }, { "theme": "themeLight", "defaultValue": "#c7e0f4" }, { "rawString": "}.ms-DatePicker-day--disabled:before{border-top-color:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": "}.ms-DatePicker-day--outfocus{color:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": ";font-weight:400}.ms-DatePicker-day--infocus:hover,.ms-DatePicker-day--outfocus:hover{cursor:pointer;color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": ";background:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}.ms-DatePicker-day--highlighted:hover,.ms-DatePicker-picker--focused .ms-DatePicker-day--highlighted{cursor:pointer;color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";background:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-DatePicker-day--highlighted.ms-DatePicker-day--disabled,.ms-DatePicker-day--highlighted.ms-DatePicker-day--disabled:hover{background:" }, { "theme": "neutralTertiary", "defaultValue": "#a6a6a6" }, { "rawString": "}.ms-DatePicker-monthPicker,.ms-DatePicker-yearPicker{display:none}.ms-DatePicker-monthComponents{position:absolute;top:9px}html[dir=ltr] .ms-DatePicker-monthComponents{right:9px}html[dir=rtl] .ms-DatePicker-monthComponents{left:9px}html[dir=ltr] .ms-DatePicker-monthComponents{left:9px}html[dir=rtl] .ms-DatePicker-monthComponents{right:9px}.ms-DatePicker-decadeComponents,.ms-DatePicker-yearComponents{position:absolute;top:-2px}html[dir=ltr] .ms-DatePicker-decadeComponents,html[dir=ltr] .ms-DatePicker-yearComponents{right:10px}html[dir=rtl] .ms-DatePicker-decadeComponents,html[dir=rtl] .ms-DatePicker-yearComponents{left:10px}.ms-DatePicker-nextDecade,.ms-DatePicker-nextMonth,.ms-DatePicker-nextYear,.ms-DatePicker-prevDecade,.ms-DatePicker-prevMonth,.ms-DatePicker-prevYear{width:40px;height:40px;display:block;text-align:center;line-height:40px;text-align:center;font-size:16px;color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";position:relative;top:2px}html[dir=ltr] .ms-DatePicker-nextDecade,html[dir=ltr] .ms-DatePicker-nextMonth,html[dir=ltr] .ms-DatePicker-nextYear,html[dir=ltr] .ms-DatePicker-prevDecade,html[dir=ltr] .ms-DatePicker-prevMonth,html[dir=ltr] .ms-DatePicker-prevYear{margin-left:10px}html[dir=rtl] .ms-DatePicker-nextDecade,html[dir=rtl] .ms-DatePicker-nextMonth,html[dir=rtl] .ms-DatePicker-nextYear,html[dir=rtl] .ms-DatePicker-prevDecade,html[dir=rtl] .ms-DatePicker-prevMonth,html[dir=rtl] .ms-DatePicker-prevYear{margin-right:10px}.ms-DatePicker-nextDecade:hover,.ms-DatePicker-nextMonth:hover,.ms-DatePicker-nextYear:hover,.ms-DatePicker-prevDecade:hover,.ms-DatePicker-prevMonth:hover,.ms-DatePicker-prevYear:hover{color:" }, { "theme": "neutralDark", "defaultValue": "#212121" }, { "rawString": ";cursor:pointer;outline:1px solid transparent}.ms-DatePicker-headerToggleView{height:40px;position:absolute;top:0;width:140px;cursor:pointer}html[dir=ltr] .ms-DatePicker-headerToggleView{left:0}html[dir=rtl] .ms-DatePicker-headerToggleView{right:0}.ms-DatePicker-currentDecade,.ms-DatePicker-currentYear{display:block;font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:21px;font-weight:100;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";height:40px;line-height:42px}html[dir=ltr] .ms-DatePicker-currentDecade,html[dir=ltr] .ms-DatePicker-currentYear{margin-left:15px}html[dir=rtl] .ms-DatePicker-currentDecade,html[dir=rtl] .ms-DatePicker-currentYear{margin-right:15px}.ms-DatePicker-currentYear{color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-DatePicker-currentYear:hover{color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": ";cursor:pointer}.ms-DatePicker-optionGrid{position:relative;height:210px;width:280px;margin:10px 0 30px 5px}html[dir=rtl] .ms-DatePicker-optionGrid{margin:10px 5px 30px 0}.ms-DatePicker-monthOption,.ms-DatePicker-yearOption{background-color:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";width:60px;height:60px;line-height:60px;cursor:pointer;margin:0 10px 10px 0;font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:13px;font-weight:400;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";text-align:center}html[dir=ltr] .ms-DatePicker-monthOption,html[dir=ltr] .ms-DatePicker-yearOption{float:left}html[dir=rtl] .ms-DatePicker-monthOption,html[dir=rtl] .ms-DatePicker-yearOption{float:right}html[dir=rtl] .ms-DatePicker-monthOption,html[dir=rtl] .ms-DatePicker-yearOption{margin:0 0 10px 10px}.ms-DatePicker-monthOption:hover,.ms-DatePicker-yearOption:hover{background-color:" }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": ";outline:1px solid transparent}.ms-DatePicker-monthOption.is-highlighted,.ms-DatePicker-yearOption.is-highlighted{background-color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-DatePicker-goToday{bottom:9px;color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";cursor:pointer;font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:13px;font-weight:400;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";height:30px;line-height:30px;padding:0 10px;position:absolute}html[dir=ltr] .ms-DatePicker-goToday{right:9px}html[dir=rtl] .ms-DatePicker-goToday{left:9px}.ms-DatePicker-goToday:hover{outline:1px solid transparent}.ms-DatePicker.is-pickingYears .ms-DatePicker-dayPicker,.ms-DatePicker.is-pickingYears .ms-DatePicker-monthComponents{display:none}.ms-DatePicker.is-pickingYears .ms-DatePicker-monthPicker{display:none}.ms-DatePicker.is-pickingYears .ms-DatePicker-yearPicker{display:block}@media (min-width:460px){.ms-DatePicker-header{height:30px;line-height:28px}.ms-DatePicker-day,.ms-DatePicker-weekday{width:30px;height:30px;line-height:28px;font-weight:600;font-size:12px}.ms-DatePicker-monthComponents{width:210px}.ms-DatePicker-nextDecade,.ms-DatePicker-nextMonth,.ms-DatePicker-nextYear,.ms-DatePicker-prevDecade,.ms-DatePicker-prevMonth,.ms-DatePicker-prevYear{font-size:12px;width:24px;height:24px;line-height:24px}.ms-DatePicker-holder{min-width:240px}.ms-DatePicker-month,.ms-DatePicker-year{font-weight:300}.ms-DatePicker-month,.ms-DatePicker-year{font-size:17px;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-DatePicker-month:hover,.ms-DatePicker-year:hover{color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";cursor:default}.is-monthPickerVisible .ms-DatePicker-dayPicker{margin:-10px 0;padding:10px 0}.is-monthPickerVisible .ms-DatePicker-dayPicker{box-sizing:border-box;width:220px;min-height:230px}html[dir=ltr] .is-monthPickerVisible .ms-DatePicker-dayPicker{border-right:1px solid " }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-dayPicker{border-left:1px solid " }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}.is-monthPickerVisible .ms-DatePicker-holder{width:440px}.is-monthPickerVisible .ms-DatePicker-monthPicker{display:block}.is-monthPickerVisible .ms-DatePicker-monthPicker,.is-monthPickerVisible .ms-DatePicker-yearPicker{top:9px;position:absolute}html[dir=ltr] .is-monthPickerVisible .ms-DatePicker-monthPicker,html[dir=ltr] .is-monthPickerVisible .ms-DatePicker-yearPicker{left:238px}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-monthPicker,html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-yearPicker{right:238px}html[dir=ltr] .is-monthPickerVisible .ms-DatePicker-month{margin-left:12px}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-month{margin-right:12px}.is-monthPickerVisible .ms-DatePicker-optionGrid{width:200px;height:auto;margin:10px 0 0 0}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-optionGrid{margin:10px 0 0 0}.is-monthPickerVisible .ms-DatePicker-toggleMonthView{display:none}.is-monthPickerVisible .ms-DatePicker-currentDecade,.is-monthPickerVisible .ms-DatePicker-currentYear{font-size:17px;margin:0;height:30px;line-height:26px;padding:0 10px;display:inline-block}.is-monthPickerVisible .ms-DatePicker-monthOption,.is-monthPickerVisible .ms-DatePicker-yearOption{width:40px;height:40px;line-height:38px;font-size:12px;margin:0 10px 10px 0}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-monthOption,html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-yearOption{margin:0 0 10px 10px}.is-monthPickerVisible .ms-DatePicker-monthOption:hover,.is-monthPickerVisible .ms-DatePicker-yearOption:hover{outline:1px solid transparent}.is-monthPickerVisible .ms-DatePicker-goToday{box-sizing:border-box;font-size:12px;height:30px;line-height:30px;padding:0 10px;top:199px;width:210px}html[dir=ltr] .is-monthPickerVisible .ms-DatePicker-goToday{right:10px}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-goToday{left:10px}html[dir=ltr] .is-monthPickerVisible .ms-DatePicker-goToday{text-align:right}html[dir=rtl] .is-monthPickerVisible .ms-DatePicker-goToday{text-align:left}.is-monthPickerVisible .ms-DatePicker.is-pickingYears .ms-DatePicker-dayPicker,.is-monthPickerVisible .ms-DatePicker.is-pickingYears .ms-DatePicker-monthComponents{display:block}.is-monthPickerVisible .ms-DatePicker.is-pickingYears .ms-DatePicker-monthPicker{display:none}.is-monthPickerVisible .ms-DatePicker.is-pickingYears .ms-DatePicker-yearPicker{display:block}}@media (max-width:459px){.ms-DatePicker.is-pickingMonths .ms-DatePicker-dayPicker,.ms-DatePicker.is-pickingMonths .ms-DatePicker-monthComponents{display:none}.ms-DatePicker.is-pickingMonths .ms-DatePicker-monthPicker{display:block}}.ms-DatePicker-wrap div:focus,.ms-DatePicker-wrap span:focus{outline:1px solid " }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-DatePicker-goToday{width:auto}.ms-DatePicker-nextMonth,.ms-DatePicker-nextYear,.ms-DatePicker-prevMonth,.ms-DatePicker-prevYear{display:inline-block}html[dir=ltr] .ms-DatePicker-navContainer{float:right}html[dir=rtl] .ms-DatePicker-navContainer{float:left}" }]);
 	/* tslint:enable */ 
 
 	//# sourceMappingURL=Calendar.scss.js.map
+
+
+/***/ },
+/* 94 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(95));
+
+	//# sourceMappingURL=Checkbox.js.map
 
 
 /***/ },
@@ -18010,24 +17971,11 @@
 	}
 	__export(__webpack_require__(96));
 
-	//# sourceMappingURL=Checkbox.js.map
-
-
-/***/ },
-/* 96 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(97));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 97 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18052,7 +18000,7 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(98);
+	__webpack_require__(97);
 	var Checkbox = (function (_super) {
 	    __extends(Checkbox, _super);
 	    function Checkbox(props) {
@@ -18130,7 +18078,7 @@
 
 
 /***/ },
-/* 98 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18143,6 +18091,19 @@
 
 
 /***/ },
+/* 98 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(99));
+
+	//# sourceMappingURL=ChoiceGroup.js.map
+
+
+/***/ },
 /* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18152,24 +18113,11 @@
 	}
 	__export(__webpack_require__(100));
 
-	//# sourceMappingURL=ChoiceGroup.js.map
-
-
-/***/ },
-/* 100 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(101));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 101 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18179,9 +18127,9 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
-	var Image_1 = __webpack_require__(102);
+	var Image_1 = __webpack_require__(101);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(104);
+	__webpack_require__(103);
 	var ChoiceGroup = (function (_super) {
 	    __extends(ChoiceGroup, _super);
 	    function ChoiceGroup(props) {
@@ -18301,20 +18249,20 @@
 
 
 /***/ },
-/* 102 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(103));
+	__export(__webpack_require__(102));
 
 	//# sourceMappingURL=Image.js.map
 
 
 /***/ },
-/* 103 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18328,7 +18276,7 @@
 
 
 /***/ },
-/* 104 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18341,6 +18289,19 @@
 
 
 /***/ },
+/* 104 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(105));
+
+	//# sourceMappingURL=ColorPicker.js.map
+
+
+/***/ },
 /* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18350,24 +18311,11 @@
 	}
 	__export(__webpack_require__(106));
 
-	//# sourceMappingURL=ColorPicker.js.map
-
-
-/***/ },
-/* 106 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(107));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 107 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18384,11 +18332,11 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var TextField_1 = __webpack_require__(108);
-	var ColorRectangle_1 = __webpack_require__(116);
-	var ColorSlider_1 = __webpack_require__(119);
-	var colors_1 = __webpack_require__(117);
-	__webpack_require__(120);
+	var TextField_1 = __webpack_require__(107);
+	var ColorRectangle_1 = __webpack_require__(115);
+	var ColorSlider_1 = __webpack_require__(118);
+	var colors_1 = __webpack_require__(116);
+	__webpack_require__(119);
 	var ColorPicker = (function (_super) {
 	    __extends(ColorPicker, _super);
 	    function ColorPicker(props) {
@@ -18469,6 +18417,19 @@
 
 
 /***/ },
+/* 107 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(108));
+
+	//# sourceMappingURL=TextField.js.map
+
+
+/***/ },
 /* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18478,24 +18439,11 @@
 	}
 	__export(__webpack_require__(109));
 
-	//# sourceMappingURL=TextField.js.map
-
-
-/***/ },
-/* 109 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(110));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 110 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18513,15 +18461,16 @@
 	    return t;
 	};
 	var React = __webpack_require__(1);
-	var Label_1 = __webpack_require__(111);
+	var Label_1 = __webpack_require__(110);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(115);
+	__webpack_require__(114);
 	var TextField = (function (_super) {
 	    __extends(TextField, _super);
 	    function TextField(props) {
 	        var _this = _super.call(this, props) || this;
 	        _this._id = Utilities_1.getId('TextField');
 	        _this._descriptionId = Utilities_1.getId('TextFieldDescription');
+	        _this._async = new Utilities_1.Async(_this);
 	        _this.state = {
 	            value: props.value || props.defaultValue || '',
 	            isFocused: false,
@@ -18568,10 +18517,11 @@
 	        }
 	    };
 	    TextField.prototype.componentWillUnmount = function () {
+	        this._async.dispose();
 	        this._isMounted = false;
 	    };
 	    TextField.prototype.render = function () {
-	        var _a = this.props, className = _a.className, description = _a.description, disabled = _a.disabled, iconClass = _a.iconClass, label = _a.label, multiline = _a.multiline, required = _a.required, underlined = _a.underlined;
+	        var _a = this.props, disabled = _a.disabled, required = _a.required, multiline = _a.multiline, underlined = _a.underlined, label = _a.label, description = _a.description, iconClass = _a.iconClass, className = _a.className;
 	        var isFocused = this.state.isFocused;
 	        var errorMessage = this._errorMessage;
 	        this._isDescriptionAvailable = Boolean(description || errorMessage);
@@ -18596,32 +18546,32 @@
 	     * Sets focus on the text field
 	     */
 	    TextField.prototype.focus = function () {
-	        if (this._textElement) {
-	            this._textElement.focus();
+	        if (this._field) {
+	            this._field.focus();
 	        }
 	    };
 	    /**
 	     * Selects the text field
 	     */
 	    TextField.prototype.select = function () {
-	        if (this._textElement) {
-	            this._textElement.select();
+	        if (this._field) {
+	            this._field.select();
 	        }
 	    };
 	    /**
 	     * Sets the selection start of the text field to a specified value
 	     */
 	    TextField.prototype.setSelectionStart = function (value) {
-	        if (this._textElement) {
-	            this._textElement.selectionStart = value;
+	        if (this._field) {
+	            this._field.selectionStart = value;
 	        }
 	    };
 	    /**
 	     * Sets the selection end of the text field to a specified value
 	     */
 	    TextField.prototype.setSelectionEnd = function (value) {
-	        if (this._textElement) {
-	            this._textElement.selectionEnd = value;
+	        if (this._field) {
+	            this._field.selectionEnd = value;
 	        }
 	    };
 	    TextField.prototype._onFocus = function (ev) {
@@ -18642,7 +18592,7 @@
 	            this._validate(this.state.value);
 	        }
 	    };
-	    Object.defineProperty(TextField.prototype, "_textElementClassName", {
+	    Object.defineProperty(TextField.prototype, "_fieldClassName", {
 	        get: function () {
 	            var errorMessage = this._errorMessage;
 	            var textFieldClassName;
@@ -18671,12 +18621,14 @@
 	        configurable: true
 	    });
 	    TextField.prototype._renderTextArea = function () {
+	        var _this = this;
 	        var textAreaProps = Utilities_1.getNativeProps(this.props, Utilities_1.textAreaProperties, ['defaultValue']);
-	        return (React.createElement("textarea", __assign({}, textAreaProps, { id: this._id, ref: this._resolveRef('_textElement'), value: this.state.value, onInput: this._onInputChange, onChange: this._onChange, className: this._textElementClassName, "aria-label": this.props.ariaLabel, "aria-describedby": this._isDescriptionAvailable ? this._descriptionId : undefined, "aria-invalid": !!this.state.errorMessage, onFocus: this._onFocus, onBlur: this._onBlur })));
+	        return (React.createElement("textarea", __assign({}, textAreaProps, { id: this._id, ref: function (c) { return _this._field = c; }, value: this.state.value, onInput: this._onInputChange, onChange: this._onChange, className: this._fieldClassName, "aria-label": this.props.ariaLabel, "aria-describedby": this._isDescriptionAvailable ? this._descriptionId : undefined, "aria-invalid": !!this.state.errorMessage, onFocus: this._onFocus, onBlur: this._onBlur })));
 	    };
 	    TextField.prototype._renderInput = function () {
+	        var _this = this;
 	        var inputProps = Utilities_1.getNativeProps(this.props, Utilities_1.inputProperties, ['defaultValue']);
-	        return (React.createElement("input", __assign({ type: 'text' }, inputProps, { id: this._id, ref: this._resolveRef('_textElement'), value: this.state.value, onInput: this._onInputChange, onChange: this._onChange, className: this._textElementClassName, "aria-label": this.props.ariaLabel, "aria-describedby": this._isDescriptionAvailable ? this._descriptionId : undefined, "aria-invalid": !!this.state.errorMessage, onFocus: this._onFocus, onBlur: this._onBlur })));
+	        return (React.createElement("input", __assign({ type: 'text' }, inputProps, { id: this._id, ref: function (c) { return _this._field = c; }, value: this.state.value, onInput: this._onInputChange, onChange: this._onChange, className: this._fieldClassName, "aria-label": this.props.ariaLabel, "aria-describedby": this._isDescriptionAvailable ? this._descriptionId : undefined, "aria-invalid": !!this.state.errorMessage, onFocus: this._onFocus, onBlur: this._onBlur })));
 	    };
 	    TextField.prototype._onInputChange = function (event) {
 	        var element = event.target;
@@ -18737,8 +18689,8 @@
 	        }
 	    };
 	    TextField.prototype._adjustInputHeight = function () {
-	        if (this._textElement && this.props.autoAdjustHeight && this.props.multiline) {
-	            var textField = this._textElement;
+	        if (this._field && this.props.autoAdjustHeight && this.props.multiline) {
+	            var textField = this._field;
 	            textField.style.height = '';
 	            var scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
 	            textField.style.height = scrollHeight + 'px';
@@ -18754,7 +18706,7 @@
 	         */
 	    };
 	    return TextField;
-	}(Utilities_1.BaseComponent));
+	}(React.Component));
 	TextField.defaultProps = {
 	    multiline: false,
 	    resizable: true,
@@ -18775,6 +18727,19 @@
 
 
 /***/ },
+/* 110 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(111));
+
+	//# sourceMappingURL=Label.js.map
+
+
+/***/ },
 /* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18784,24 +18749,11 @@
 	}
 	__export(__webpack_require__(112));
 
-	//# sourceMappingURL=Label.js.map
-
-
-/***/ },
-/* 112 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(113));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 113 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18820,7 +18772,7 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(114);
+	__webpack_require__(113);
 	var Label = (function (_super) {
 	    __extends(Label, _super);
 	    function Label() {
@@ -18841,7 +18793,7 @@
 
 
 /***/ },
-/* 114 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18854,7 +18806,7 @@
 
 
 /***/ },
-/* 115 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18867,7 +18819,7 @@
 
 
 /***/ },
-/* 116 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -18884,7 +18836,7 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var colors_1 = __webpack_require__(117);
+	var colors_1 = __webpack_require__(116);
 	var ColorRectangle = (function (_super) {
 	    __extends(ColorRectangle, _super);
 	    function ColorRectangle(props) {
@@ -18970,12 +18922,12 @@
 
 
 /***/ },
-/* 117 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var Utilities_1 = __webpack_require__(12);
-	var colorValues_1 = __webpack_require__(118);
+	var colorValues_1 = __webpack_require__(117);
 	exports.MAX_COLOR_SATURATION = 100;
 	exports.MAX_COLOR_HUE = 359;
 	exports.MAX_COLOR_VALUE = 100;
@@ -19230,7 +19182,7 @@
 
 
 /***/ },
-/* 118 */
+/* 117 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -19389,7 +19341,7 @@
 
 
 /***/ },
-/* 119 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -19482,7 +19434,7 @@
 
 
 /***/ },
-/* 120 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -19495,6 +19447,19 @@
 
 
 /***/ },
+/* 120 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(121));
+
+	//# sourceMappingURL=CommandBar.js.map
+
+
+/***/ },
 /* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -19504,24 +19469,11 @@
 	}
 	__export(__webpack_require__(122));
 
-	//# sourceMappingURL=CommandBar.js.map
-
-
-/***/ },
-/* 122 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(123));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 123 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -19550,7 +19502,7 @@
 	var ContextualMenu_1 = __webpack_require__(38);
 	var DirectionalHint_1 = __webpack_require__(42);
 	var Icon_1 = __webpack_require__(61);
-	__webpack_require__(124);
+	__webpack_require__(123);
 	var OVERFLOW_KEY = 'overflow';
 	var OVERFLOW_WIDTH = 41.5;
 	var CommandBar = (function (_super) {
@@ -19796,7 +19748,7 @@
 
 
 /***/ },
-/* 124 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -19809,6 +19761,19 @@
 
 
 /***/ },
+/* 124 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(125));
+
+	//# sourceMappingURL=DatePicker.js.map
+
+
+/***/ },
 /* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -19818,25 +19783,11 @@
 	}
 	__export(__webpack_require__(126));
 
-	//# sourceMappingURL=DatePicker.js.map
-
-
-/***/ },
-/* 126 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(127));
-	__export(__webpack_require__(90));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 127 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -19852,12 +19803,12 @@
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var React = __webpack_require__(1);
-	var Calendar_1 = __webpack_require__(87);
+	var Calendar_1 = __webpack_require__(86);
 	var Callout_1 = __webpack_require__(43);
 	var DirectionalHint_1 = __webpack_require__(42);
-	var TextField_1 = __webpack_require__(108);
+	var TextField_1 = __webpack_require__(107);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(128);
+	__webpack_require__(127);
 	var DatePicker = (function (_super) {
 	    __extends(DatePicker, _super);
 	    function DatePicker(props) {
@@ -20107,7 +20058,7 @@
 
 
 /***/ },
-/* 128 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20120,6 +20071,19 @@
 
 
 /***/ },
+/* 128 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(129));
+
+	//# sourceMappingURL=DetailsList.js.map
+
+
+/***/ },
 /* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -20128,8 +20092,12 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(130));
+	__export(__webpack_require__(135));
+	__export(__webpack_require__(136));
+	__export(__webpack_require__(143));
+	__export(__webpack_require__(144));
 
-	//# sourceMappingURL=DetailsList.js.map
+	//# sourceMappingURL=index.js.map
 
 
 /***/ },
@@ -20141,32 +20109,15 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(131));
-	__export(__webpack_require__(136));
-	__export(__webpack_require__(137));
-	__export(__webpack_require__(144));
-	__export(__webpack_require__(145));
+	__export(__webpack_require__(132));
+	__export(__webpack_require__(133));
+	__export(__webpack_require__(134));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
 /* 131 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(132));
-	__export(__webpack_require__(133));
-	__export(__webpack_require__(134));
-	__export(__webpack_require__(135));
-
-	//# sourceMappingURL=index.js.map
-
-
-/***/ },
-/* 132 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -20187,11 +20138,11 @@
 
 
 /***/ },
-/* 133 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var interfaces_1 = __webpack_require__(132);
+	var interfaces_1 = __webpack_require__(131);
 	var Utilities_1 = __webpack_require__(12);
 	var Selection = (function () {
 	    function Selection(options) {
@@ -20420,11 +20371,11 @@
 
 
 /***/ },
-/* 134 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var interfaces_1 = __webpack_require__(132);
+	var interfaces_1 = __webpack_require__(131);
 	var SelectionLayout = (function () {
 	    function SelectionLayout(direction) {
 	        this._direction = direction;
@@ -20449,7 +20400,7 @@
 
 
 /***/ },
-/* 135 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20474,8 +20425,8 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var SelectionLayout_1 = __webpack_require__(134);
-	var interfaces_1 = __webpack_require__(132);
+	var SelectionLayout_1 = __webpack_require__(133);
+	var interfaces_1 = __webpack_require__(131);
 	// Selection definitions:
 	//
 	// Anchor index: the point from which a range selection starts.
@@ -20867,7 +20818,7 @@
 
 
 /***/ },
-/* 136 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20892,16 +20843,16 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var DetailsList_Props_1 = __webpack_require__(137);
-	var DetailsHeader_1 = __webpack_require__(138);
-	var DetailsRow_1 = __webpack_require__(144);
+	var DetailsList_Props_1 = __webpack_require__(136);
+	var DetailsHeader_1 = __webpack_require__(137);
+	var DetailsRow_1 = __webpack_require__(143);
 	var FocusZone_1 = __webpack_require__(34);
-	var GroupedList_1 = __webpack_require__(150);
-	var List_1 = __webpack_require__(167);
-	var withViewport_1 = __webpack_require__(171);
-	var index_1 = __webpack_require__(131);
-	var DragDropHelper_1 = __webpack_require__(173);
-	__webpack_require__(174);
+	var GroupedList_1 = __webpack_require__(149);
+	var List_1 = __webpack_require__(166);
+	var withViewport_1 = __webpack_require__(170);
+	var index_1 = __webpack_require__(130);
+	var DragDropHelper_1 = __webpack_require__(172);
+	__webpack_require__(173);
 	var MIN_COLUMN_WIDTH = 100; // this is the global min width
 	var CHECKBOX_WIDTH = 36;
 	var GROUP_EXPAND_WIDTH = 36;
@@ -21336,7 +21287,7 @@
 
 
 /***/ },
-/* 137 */
+/* 136 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21401,7 +21352,7 @@
 
 
 /***/ },
-/* 138 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21412,12 +21363,12 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var DetailsList_Props_1 = __webpack_require__(137);
+	var DetailsList_Props_1 = __webpack_require__(136);
 	var FocusZone_1 = __webpack_require__(34);
-	var Check_1 = __webpack_require__(139);
-	var GroupSpacer_1 = __webpack_require__(141);
-	var interfaces_1 = __webpack_require__(132);
-	__webpack_require__(143);
+	var Check_1 = __webpack_require__(138);
+	var GroupSpacer_1 = __webpack_require__(140);
+	var interfaces_1 = __webpack_require__(131);
+	__webpack_require__(142);
 	var MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 	var MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 	var INNER_PADDING = 16;
@@ -21663,7 +21614,7 @@
 
 
 /***/ },
-/* 139 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21674,7 +21625,7 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(140);
+	__webpack_require__(139);
 	var Check = (function (_super) {
 	    __extends(Check, _super);
 	    function Check() {
@@ -21702,7 +21653,7 @@
 
 
 /***/ },
-/* 140 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21715,14 +21666,14 @@
 
 
 /***/ },
-/* 141 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	/* tslint:disable:no-unused-variable */
 	var React = __webpack_require__(1);
 	/* tslint:enable:no-unused-variable */
-	__webpack_require__(142);
+	__webpack_require__(141);
 	var SPACER_WIDTH = 36;
 	exports.GroupSpacer = function (props) {
 	    return props.count > 0 && React.createElement("span", { className: 'ms-GroupSpacer', style: { width: props.count * SPACER_WIDTH } });
@@ -21732,7 +21683,7 @@
 
 
 /***/ },
-/* 142 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21745,7 +21696,7 @@
 
 
 /***/ },
-/* 143 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21758,7 +21709,7 @@
 
 
 /***/ },
-/* 144 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21777,13 +21728,13 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var DetailsList_Props_1 = __webpack_require__(137);
-	var DetailsRowCheck_1 = __webpack_require__(145);
-	var GroupSpacer_1 = __webpack_require__(141);
-	var DetailsRowFields_1 = __webpack_require__(148);
+	var DetailsList_Props_1 = __webpack_require__(136);
+	var DetailsRowCheck_1 = __webpack_require__(144);
+	var GroupSpacer_1 = __webpack_require__(140);
+	var DetailsRowFields_1 = __webpack_require__(147);
 	var FocusZone_1 = __webpack_require__(34);
-	var interfaces_1 = __webpack_require__(132);
-	__webpack_require__(149);
+	var interfaces_1 = __webpack_require__(131);
+	__webpack_require__(148);
 	var DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 	var DetailsRow = (function (_super) {
 	    __extends(DetailsRow, _super);
@@ -21966,14 +21917,14 @@
 
 
 /***/ },
-/* 145 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	/* tslint:disable:no-unused-variable */
 	var React = __webpack_require__(1);
 	/* tslint:enable:no-unused-variable */
-	var Check_1 = __webpack_require__(146);
+	var Check_1 = __webpack_require__(145);
 	exports.DetailsRowCheck = function (props) {
 	    var selected = props.isSelected || props.selected;
 	    return (React.createElement("button", { type: 'button', className: 'ms-DetailsRow-check', role: 'button', "aria-pressed": selected, "data-selection-toggle": true, "data-automationid": 'DetailsRowCheck', "aria-label": props.ariaLabel }, props.canSelect ?
@@ -21985,6 +21936,19 @@
 
 
 /***/ },
+/* 145 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(146));
+
+	//# sourceMappingURL=Check.js.map
+
+
+/***/ },
 /* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -21992,26 +21956,13 @@
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(147));
-
-	//# sourceMappingURL=Check.js.map
-
-
-/***/ },
-/* 147 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(139));
+	__export(__webpack_require__(138));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 148 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22069,16 +22020,29 @@
 
 
 /***/ },
-/* 149 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	/* tslint:disable */
 	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-DetailsRow{display:inline-block;min-width:100%;min-height:36px;margin:1px 0;vertical-align:top;white-space:nowrap;padding:0;box-sizing:border-box;background:0 0;border:none;vertical-align:top;line-height:16px}.ms-DetailsRow::-moz-focus-inner{border:0}.ms-DetailsRow{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-DetailsRow:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}html[dir=ltr] .ms-DetailsRow{text-align:left}html[dir=rtl] .ms-DetailsRow{text-align:right}.ms-DetailsRow.ms-DetailsRow.is-selected{background:" }, { "theme": "neutralQuaternary", "defaultValue": "#d0d0d0" }, { "rawString": "}.ms-DetailsRow.is-contentUnselectable{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.ms-DetailsRow:hover{background:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": "}.ms-DetailsRow.is-selected:hover{background:" }, { "theme": "neutralQuaternaryAlt", "defaultValue": "#dadada" }, { "rawString": "}.ms-DetailsRow-cell{display:inline-block;position:relative;box-sizing:border-box;padding:10px 0;margin:0 8px;min-height:36px;vertical-align:top;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ms-DetailsRow-cell.is-multiline{white-space:normal;word-break:break-word;text-overflow:clip}.ms-DetailsRow-fields{display:inline-block}.ms-DetailsRow-check{display:inline-block;cursor:default;padding:6px;box-sizing:border-box;vertical-align:top;background:0 0;border:none}.ms-DetailsRow-check::-moz-focus-inner{border:0}.ms-DetailsRow-check{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-DetailsRow-check:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}.ms-DetailsRow-check{opacity:0}.ms-DetailsRow.is-check-visible .ms-DetailsRow-check,.ms-DetailsRow.is-selected .ms-DetailsRow-check,.ms-DetailsRow:hover .ms-DetailsRow-check{opacity:1}.aFileTypeIconRenderer{height:36px;line-height:36px;vertical-align:top}.FileTypeIconRenderer>img{width:16px;height:16px;vertical-align:middle}.ms-DetailsRow-cellMeasurer .ms-DetailsRow-cell{overflow:visible;white-space:nowrap}.ms-DetailsRow-checkSpacer{display:inline-block;height:20px;width:20px}" }]);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-DetailsRow{display:inline-block;min-height:36px;width:100%;margin:1px 0;vertical-align:top;white-space:nowrap;padding:0;box-sizing:border-box;background:0 0;border:none;vertical-align:top;line-height:16px}.ms-DetailsRow::-moz-focus-inner{border:0}.ms-DetailsRow{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-DetailsRow:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}html[dir=ltr] .ms-DetailsRow{text-align:left}html[dir=rtl] .ms-DetailsRow{text-align:right}.ms-DetailsRow.ms-DetailsRow.is-selected{background:" }, { "theme": "neutralQuaternary", "defaultValue": "#d0d0d0" }, { "rawString": "}.ms-DetailsRow.is-contentUnselectable{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.ms-DetailsRow:hover{background:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": "}.ms-DetailsRow.is-selected:hover{background:" }, { "theme": "neutralQuaternaryAlt", "defaultValue": "#dadada" }, { "rawString": "}.ms-DetailsRow-cell{display:inline-block;position:relative;box-sizing:border-box;padding:10px 0;margin:0 8px;min-height:36px;vertical-align:top;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ms-DetailsRow-cell.is-multiline{white-space:normal;word-break:break-word;text-overflow:clip}.ms-DetailsRow-fields{display:inline-block}.ms-DetailsRow-check{display:inline-block;cursor:default;padding:6px;box-sizing:border-box;vertical-align:top;background:0 0;border:none}.ms-DetailsRow-check::-moz-focus-inner{border:0}.ms-DetailsRow-check{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-DetailsRow-check:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}.ms-DetailsRow-check{opacity:0}.ms-DetailsRow.is-check-visible .ms-DetailsRow-check,.ms-DetailsRow.is-selected .ms-DetailsRow-check,.ms-DetailsRow:hover .ms-DetailsRow-check{opacity:1}.aFileTypeIconRenderer{height:36px;line-height:36px;vertical-align:top}.FileTypeIconRenderer>img{width:16px;height:16px;vertical-align:middle}.ms-DetailsRow-cellMeasurer .ms-DetailsRow-cell{overflow:visible;white-space:nowrap}.ms-DetailsRow-checkSpacer{display:inline-block;height:20px;width:20px}" }]);
 	/* tslint:enable */ 
 
 	//# sourceMappingURL=DetailsRow.scss.js.map
+
+
+/***/ },
+/* 149 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(150));
+
+	//# sourceMappingURL=GroupedList.js.map
 
 
 /***/ },
@@ -22091,24 +22055,11 @@
 	}
 	__export(__webpack_require__(151));
 
-	//# sourceMappingURL=GroupedList.js.map
-
-
-/***/ },
-/* 151 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(152));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 152 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22125,10 +22076,10 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var GroupedListSection_1 = __webpack_require__(153);
-	var List_1 = __webpack_require__(167);
-	var index_1 = __webpack_require__(131);
-	__webpack_require__(170);
+	var GroupedListSection_1 = __webpack_require__(152);
+	var List_1 = __webpack_require__(166);
+	var index_1 = __webpack_require__(130);
+	__webpack_require__(169);
 	var GroupedList = (function (_super) {
 	    __extends(GroupedList, _super);
 	    function GroupedList(props) {
@@ -22294,7 +22245,7 @@
 
 
 /***/ },
-/* 153 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22319,10 +22270,10 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var index_1 = __webpack_require__(131);
-	var GroupFooter_1 = __webpack_require__(154);
-	var GroupHeader_1 = __webpack_require__(160);
-	var List_1 = __webpack_require__(167);
+	var index_1 = __webpack_require__(130);
+	var GroupFooter_1 = __webpack_require__(153);
+	var GroupHeader_1 = __webpack_require__(159);
+	var List_1 = __webpack_require__(166);
 	var Utilities_2 = __webpack_require__(12);
 	var DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 	var GroupedListSection = (function (_super) {
@@ -22506,7 +22457,7 @@
 
 
 /***/ },
-/* 154 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22523,9 +22474,9 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var Link_1 = __webpack_require__(155);
-	var GroupSpacer_1 = __webpack_require__(141);
-	__webpack_require__(159);
+	var Link_1 = __webpack_require__(154);
+	var GroupSpacer_1 = __webpack_require__(140);
+	__webpack_require__(158);
 	var GroupFooter = (function (_super) {
 	    __extends(GroupFooter, _super);
 	    function GroupFooter() {
@@ -22553,6 +22504,19 @@
 
 
 /***/ },
+/* 154 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(155));
+
+	//# sourceMappingURL=Link.js.map
+
+
+/***/ },
 /* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -22562,24 +22526,11 @@
 	}
 	__export(__webpack_require__(156));
 
-	//# sourceMappingURL=Link.js.map
-
-
-/***/ },
-/* 156 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(157));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 157 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22604,7 +22555,7 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(158);
+	__webpack_require__(157);
 	var Link = (function (_super) {
 	    __extends(Link, _super);
 	    function Link() {
@@ -22640,7 +22591,7 @@
 
 
 /***/ },
-/* 158 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22653,7 +22604,7 @@
 
 
 /***/ },
-/* 159 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22666,7 +22617,7 @@
 
 
 /***/ },
-/* 160 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22683,12 +22634,12 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var index_1 = __webpack_require__(131);
-	var Check_1 = __webpack_require__(139);
-	var GroupSpacer_1 = __webpack_require__(141);
-	var Spinner_1 = __webpack_require__(161);
+	var index_1 = __webpack_require__(130);
+	var Check_1 = __webpack_require__(138);
+	var GroupSpacer_1 = __webpack_require__(140);
+	var Spinner_1 = __webpack_require__(160);
 	var FocusZone_1 = __webpack_require__(34);
-	__webpack_require__(166);
+	__webpack_require__(165);
 	var GroupHeader = (function (_super) {
 	    __extends(GroupHeader, _super);
 	    function GroupHeader(props) {
@@ -22792,6 +22743,19 @@
 
 
 /***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(161));
+
+	//# sourceMappingURL=Spinner.js.map
+
+
+/***/ },
 /* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -22800,26 +22764,13 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(162));
-
-	//# sourceMappingURL=Spinner.js.map
-
-
-/***/ },
-/* 162 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
 	__export(__webpack_require__(163));
-	__export(__webpack_require__(164));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 163 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22830,8 +22781,8 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var Spinner_Props_1 = __webpack_require__(164);
-	__webpack_require__(165);
+	var Spinner_Props_1 = __webpack_require__(163);
+	__webpack_require__(164);
 	var Spinner = (function (_super) {
 	    __extends(Spinner, _super);
 	    function Spinner() {
@@ -22854,7 +22805,7 @@
 
 
 /***/ },
-/* 164 */
+/* 163 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -22868,7 +22819,7 @@
 
 
 /***/ },
-/* 165 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22881,7 +22832,7 @@
 
 
 /***/ },
-/* 166 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22894,6 +22845,19 @@
 
 
 /***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(167));
+
+	//# sourceMappingURL=List.js.map
+
+
+/***/ },
 /* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -22903,24 +22867,11 @@
 	}
 	__export(__webpack_require__(168));
 
-	//# sourceMappingURL=List.js.map
-
-
-/***/ },
-/* 168 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(169));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 169 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22950,7 +22901,6 @@
 	// Naming expensive measures so that they're named in profiles.
 	var _measurePageRect = function (element) { return element.getBoundingClientRect(); };
 	var _measureSurfaceRect = _measurePageRect;
-	var _measureScrollRect = _measurePageRect;
 	/**
 	 * The List renders virtualized pages of items. Each page's item count is determined by the getItemCountForPage callback if
 	 * provided by the caller, or 10 as default. Each page's height is determined by the getPageHeight callback if provided by
@@ -23001,16 +22951,14 @@
 	        return _this;
 	    }
 	    /**
-	     * Scroll to the given index. By default will bring the page the specified item is on into the view. If a callback
-	     * to measure the height of an individual item is specified, will only scroll to bring the specific item into view.
+	     * Scroll to the given index.
 	     *
 	     * Note: with items of variable height and no passed in `getPageHeight` method, the list might jump after scrolling
 	     * when windows before/ahead are being rendered, and the estimated height is replaced using actual elements.
 	     *
 	     * @param index Index of item to scroll to
-	     * @param measureItem Optional callback to measure the height of an individual item
 	     */
-	    List.prototype.scrollToIndex = function (index, measureItem) {
+	    List.prototype.scrollToIndex = function (index) {
 	        var startIndex = this.props.startIndex;
 	        var renderCount = this._getRenderCount();
 	        var endIndex = startIndex + renderCount;
@@ -23020,40 +22968,6 @@
 	            itemsPerPage = this._getItemCountForPage(itemIndex, this._allowedRect);
 	            var requestedIndexIsInPage = itemIndex <= index && (itemIndex + itemsPerPage) > index;
 	            if (requestedIndexIsInPage) {
-	                // We have found the page. If the user provided a way to measure an individual item, we will try to scroll in just
-	                // the given item, otherwise we'll only bring the page into view
-	                if (measureItem) {
-	                    // Adjust for actual item position within page
-	                    var itemPositionWithinPage = index - itemIndex;
-	                    for (var itemIndexInPage = 0; itemIndexInPage < itemPositionWithinPage; ++itemIndexInPage) {
-	                        scrollTop += measureItem(itemIndex + itemIndexInPage);
-	                    }
-	                    var scrollBottom = scrollTop + measureItem(index);
-	                    var scrollRect = _measureScrollRect(this._scrollElement);
-	                    var scrollWindow = {
-	                        top: this._scrollElement.scrollTop,
-	                        bottom: this._scrollElement.scrollTop + scrollRect.height
-	                    };
-	                    var itemIsFullyVisible = scrollTop >= scrollWindow.top && scrollBottom <= scrollWindow.bottom;
-	                    if (itemIsFullyVisible) {
-	                        // Item is already visible, do nothing.
-	                        return;
-	                    }
-	                    var itemIsPartiallyAbove = scrollTop < scrollWindow.top;
-	                    var itemIsPartiallyBelow = scrollBottom > scrollWindow.bottom;
-	                    if (itemIsPartiallyAbove) {
-	                    }
-	                    else if (itemIsPartiallyBelow) {
-	                        // Adjust scrollTop position to just bring in the element
-	                        //  ______   - scrollTop
-	                        // |      |
-	                        // |  ____|_  - scrollWindow.bottom
-	                        // |_|____| |
-	                        //   | Item |
-	                        //   |______| - scrollBottom
-	                        scrollTop = this._scrollElement.scrollTop + (scrollBottom - scrollWindow.bottom);
-	                    }
-	                }
 	                this._scrollElement.scrollTop = scrollTop;
 	                break;
 	            }
@@ -23491,7 +23405,7 @@
 
 
 /***/ },
-/* 170 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23504,7 +23418,7 @@
 
 
 /***/ },
-/* 171 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23522,7 +23436,7 @@
 	    return t;
 	};
 	var React = __webpack_require__(1);
-	var BaseDecorator_1 = __webpack_require__(172);
+	var BaseDecorator_1 = __webpack_require__(171);
 	var Utilities_1 = __webpack_require__(12);
 	var RESIZE_DELAY = 500;
 	function withViewport(ComposedComponent) {
@@ -23594,7 +23508,7 @@
 
 
 /***/ },
-/* 172 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23634,7 +23548,7 @@
 
 
 /***/ },
-/* 173 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23871,7 +23785,7 @@
 
 
 /***/ },
-/* 174 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23884,6 +23798,21 @@
 
 
 /***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(175));
+	var index_1 = __webpack_require__(175);
+	exports.default = index_1.Dialog;
+
+	//# sourceMappingURL=Dialog.js.map
+
+
+/***/ },
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -23892,29 +23821,14 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(176));
-	var index_1 = __webpack_require__(176);
-	exports.default = index_1.Dialog;
-
-	//# sourceMappingURL=Dialog.js.map
-
-
-/***/ },
-/* 176 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(177));
-	__export(__webpack_require__(185));
-	__export(__webpack_require__(180));
+	__export(__webpack_require__(184));
+	__export(__webpack_require__(179));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 177 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23939,15 +23853,15 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var index_1 = __webpack_require__(178);
-	var Dialog_Props_1 = __webpack_require__(180);
-	var Overlay_1 = __webpack_require__(181);
+	var index_1 = __webpack_require__(177);
+	var Dialog_Props_1 = __webpack_require__(179);
+	var Overlay_1 = __webpack_require__(180);
 	var Layer_1 = __webpack_require__(53);
 	var Button_1 = __webpack_require__(71);
-	var DialogFooter_1 = __webpack_require__(185);
+	var DialogFooter_1 = __webpack_require__(184);
 	var index_2 = __webpack_require__(49);
-	var withResponsiveMode_1 = __webpack_require__(187);
-	__webpack_require__(186);
+	var withResponsiveMode_1 = __webpack_require__(186);
+	__webpack_require__(185);
 	var Dialog = (function (_super) {
 	    __extends(Dialog, _super);
 	    function Dialog(props) {
@@ -24058,8 +23972,8 @@
 	                isAnimatingClose: false
 	            });
 	            // Call the onDismiss callback
-	            if (this.props.onDismissed) {
-	                this.props.onDismissed();
+	            if (this.props.onDismiss) {
+	                this.props.onDismiss();
 	            }
 	        }
 	    };
@@ -24084,20 +23998,20 @@
 
 
 /***/ },
-/* 178 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(179));
+	__export(__webpack_require__(178));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 179 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24211,7 +24125,7 @@
 
 
 /***/ },
-/* 180 */
+/* 179 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -24229,6 +24143,19 @@
 
 
 /***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(181));
+
+	//# sourceMappingURL=Overlay.js.map
+
+
+/***/ },
 /* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -24238,24 +24165,11 @@
 	}
 	__export(__webpack_require__(182));
 
-	//# sourceMappingURL=Overlay.js.map
-
-
-/***/ },
-/* 182 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(183));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24274,7 +24188,7 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(184);
+	__webpack_require__(183);
 	var Overlay = (function (_super) {
 	    __extends(Overlay, _super);
 	    function Overlay() {
@@ -24296,7 +24210,7 @@
 
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24309,7 +24223,7 @@
 
 
 /***/ },
-/* 185 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24319,7 +24233,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
-	__webpack_require__(186);
+	__webpack_require__(185);
 	var DialogFooter = (function (_super) {
 	    __extends(DialogFooter, _super);
 	    function DialogFooter() {
@@ -24342,7 +24256,7 @@
 
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24355,7 +24269,7 @@
 
 
 /***/ },
-/* 187 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24373,7 +24287,7 @@
 	    return t;
 	};
 	var React = __webpack_require__(1);
-	var BaseDecorator_1 = __webpack_require__(172);
+	var BaseDecorator_1 = __webpack_require__(171);
 	var Utilities_1 = __webpack_require__(12);
 	var ResponsiveMode;
 	(function (ResponsiveMode) {
@@ -24457,6 +24371,19 @@
 
 
 /***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(188));
+
+	//# sourceMappingURL=DocumentCard.js.map
+
+
+/***/ },
 /* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -24465,31 +24392,18 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(189));
-
-	//# sourceMappingURL=DocumentCard.js.map
-
-
-/***/ },
-/* 189 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
 	__export(__webpack_require__(190));
-	__export(__webpack_require__(191));
-	__export(__webpack_require__(193));
-	__export(__webpack_require__(195));
-	__export(__webpack_require__(203));
-	__export(__webpack_require__(205));
-	__export(__webpack_require__(207));
+	__export(__webpack_require__(192));
+	__export(__webpack_require__(194));
+	__export(__webpack_require__(202));
+	__export(__webpack_require__(204));
+	__export(__webpack_require__(206));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 190 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24505,9 +24419,9 @@
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var React = __webpack_require__(1);
-	var DocumentCard_Props_1 = __webpack_require__(191);
+	var DocumentCard_Props_1 = __webpack_require__(190);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(192);
+	__webpack_require__(191);
 	var DocumentCard = (function (_super) {
 	    __extends(DocumentCard, _super);
 	    function DocumentCard() {
@@ -24554,7 +24468,7 @@
 
 
 /***/ },
-/* 191 */
+/* 190 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -24574,7 +24488,7 @@
 
 
 /***/ },
-/* 192 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24587,7 +24501,7 @@
 
 
 /***/ },
-/* 193 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24606,7 +24520,7 @@
 	};
 	var React = __webpack_require__(1);
 	var Button_1 = __webpack_require__(71);
-	__webpack_require__(194);
+	__webpack_require__(193);
 	var DocumentCardActions = (function (_super) {
 	    __extends(DocumentCardActions, _super);
 	    function DocumentCardActions() {
@@ -24632,7 +24546,7 @@
 
 
 /***/ },
-/* 194 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24645,7 +24559,7 @@
 
 
 /***/ },
-/* 195 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24656,9 +24570,9 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var Image_1 = __webpack_require__(102);
-	var Persona_1 = __webpack_require__(196);
-	__webpack_require__(202);
+	var Image_1 = __webpack_require__(101);
+	var Persona_1 = __webpack_require__(195);
+	__webpack_require__(201);
 	var DocumentCardActivity = (function (_super) {
 	    __extends(DocumentCardActivity, _super);
 	    function DocumentCardActivity() {
@@ -24701,6 +24615,19 @@
 
 
 /***/ },
+/* 195 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(196));
+
+	//# sourceMappingURL=Persona.js.map
+
+
+/***/ },
 /* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -24709,27 +24636,14 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(197));
-
-	//# sourceMappingURL=Persona.js.map
-
-
-/***/ },
-/* 197 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
 	__export(__webpack_require__(198));
 	__export(__webpack_require__(199));
-	__export(__webpack_require__(200));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 198 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24754,10 +24668,10 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var Image_1 = __webpack_require__(102);
-	var Persona_Props_1 = __webpack_require__(199);
-	var PersonaConsts_1 = __webpack_require__(200);
-	__webpack_require__(201);
+	var Image_1 = __webpack_require__(101);
+	var Persona_Props_1 = __webpack_require__(198);
+	var PersonaConsts_1 = __webpack_require__(199);
+	__webpack_require__(200);
 	/** Regex to detect words within paraenthesis in a string where gi implies global and case-insensitive. */
 	var CHARS_WITHIN_PARENTHESIS_REGEX = new RegExp('\\(([^)]*)\\)', 'gi');
 	/**
@@ -24831,10 +24745,10 @@
 	            React.createElement("div", { className: 'ms-Persona-tertiaryText' }, tertiaryText),
 	            React.createElement("div", { className: 'ms-Persona-optionalText' }, optionalText),
 	            this.props.children);
-	        return (React.createElement("div", __assign({}, divProps, { className: Utilities_1.css('ms-Persona', className, PersonaConsts_1.PERSONA_SIZE[size], PersonaConsts_1.PERSONA_PRESENCE[presence]), title: primaryText }),
+	        return (React.createElement("div", __assign({}, divProps, { className: Utilities_1.css('ms-Persona', className, PersonaConsts_1.PERSONA_SIZE[size], PersonaConsts_1.PERSONA_PRESENCE[presence]) }),
 	            size !== Persona_Props_1.PersonaSize.tiny && (React.createElement("div", { className: 'ms-Persona-imageArea' },
 	                !this.state.isImageLoaded &&
-	                    (React.createElement("div", { className: Utilities_1.css('ms-Persona-initials', PersonaConsts_1.PERSONA_INITIALS_COLOR[initialsColor]), "aria-hidden": 'true' }, imageInitials)),
+	                    (React.createElement("div", { className: Utilities_1.css('ms-Persona-initials', PersonaConsts_1.PERSONA_INITIALS_COLOR[initialsColor]) }, imageInitials)),
 	                React.createElement(Image_1.Image, { className: 'ms-Persona-image', imageFit: Image_1.ImageFit.cover, src: imageUrl, shouldFadeIn: imageShouldFadeIn, onLoadingStateChange: this._onPhotoLoadingStateChange }))),
 	            presenceElement,
 	            (!hidePersonaDetails || (size === Persona_Props_1.PersonaSize.tiny)) && personaDetails));
@@ -24903,19 +24817,18 @@
 
 
 /***/ },
-/* 199 */
+/* 198 */
 /***/ function(module, exports) {
 
 	"use strict";
 	var PersonaSize;
 	(function (PersonaSize) {
 	    PersonaSize[PersonaSize["tiny"] = 0] = "tiny";
-	    PersonaSize[PersonaSize["extraExtraSmall"] = 1] = "extraExtraSmall";
-	    PersonaSize[PersonaSize["extraSmall"] = 2] = "extraSmall";
-	    PersonaSize[PersonaSize["small"] = 3] = "small";
-	    PersonaSize[PersonaSize["regular"] = 4] = "regular";
-	    PersonaSize[PersonaSize["large"] = 5] = "large";
-	    PersonaSize[PersonaSize["extraLarge"] = 6] = "extraLarge";
+	    PersonaSize[PersonaSize["extraSmall"] = 1] = "extraSmall";
+	    PersonaSize[PersonaSize["small"] = 2] = "small";
+	    PersonaSize[PersonaSize["regular"] = 3] = "regular";
+	    PersonaSize[PersonaSize["large"] = 4] = "large";
+	    PersonaSize[PersonaSize["extraLarge"] = 5] = "extraLarge";
 	})(PersonaSize = exports.PersonaSize || (exports.PersonaSize = {}));
 	var PersonaPresence;
 	(function (PersonaPresence) {
@@ -24950,14 +24863,13 @@
 
 
 /***/ },
-/* 200 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var Persona_Props_1 = __webpack_require__(199);
+	var Persona_Props_1 = __webpack_require__(198);
 	exports.PERSONA_SIZE = (_a = {},
 	    _a[Persona_Props_1.PersonaSize.tiny] = 'ms-Persona--tiny',
-	    _a[Persona_Props_1.PersonaSize.extraExtraSmall] = 'ms-Persona--xxs',
 	    _a[Persona_Props_1.PersonaSize.extraSmall] = 'ms-Persona--xs',
 	    _a[Persona_Props_1.PersonaSize.small] = 'ms-Persona--sm',
 	    _a[Persona_Props_1.PersonaSize.regular] = '',
@@ -24995,20 +24907,20 @@
 
 
 /***/ },
-/* 201 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	/* tslint:disable */
 	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Persona{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;box-sizing:border-box;margin:0;padding:0;box-shadow:none;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";font-size:14px;font-weight:400;line-height:1;position:relative;height:48px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.ms-Persona .ms-ContextualHost{display:none}.ms-Persona-imageArea{position:relative;overflow:hidden;text-align:center;-webkit-box-flex:0;-ms-flex:0 0 48px;flex:0 0 48px;height:48px;width:48px;border-radius:50%}@media screen and (-ms-high-contrast:active){.ms-Persona-imageArea{border:1px solid " }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona-imageArea{border:1px solid " }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}}.ms-Persona-imageArea .ms-Image{border:0}.ms-Persona-placeholder{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";position:absolute;right:0;left:0;font-size:47px;top:9px;z-index:5}.ms-Persona-initials{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";font-size:17px;font-weight:100;line-height:46px;height:48px}.ms-Persona-initials.ms-Persona-initials--lightBlue{background-color:#6BA5E7}.ms-Persona-initials.ms-Persona-initials--blue{background-color:#2D89EF}.ms-Persona-initials.ms-Persona-initials--darkBlue{background-color:#2B5797}.ms-Persona-initials.ms-Persona-initials--teal{background-color:#00ABA9}.ms-Persona-initials.ms-Persona-initials--lightGreen{background-color:#99B433}.ms-Persona-initials.ms-Persona-initials--green{background-color:#00A300}.ms-Persona-initials.ms-Persona-initials--darkGreen{background-color:#1E7145}.ms-Persona-initials.ms-Persona-initials--lightPink{background-color:#E773BD}.ms-Persona-initials.ms-Persona-initials--pink{background-color:#FF0097}.ms-Persona-initials.ms-Persona-initials--magenta{background-color:#7E3878}.ms-Persona-initials.ms-Persona-initials--purple{background-color:#603CBA}.ms-Persona-initials.ms-Persona-initials--black{background-color:#1D1D1D}.ms-Persona-initials.ms-Persona-initials--orange{background-color:#DA532C}.ms-Persona-initials.ms-Persona-initials--red{background-color:#E11}.ms-Persona-initials.ms-Persona-initials--darkRed{background-color:#B91D47}.ms-Persona-image{position:absolute;top:0;width:100%;height:100%;border-radius:50%;-webkit-perspective:1px;perspective:1px}html[dir=ltr] .ms-Persona-image{margin-right:10px}html[dir=rtl] .ms-Persona-image{margin-left:10px}html[dir=ltr] .ms-Persona-image{left:0}html[dir=rtl] .ms-Persona-image{right:0}.ms-Persona-image[src=\"\"]{display:none}.ms-Persona-presence{background-color:#7FBA00;position:absolute;height:12px;width:12px;border-radius:50%;top:auto;bottom:-1px;border:2px solid " }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";text-align:center;box-sizing:content-box;-ms-high-contrast-adjust:none}html[dir=ltr] .ms-Persona-presence{left:34px}html[dir=rtl] .ms-Persona-presence{right:34px}@media screen and (-ms-high-contrast:active){.ms-Persona-presence{border-color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": ";color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": ";background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona-presence{border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";background-color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}}.ms-Persona-presence .ms-Persona-presenceIcon{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";font-size:8px;line-height:12px;vertical-align:top}@media screen and (-ms-high-contrast:active){.ms-Persona-presence .ms-Persona-presenceIcon{color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona-presence .ms-Persona-presenceIcon{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}}.ms-Persona-details{padding:0 24px 0 12px;min-width:0}html[dir=rtl] .ms-Persona-details{padding:0 12px 0 24px}html[dir=ltr] .ms-Persona-details{text-align:left}html[dir=rtl] .ms-Persona-details{text-align:right}.ms-Persona-optionalText,.ms-Persona-primaryText,.ms-Persona-primaryTextContent,.ms-Persona-secondaryText,.ms-Persona-tertiaryText{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ms-Persona-primaryText{color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";font-weight:400;font-size:17px;margin-top:-3px;line-height:1.4}.ms-Persona-optionalText,.ms-Persona-secondaryText,.ms-Persona-tertiaryText{color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";font-weight:400;font-size:12px;white-space:nowrap;line-height:1.3}.ms-Persona-secondaryText{padding-top:3px}.ms-Persona-optionalText,.ms-Persona-tertiaryText{padding-top:5px;display:none}.ms-Persona.ms-Persona--tiny{height:30px;min-width:30px}.ms-Persona.ms-Persona--tiny .ms-Persona-imageArea{overflow:visible;background:0 0;height:0;width:0}.ms-Persona.ms-Persona--tiny .ms-Persona-presence{top:10px;border:0}html[dir=ltr] .ms-Persona.ms-Persona--tiny .ms-Persona-presence{right:auto}html[dir=rtl] .ms-Persona.ms-Persona--tiny .ms-Persona-presence{left:auto}html[dir=ltr] .ms-Persona.ms-Persona--tiny .ms-Persona-presence{left:0}html[dir=rtl] .ms-Persona.ms-Persona--tiny .ms-Persona-presence{right:0}@media screen and (-ms-high-contrast:active){.ms-Persona.ms-Persona--tiny .ms-Persona-presence{top:9px;border:1px solid " }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona.ms-Persona--tiny .ms-Persona-presence{border:1px solid " }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}}html[dir=ltr] .ms-Persona.ms-Persona--tiny .ms-Persona-details{padding-left:20px}html[dir=rtl] .ms-Persona.ms-Persona--tiny .ms-Persona-details{padding-right:20px}.ms-Persona.ms-Persona--tiny .ms-Persona-primaryText{font-size:14px;padding-top:4px}.ms-Persona.ms-Persona--tiny .ms-Persona-secondaryText{display:none}.ms-Persona.ms-Persona--tiny.ms-Persona--readonly{padding:0;background-color:transparent}.ms-Persona.ms-Persona--tiny.ms-Persona--readonly .ms-Persona-primaryText:after{content:';'}.ms-Persona.ms-Persona--xxs{height:24px;line-height:24px;min-width:24px;margin-right:4px}.ms-Persona.ms-Persona--xxs .ms-Persona-image,.ms-Persona.ms-Persona--xxs .ms-Persona-imageArea{-webkit-box-flex:0;-ms-flex:0 0 24px;flex:0 0 24px;height:24px;width:24px}.ms-Persona.ms-Persona--xxs .ms-Persona-placeholder{font-size:18px;top:4px}.ms-Persona.ms-Persona--xxs .ms-Persona-initials{font-size:11px;height:24px;line-height:24px}.ms-Persona.ms-Persona--xxs .ms-Persona-presence{height:8px;width:8px;border:1px solid #fff}html[dir=ltr] .ms-Persona.ms-Persona--xxs .ms-Persona-presence{left:16px}html[dir=rtl] .ms-Persona.ms-Persona--xxs .ms-Persona-presence{right:16px}.ms-Persona.ms-Persona--xxs .ms-Persona-presenceIcon{font-size:6px;line-height:9px}.ms-Persona.ms-Persona--xxs .ms-Persona-primaryText{font-size:14px;padding-top:3px}.ms-Persona.ms-Persona--xxs .ms-Persona-secondaryText{display:none}.ms-Persona.ms-Persona--xs{height:32px;line-height:32px;min-width:32px}.ms-Persona.ms-Persona--xs .ms-Persona-image,.ms-Persona.ms-Persona--xs .ms-Persona-imageArea{-webkit-box-flex:0;-ms-flex:0 0 32px;flex:0 0 32px;height:32px;width:32px}.ms-Persona.ms-Persona--xs .ms-Persona-placeholder{font-size:28px;top:6px}.ms-Persona.ms-Persona--xs .ms-Persona-initials{font-size:12px;height:32px;line-height:32px}html[dir=ltr] .ms-Persona.ms-Persona--xs .ms-Persona-presence{left:19px}html[dir=rtl] .ms-Persona.ms-Persona--xs .ms-Persona-presence{right:19px}.ms-Persona.ms-Persona--xs .ms-Persona-primaryText{font-size:14px;padding-top:3px}.ms-Persona.ms-Persona--xs .ms-Persona-secondaryText{display:none}.ms-Persona.ms-Persona--sm{height:40px;line-height:40px;min-width:40px}.ms-Persona.ms-Persona--sm .ms-Persona-image,.ms-Persona.ms-Persona--sm .ms-Persona-imageArea{-webkit-box-flex:0;-ms-flex:0 0 40px;flex:0 0 40px;height:40px;width:40px}.ms-Persona.ms-Persona--sm .ms-Persona-placeholder{font-size:38px;top:5px}.ms-Persona.ms-Persona--sm .ms-Persona-initials{font-size:14px;height:40px;line-height:40px}html[dir=ltr] .ms-Persona.ms-Persona--sm .ms-Persona-presence{left:27px}html[dir=rtl] .ms-Persona.ms-Persona--sm .ms-Persona-presence{right:27px}.ms-Persona.ms-Persona--sm .ms-Persona-primaryText{font-size:14px}.ms-Persona.ms-Persona--sm .ms-Persona-primaryText,.ms-Persona.ms-Persona--sm .ms-Persona-secondaryText{padding-top:1px}.ms-Persona.ms-Persona--lg{height:72px;line-height:72px;min-width:72px}.ms-Persona.ms-Persona--lg .ms-Persona-image,.ms-Persona.ms-Persona--lg .ms-Persona-imageArea{-webkit-box-flex:0;-ms-flex:0 0 72px;flex:0 0 72px;height:72px;width:72px}.ms-Persona.ms-Persona--lg .ms-Persona-placeholder{font-size:67px;top:10px}.ms-Persona.ms-Persona--lg .ms-Persona-initials{font-size:28px;height:72px;line-height:70px}.ms-Persona.ms-Persona--lg .ms-Persona-presence{height:20px;width:20px;border-width:3px}html[dir=ltr] .ms-Persona.ms-Persona--lg .ms-Persona-presence{left:49px}html[dir=rtl] .ms-Persona.ms-Persona--lg .ms-Persona-presence{right:49px}.ms-Persona.ms-Persona--lg .ms-Persona-presenceIcon{line-height:20px;font-size:14px}.ms-Persona.ms-Persona--lg .ms-Persona-secondaryText{padding-top:3px}.ms-Persona.ms-Persona--lg .ms-Persona-tertiaryText{padding-top:5px;display:block}.ms-Persona.ms-Persona--xl{height:100px;line-height:100px;min-width:100px}.ms-Persona.ms-Persona--xl .ms-Persona-image,.ms-Persona.ms-Persona--xl .ms-Persona-imageArea{-webkit-box-flex:0;-ms-flex:0 0 100px;flex:0 0 100px;height:100px;width:100px}.ms-Persona.ms-Persona--xl .ms-Persona-placeholder{font-size:95px;top:12px}.ms-Persona.ms-Persona--xl .ms-Persona-initials{font-size:42px;height:100px;line-height:96px}.ms-Persona.ms-Persona--xl .ms-Persona-presence{height:28px;width:28px;border-width:4px}html[dir=ltr] .ms-Persona.ms-Persona--xl .ms-Persona-presence{left:71px}html[dir=rtl] .ms-Persona.ms-Persona--xl .ms-Persona-presence{right:71px}.ms-Persona.ms-Persona--xl .ms-Persona-presenceIcon{line-height:28px;font-size:21px;position:relative;top:1px}.ms-Persona.ms-Persona--xl .ms-Persona-primaryText{font-size:21px;font-weight:300;margin-top:0}.ms-Persona.ms-Persona--xl .ms-Persona-secondaryText{padding-top:2px}.ms-Persona.ms-Persona--xl .ms-Persona-optionalText,.ms-Persona.ms-Persona--xl .ms-Persona-tertiaryText{padding-top:5px;display:block}.ms-Persona.ms-Persona--darkText .ms-Persona-primaryText{color:" }, { "theme": "neutralDark", "defaultValue": "#212121" }, { "rawString": "}.ms-Persona.ms-Persona--darkText .ms-Persona-optionalText,.ms-Persona.ms-Persona--darkText .ms-Persona-secondaryText,.ms-Persona.ms-Persona--darkText .ms-Persona-tertiaryText{color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-Persona.ms-Persona--selectable{cursor:pointer;padding:0 10px}.ms-Persona.ms-Persona--selectable:not(.ms-Persona--xl):focus,.ms-Persona.ms-Persona--selectable:not(.ms-Persona--xl):hover{background-color:" }, { "theme": "themeLighter", "defaultValue": "#deecf9" }, { "rawString": ";outline:1px solid transparent}.ms-Persona.ms-Persona--available .ms-Persona-presence{background-color:#7FBA00}@media screen and (-ms-high-contrast:active){.ms-Persona.ms-Persona--available .ms-Persona-presence{background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona.ms-Persona--available .ms-Persona-presence{background-color:#600000}}.ms-Persona.ms-Persona--away .ms-Persona-presence{background-color:#FCD116}@media screen and (-ms-high-contrast:active){.ms-Persona.ms-Persona--away .ms-Persona-presence{background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona.ms-Persona--away .ms-Persona-presence{background-color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}}.ms-Persona.ms-Persona--away .ms-Persona-presenceIcon{position:relative}html[dir=ltr] .ms-Persona.ms-Persona--away .ms-Persona-presenceIcon{left:1px}html[dir=rtl] .ms-Persona.ms-Persona--away .ms-Persona-presenceIcon{right:1px}.ms-Persona.ms-Persona--blocked .ms-Persona-presence{background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Persona.ms-Persona--blocked .ms-Persona-presence::before{content:'';width:100%;height:100%;position:absolute;top:0;box-shadow:0 0 0 2px #D93B3B inset;border-radius:50%}html[dir=ltr] .ms-Persona.ms-Persona--blocked .ms-Persona-presence::before{left:0}html[dir=rtl] .ms-Persona.ms-Persona--blocked .ms-Persona-presence::before{right:0}.ms-Persona.ms-Persona--blocked .ms-Persona-presence::after{content:'';width:100%;height:2px;background-color:#D93B3B;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);position:absolute;top:5px}html[dir=ltr] .ms-Persona.ms-Persona--blocked .ms-Persona-presence::after{left:0}html[dir=rtl] .ms-Persona.ms-Persona--blocked .ms-Persona-presence::after{right:0}@media screen and (-ms-high-contrast:active){.ms-Persona.ms-Persona--blocked .ms-Persona-presence{color:#0f0;background-color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}.ms-Persona.ms-Persona--blocked .ms-Persona-presence::before{box-shadow:0 0 0 2px #0f0 inset}.ms-Persona.ms-Persona--blocked .ms-Persona-presence::after{background-color:#0f0}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona.ms-Persona--blocked .ms-Persona-presence{color:#600000;background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Persona.ms-Persona--blocked .ms-Persona-presence::before{box-shadow:0 0 0 2px #600000 inset}.ms-Persona.ms-Persona--blocked .ms-Persona-presence::after{background-color:#600000}}.ms-Persona.ms-Persona--blocked.ms-Persona--lg .ms-Persona-presence::after{top:9px}.ms-Persona.ms-Persona--blocked.ms-Persona--xl .ms-Persona-presence::after{top:13px}.ms-Persona.ms-Persona--busy .ms-Persona-presence{background-color:#D93B3B}@media screen and (-ms-high-contrast:active){.ms-Persona.ms-Persona--busy .ms-Persona-presence{background-color:#0f0}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona.ms-Persona--busy .ms-Persona-presence{background-color:#600000}}.ms-Persona.ms-Persona--dnd .ms-Persona-presence{background-color:#E81123}@media screen and (-ms-high-contrast:active){.ms-Persona.ms-Persona--dnd .ms-Persona-presence{color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": ";background-color:#0f0}.ms-Persona.ms-Persona--dnd .ms-Persona-presence::before{background-color:#0f0}.ms-Persona.ms-Persona--dnd .ms-Persona-presence::after{background-color:#0f0}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona.ms-Persona--dnd .ms-Persona-presence{background-color:#600000}}.ms-Persona.ms-Persona--offline .ms-Persona-presence{background-color:#93ABBD}@media screen and (-ms-high-contrast:active){.ms-Persona.ms-Persona--offline .ms-Persona-presence{background-color:#0f0;box-shadow:0 0 0 1px " }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": " inset}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona.ms-Persona--offline .ms-Persona-presence{background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";box-shadow:0 0 0 1px " }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": " inset}}" }]);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Persona{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;box-sizing:border-box;margin:0;padding:0;box-shadow:none;color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";font-size:14px;font-weight:400;line-height:1;position:relative;height:48px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.ms-Persona .ms-ContextualHost{display:none}.ms-Persona-imageArea{position:relative;overflow:hidden;text-align:center;-webkit-box-flex:0;-ms-flex:0 0 48px;flex:0 0 48px;height:48px;width:48px;border-radius:50%}@media screen and (-ms-high-contrast:active){.ms-Persona-imageArea{border:1px solid " }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona-imageArea{border:1px solid " }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}}.ms-Persona-imageArea .ms-Image{border:0}.ms-Persona-placeholder{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";position:absolute;right:0;left:0;font-size:47px;top:9px;z-index:5}.ms-Persona-initials{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";font-size:17px;font-weight:100;line-height:48px}.ms-Persona-initials.ms-Persona-initials--lightBlue{background-color:#6BA5E7}.ms-Persona-initials.ms-Persona-initials--blue{background-color:#2D89EF}.ms-Persona-initials.ms-Persona-initials--darkBlue{background-color:#2B5797}.ms-Persona-initials.ms-Persona-initials--teal{background-color:#00ABA9}.ms-Persona-initials.ms-Persona-initials--lightGreen{background-color:#99B433}.ms-Persona-initials.ms-Persona-initials--green{background-color:#00A300}.ms-Persona-initials.ms-Persona-initials--darkGreen{background-color:#1E7145}.ms-Persona-initials.ms-Persona-initials--lightPink{background-color:#E773BD}.ms-Persona-initials.ms-Persona-initials--pink{background-color:#FF0097}.ms-Persona-initials.ms-Persona-initials--magenta{background-color:#7E3878}.ms-Persona-initials.ms-Persona-initials--purple{background-color:#603CBA}.ms-Persona-initials.ms-Persona-initials--black{background-color:#1D1D1D}.ms-Persona-initials.ms-Persona-initials--orange{background-color:#DA532C}.ms-Persona-initials.ms-Persona-initials--red{background-color:#E11}.ms-Persona-initials.ms-Persona-initials--darkRed{background-color:#B91D47}.ms-Persona-image{position:absolute;top:0;width:100%;height:100%;border-radius:50%;-webkit-perspective:1px;perspective:1px}html[dir=ltr] .ms-Persona-image{margin-right:10px}html[dir=rtl] .ms-Persona-image{margin-left:10px}html[dir=ltr] .ms-Persona-image{left:0}html[dir=rtl] .ms-Persona-image{right:0}.ms-Persona-image[src=\"\"]{display:none}.ms-Persona-presence{background-color:#7FBA00;position:absolute;height:12px;width:12px;border-radius:50%;top:auto;bottom:-1px;border:2px solid " }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";text-align:center;box-sizing:content-box}html[dir=ltr] .ms-Persona-presence{left:34px}html[dir=rtl] .ms-Persona-presence{right:34px}@media screen and (-ms-high-contrast:active){.ms-Persona-presence{border-color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": ";box-shadow:0 0 0 1px #1AEBFF inset;color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": ";background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona-presence{border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";box-shadow:0 0 0 1px #37006E inset;color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";background-color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}}.ms-Persona-presence .ms-Persona-presenceIcon{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";font-size:8px;line-height:12px;vertical-align:top}.ms-Persona-details{padding:0 24px 0 12px;min-width:0}html[dir=rtl] .ms-Persona-details{padding:0 12px 0 24px}html[dir=ltr] .ms-Persona-details{text-align:left}html[dir=rtl] .ms-Persona-details{text-align:right}.ms-Persona-optionalText,.ms-Persona-primaryText,.ms-Persona-primaryTextContent,.ms-Persona-secondaryText,.ms-Persona-tertiaryText{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ms-Persona-primaryText{color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": ";font-weight:400;font-size:17px;margin-top:-3px;line-height:1.4}.ms-Persona-optionalText,.ms-Persona-secondaryText,.ms-Persona-tertiaryText{color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";font-weight:400;font-size:12px;white-space:nowrap;line-height:1.3}.ms-Persona-secondaryText{padding-top:3px}.ms-Persona-optionalText,.ms-Persona-tertiaryText{padding-top:5px;display:none}.ms-Persona.ms-Persona--tiny{height:30px}.ms-Persona.ms-Persona--tiny .ms-Persona-imageArea{overflow:visible;background:0 0;height:0;width:0}.ms-Persona.ms-Persona--tiny .ms-Persona-presence{top:10px;border:0}html[dir=ltr] .ms-Persona.ms-Persona--tiny .ms-Persona-presence{right:auto}html[dir=rtl] .ms-Persona.ms-Persona--tiny .ms-Persona-presence{left:auto}html[dir=ltr] .ms-Persona.ms-Persona--tiny .ms-Persona-presence{left:0}html[dir=rtl] .ms-Persona.ms-Persona--tiny .ms-Persona-presence{right:0}@media screen and (-ms-high-contrast:active){.ms-Persona.ms-Persona--tiny .ms-Persona-presence{top:9px;border:1px solid " }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona.ms-Persona--tiny .ms-Persona-presence{border:1px solid " }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": "}}html[dir=ltr] .ms-Persona.ms-Persona--tiny .ms-Persona-details{padding-left:20px}html[dir=rtl] .ms-Persona.ms-Persona--tiny .ms-Persona-details{padding-right:20px}.ms-Persona.ms-Persona--tiny .ms-Persona-primaryText{font-size:14px;padding-top:4px}.ms-Persona.ms-Persona--tiny .ms-Persona-secondaryText{display:none}.ms-Persona.ms-Persona--tiny.ms-Persona--readonly{padding:0;background-color:transparent}.ms-Persona.ms-Persona--tiny.ms-Persona--readonly .ms-Persona-primaryText:after{content:';'}.ms-Persona.ms-Persona--xs{height:32px}.ms-Persona.ms-Persona--xs .ms-Persona-image,.ms-Persona.ms-Persona--xs .ms-Persona-imageArea{-webkit-box-flex:0;-ms-flex:0 0 32px;flex:0 0 32px;height:32px;width:32px}.ms-Persona.ms-Persona--xs .ms-Persona-placeholder{font-size:28px;top:6px}.ms-Persona.ms-Persona--xs .ms-Persona-initials{font-size:12px;line-height:32px}html[dir=ltr] .ms-Persona.ms-Persona--xs .ms-Persona-presence{left:19px}html[dir=rtl] .ms-Persona.ms-Persona--xs .ms-Persona-presence{right:19px}.ms-Persona.ms-Persona--xs .ms-Persona-primaryText{font-size:14px;padding-top:3px}.ms-Persona.ms-Persona--xs .ms-Persona-secondaryText{display:none}.ms-Persona.ms-Persona--sm{height:40px}.ms-Persona.ms-Persona--sm .ms-Persona-image,.ms-Persona.ms-Persona--sm .ms-Persona-imageArea{-webkit-box-flex:0;-ms-flex:0 0 40px;flex:0 0 40px;height:40px;width:40px}.ms-Persona.ms-Persona--sm .ms-Persona-placeholder{font-size:38px;top:5px}.ms-Persona.ms-Persona--sm .ms-Persona-initials{font-size:14px;line-height:40px}html[dir=ltr] .ms-Persona.ms-Persona--sm .ms-Persona-presence{left:27px}html[dir=rtl] .ms-Persona.ms-Persona--sm .ms-Persona-presence{right:27px}.ms-Persona.ms-Persona--sm .ms-Persona-primaryText{font-size:14px}.ms-Persona.ms-Persona--sm .ms-Persona-primaryText,.ms-Persona.ms-Persona--sm .ms-Persona-secondaryText{padding-top:1px}.ms-Persona.ms-Persona--lg{height:72px}.ms-Persona.ms-Persona--lg .ms-Persona-image,.ms-Persona.ms-Persona--lg .ms-Persona-imageArea{-webkit-box-flex:0;-ms-flex:0 0 72px;flex:0 0 72px;height:72px;width:72px}.ms-Persona.ms-Persona--lg .ms-Persona-placeholder{font-size:67px;top:10px}.ms-Persona.ms-Persona--lg .ms-Persona-initials{font-size:28px;line-height:72px}.ms-Persona.ms-Persona--lg .ms-Persona-presence{height:20px;width:20px;border-width:3px}html[dir=ltr] .ms-Persona.ms-Persona--lg .ms-Persona-presence{left:49px}html[dir=rtl] .ms-Persona.ms-Persona--lg .ms-Persona-presence{right:49px}.ms-Persona.ms-Persona--lg .ms-Persona-presenceIcon{line-height:20px;font-size:14px}.ms-Persona.ms-Persona--lg .ms-Persona-secondaryText{padding-top:3px}.ms-Persona.ms-Persona--lg .ms-Persona-tertiaryText{padding-top:5px;display:block}.ms-Persona.ms-Persona--xl{height:100px}.ms-Persona.ms-Persona--xl .ms-Persona-image,.ms-Persona.ms-Persona--xl .ms-Persona-imageArea{-webkit-box-flex:0;-ms-flex:0 0 100px;flex:0 0 100px;height:100px;width:100px}.ms-Persona.ms-Persona--xl .ms-Persona-placeholder{font-size:95px;top:12px}.ms-Persona.ms-Persona--xl .ms-Persona-initials{font-size:42px;line-height:100px}.ms-Persona.ms-Persona--xl .ms-Persona-presence{height:28px;width:28px;border-width:4px}html[dir=ltr] .ms-Persona.ms-Persona--xl .ms-Persona-presence{left:71px}html[dir=rtl] .ms-Persona.ms-Persona--xl .ms-Persona-presence{right:71px}.ms-Persona.ms-Persona--xl .ms-Persona-presenceIcon{line-height:28px;font-size:21px;position:relative;top:1px}.ms-Persona.ms-Persona--xl .ms-Persona-primaryText{font-size:21px;font-weight:300;margin-top:0}.ms-Persona.ms-Persona--xl .ms-Persona-secondaryText{padding-top:2px}.ms-Persona.ms-Persona--xl .ms-Persona-optionalText,.ms-Persona.ms-Persona--xl .ms-Persona-tertiaryText{padding-top:5px;display:block}.ms-Persona.ms-Persona--darkText .ms-Persona-primaryText{color:" }, { "theme": "neutralDark", "defaultValue": "#212121" }, { "rawString": "}.ms-Persona.ms-Persona--darkText .ms-Persona-optionalText,.ms-Persona.ms-Persona--darkText .ms-Persona-secondaryText,.ms-Persona.ms-Persona--darkText .ms-Persona-tertiaryText{color:" }, { "theme": "neutralPrimary", "defaultValue": "#333333" }, { "rawString": "}.ms-Persona.ms-Persona--selectable{cursor:pointer;padding:0 10px}.ms-Persona.ms-Persona--selectable:not(.ms-Persona--xl):focus,.ms-Persona.ms-Persona--selectable:not(.ms-Persona--xl):hover{background-color:" }, { "theme": "themeLighter", "defaultValue": "#deecf9" }, { "rawString": ";outline:1px solid transparent}.ms-Persona.ms-Persona--available .ms-Persona-presence{background-color:#7FBA00}.ms-Persona.ms-Persona--away .ms-Persona-presence{background-color:#FCD116}.ms-Persona.ms-Persona--away .ms-Persona-presenceIcon{position:relative}html[dir=ltr] .ms-Persona.ms-Persona--away .ms-Persona-presenceIcon{left:1px}html[dir=rtl] .ms-Persona.ms-Persona--away .ms-Persona-presenceIcon{right:1px}.ms-Persona.ms-Persona--blocked .ms-Persona-presence{background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Persona.ms-Persona--blocked .ms-Persona-presence::before{content:'';width:100%;height:100%;position:absolute;top:0;box-shadow:0 0 0 2px #D93B3B inset;border-radius:50%}html[dir=ltr] .ms-Persona.ms-Persona--blocked .ms-Persona-presence::before{left:0}html[dir=rtl] .ms-Persona.ms-Persona--blocked .ms-Persona-presence::before{right:0}.ms-Persona.ms-Persona--blocked .ms-Persona-presence::after{content:'';width:100%;height:2px;background-color:#D93B3B;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);position:absolute;top:5px}html[dir=ltr] .ms-Persona.ms-Persona--blocked .ms-Persona-presence::after{left:0}html[dir=rtl] .ms-Persona.ms-Persona--blocked .ms-Persona-presence::after{right:0}.ms-Persona.ms-Persona--blocked.ms-Persona--lg .ms-Persona-presence::after{top:9px}.ms-Persona.ms-Persona--blocked.ms-Persona--xl .ms-Persona-presence::after{top:13px}.ms-Persona.ms-Persona--busy .ms-Persona-presence{background-color:#D93B3B}@media screen and (-ms-high-contrast:active){.ms-Persona.ms-Persona--busy .ms-Persona-presence{background-color:#1AEBFF}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona.ms-Persona--busy .ms-Persona-presence{background-color:#37006E}}.ms-Persona.ms-Persona--dnd .ms-Persona-presence{background-color:#E81123}.ms-Persona.ms-Persona--offline .ms-Persona-presence{background-color:#93ABBD}@media screen and (-ms-high-contrast:active){.ms-Persona.ms-Persona--offline .ms-Persona-presence{background-color:" }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": ";box-shadow:0 0 0 1px " }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": " inset}}@media screen and (-ms-high-contrast:black-on-white){.ms-Persona.ms-Persona--offline .ms-Persona-presence{background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";box-shadow:0 0 0 1px " }, { "theme": "black", "defaultValue": "#000000" }, { "rawString": " inset}}" }]);
 	/* tslint:enable */ 
 
 	//# sourceMappingURL=Persona.scss.js.map
 
 
 /***/ },
-/* 202 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25021,7 +24933,7 @@
 
 
 /***/ },
-/* 203 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25031,7 +24943,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
-	__webpack_require__(204);
+	__webpack_require__(203);
 	var DocumentCardLocation = (function (_super) {
 	    __extends(DocumentCardLocation, _super);
 	    function DocumentCardLocation() {
@@ -25049,7 +24961,7 @@
 
 
 /***/ },
-/* 204 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25062,7 +24974,7 @@
 
 
 /***/ },
-/* 205 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25078,9 +24990,9 @@
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	var React = __webpack_require__(1);
-	var Image_1 = __webpack_require__(102);
+	var Image_1 = __webpack_require__(101);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(206);
+	__webpack_require__(205);
 	var LIST_ITEM_COUNT = 3;
 	var DocumentCardPreview = (function (_super) {
 	    __extends(DocumentCardPreview, _super);
@@ -25110,7 +25022,7 @@
 	    };
 	    DocumentCardPreview.prototype._renderPreviewImage = function (previewImage) {
 	        var width = previewImage.width, height = previewImage.height, imageFit = previewImage.imageFit;
-	        var image = (React.createElement(Image_1.Image, { width: width, height: height, imageFit: imageFit, src: previewImage.previewImageSrc, role: 'presentation', alt: '' }));
+	        var image = (React.createElement(Image_1.Image, { width: width, height: height, imageFit: imageFit, src: previewImage.previewImageSrc, errorSrc: previewImage.errorImageSrc, role: 'presentation', alt: '' }));
 	        var icon;
 	        if (previewImage.iconSrc) {
 	            icon = React.createElement(Image_1.Image, { className: 'ms-DocumentCardPreview-icon', src: previewImage.iconSrc, role: 'presentation', alt: '' });
@@ -25148,7 +25060,7 @@
 
 
 /***/ },
-/* 206 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25161,7 +25073,7 @@
 
 
 /***/ },
-/* 207 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25180,7 +25092,7 @@
 	var React = __webpack_require__(1);
 	/* tslint:enable:no-unused-variable */
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(208);
+	__webpack_require__(207);
 	var TRUNCATION_SEPARATOR = '&hellip;';
 	var TRUNCATION_MINIMUM_LENGTH = 40; // This is the length we know can fit into the min width of DocumentCard.
 	var TRUNCATION_MAXIMUM_LENGTH = 90 - TRUNCATION_SEPARATOR.length;
@@ -25295,7 +25207,7 @@
 
 
 /***/ },
-/* 208 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25308,6 +25220,19 @@
 
 
 /***/ },
+/* 208 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(209));
+
+	//# sourceMappingURL=Dropdown.js.map
+
+
+/***/ },
 /* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -25317,24 +25242,11 @@
 	}
 	__export(__webpack_require__(210));
 
-	//# sourceMappingURL=Dropdown.js.map
-
-
-/***/ },
-/* 210 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(211));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 211 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25354,14 +25266,14 @@
 	var Callout_1 = __webpack_require__(43);
 	var FocusZone_1 = __webpack_require__(34);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(212);
+	__webpack_require__(211);
 	var Dropdown = (function (_super) {
 	    __extends(Dropdown, _super);
 	    function Dropdown(props) {
 	        var _this = _super.call(this, props, {
 	            'isDisabled': 'disabled'
 	        }) || this;
-	        _this._id = props.id || Utilities_1.getId('Dropdown');
+	        _this._id = Utilities_1.getId('Dropdown');
 	        var selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
 	        _this.state = {
 	            isOpen: false,
@@ -25379,7 +25291,7 @@
 	    Dropdown.prototype.render = function () {
 	        var _this = this;
 	        var id = this._id;
-	        var _a = this.props, className = _a.className, label = _a.label, options = _a.options, disabled = _a.disabled, isDisabled = _a.isDisabled, ariaLabel = _a.ariaLabel, _b = _a.onRenderItem, onRenderItem = _b === void 0 ? this._onRenderItem : _b, _c = _a.onRenderOption, onRenderOption = _c === void 0 ? this._onRenderOption : _c;
+	        var _a = this.props, className = _a.className, label = _a.label, options = _a.options, disabled = _a.disabled, isDisabled = _a.isDisabled, _b = _a.onRenderItem, onRenderItem = _b === void 0 ? this._onRenderItem : _b, _c = _a.onRenderOption, onRenderOption = _c === void 0 ? this._onRenderOption : _c;
 	        var _d = this.state, isOpen = _d.isOpen, selectedIndex = _d.selectedIndex;
 	        var selectedOption = options[selectedIndex];
 	        // Remove this deprecation workaround at 1.0.0
@@ -25390,7 +25302,7 @@
 	            label && (React.createElement("label", { id: id + '-label', className: 'ms-Label', ref: function (dropdownLabel) { return _this._dropdownLabel = dropdownLabel; } }, label)),
 	            React.createElement("div", { "data-is-focusable": !disabled, ref: function (c) { return _this._dropDown = c; }, id: id, className: Utilities_1.css('ms-Dropdown', className, {
 	                    'is-open': isOpen, 'is-disabled': disabled
-	                }), tabIndex: disabled ? -1 : 0, onKeyDown: this._onDropdownKeyDown, onClick: this._onDropdownClick, "aria-expanded": isOpen ? 'true' : 'false', role: 'combobox', "aria-live": disabled || isOpen ? 'off' : 'assertive', "aria-label": ariaLabel || label, "aria-describedby": id + '-option', "aria-activedescendant": selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : (this._id + '-list') },
+	                }), tabIndex: disabled ? -1 : 0, onKeyDown: this._onDropdownKeyDown, onClick: this._onDropdownClick, "aria-expanded": isOpen ? 'true' : 'false', role: 'combobox', "aria-live": disabled || isOpen ? 'off' : 'assertive', "aria-label": label, "aria-describedby": id + '-option', "aria-activedescendant": selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : (this._id + '-list') },
 	                React.createElement("span", { id: id + '-option', className: 'ms-Dropdown-title', key: selectedIndex, "aria-atomic": true }, selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : ''),
 	                React.createElement("i", { className: 'ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown' })),
 	            isOpen && (React.createElement(Callout_1.Callout, { isBeakVisible: false, className: 'ms-Dropdown-callout', gapSpace: 0, doNotLayer: false, targetElement: this._dropDown, directionalHint: DirectionalHint_1.DirectionalHint.bottomLeftEdge, onDismiss: this._onDismiss, onPositioned: this._onPositioned },
@@ -25513,7 +25425,7 @@
 
 
 /***/ },
-/* 212 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25526,6 +25438,19 @@
 
 
 /***/ },
+/* 212 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(213));
+
+	//# sourceMappingURL=Facepile.js.map
+
+
+/***/ },
 /* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -25534,26 +25459,13 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(214));
-
-	//# sourceMappingURL=Facepile.js.map
-
-
-/***/ },
-/* 214 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
 	__export(__webpack_require__(215));
-	__export(__webpack_require__(216));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 215 */
+/* 214 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -25573,7 +25485,7 @@
 
 
 /***/ },
-/* 216 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25592,11 +25504,9 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var Facepile_Props_1 = __webpack_require__(215);
-	var FocusZone_1 = __webpack_require__(34);
-	var Persona_1 = __webpack_require__(196);
-	var PersonaConsts_1 = __webpack_require__(200);
-	__webpack_require__(217);
+	var Facepile_Props_1 = __webpack_require__(214);
+	var Persona_1 = __webpack_require__(195);
+	__webpack_require__(216);
 	var Facepile = (function (_super) {
 	    __extends(Facepile, _super);
 	    function Facepile() {
@@ -25614,25 +25524,24 @@
 	        return (React.createElement("div", { className: 'ms-Facepile' },
 	            React.createElement("div", { className: 'ms-Facepile-members' },
 	                showAddButton ? this._getAddNewElement() : null,
-	                React.createElement(FocusZone_1.FocusZone, { direction: FocusZone_1.FocusZoneDirection.horizontal },
-	                    personas.slice(0, numPersonasToShow).map(function (persona, index) {
-	                        var personaControl = _this._getPersonaControl(persona);
-	                        return persona.onClick ?
-	                            _this._getElementWithOnClickEvent(personaControl, persona, index) :
-	                            _this._getElementWithoutOnClickEvent(personaControl, persona, index);
-	                    }),
-	                    overflowButtonProps ? this._getOverflowElement(numPersonasToShow) : null)),
+	                personas.slice(0, numPersonasToShow).map(function (persona, index) {
+	                    var personaControl = _this._getPersonaControl(persona);
+	                    return persona.onClick ?
+	                        _this._getElementWithOnClickEvent(personaControl, persona, index) :
+	                        _this._getElementWithoutOnClickEvent(personaControl, persona, index);
+	                }),
+	                overflowButtonProps ? this._getOverflowElement(numPersonasToShow) : null),
 	            React.createElement("div", { className: 'ms-Facepile-clear' })));
 	    };
 	    Facepile.prototype._getPersonaControl = function (persona) {
-	        var _a = this.props, getPersonaProps = _a.getPersonaProps, personaSize = _a.personaSize;
-	        return React.createElement(Persona_1.Persona, __assign({ imageInitials: persona.imageInitials, imageUrl: persona.imageUrl, initialsColor: persona.initialsColor, primaryText: persona.personaName, size: personaSize, hidePersonaDetails: true }, (getPersonaProps ? getPersonaProps(persona) : null)));
+	        var getPersonaProps = this.props.getPersonaProps;
+	        return React.createElement(Persona_1.Persona, __assign({ imageInitials: persona.imageInitials, imageUrl: persona.imageUrl, initialsColor: persona.initialsColor, primaryText: persona.personaName, size: Persona_1.PersonaSize.extraSmall, hidePersonaDetails: true }, (getPersonaProps ? getPersonaProps(persona) : null)));
 	    };
 	    Facepile.prototype._getElementWithOnClickEvent = function (personaControl, persona, index) {
-	        return React.createElement("button", __assign({}, Utilities_1.getNativeProps(persona, Utilities_1.buttonProperties), { className: 'ms-Facepile-itemButton', key: (!!persona.imageUrl ? 'i' : '') + index, onClick: this._onPersonaClick.bind(this, persona), onMouseMove: this._onPersonaMouseMove.bind(this, persona), onMouseOut: this._onPersonaMouseOut.bind(this, persona) }), personaControl);
+	        return React.createElement("button", __assign({}, Utilities_1.getNativeProps(persona, Utilities_1.buttonProperties), { className: 'ms-Facepile-itemButton', title: persona.personaName, key: (!!persona.imageUrl ? 'i' : '') + index, onClick: this._onPersonaClick.bind(this, persona), onMouseMove: this._onPersonaMouseMove.bind(this, persona), onMouseOut: this._onPersonaMouseOut.bind(this, persona) }), personaControl);
 	    };
 	    Facepile.prototype._getElementWithoutOnClickEvent = function (personaControl, persona, index) {
-	        return React.createElement("div", __assign({}, Utilities_1.getNativeProps(persona, Utilities_1.divProperties), { className: 'ms-Facepile-itemButton', key: (!!persona.imageUrl ? 'i' : '') + index, onMouseMove: this._onPersonaMouseMove.bind(this, persona), onMouseOut: this._onPersonaMouseOut.bind(this, persona) }), personaControl);
+	        return React.createElement("div", __assign({}, Utilities_1.getNativeProps(persona, Utilities_1.divProperties), { className: 'ms-Facepile-itemButton', title: persona.personaName, key: (!!persona.imageUrl ? 'i' : '') + index, onMouseMove: this._onPersonaMouseMove.bind(this, persona), onMouseOut: this._onPersonaMouseOut.bind(this, persona) }), personaControl);
 	    };
 	    Facepile.prototype._getOverflowElement = function (numPersonasToShow) {
 	        switch (this.props.overflowButtonType) {
@@ -25647,22 +25556,19 @@
 	        }
 	    };
 	    Facepile.prototype._getDescriptiveOverflowElement = function (numPersonasToShow) {
-	        var personaSize = this.props.personaSize;
 	        var numPersonasNotPictured = this.props.personas.length - numPersonasToShow;
 	        if (!this.props.overflowButtonProps || numPersonasNotPictured < 1) {
 	            return null;
 	        }
 	        var personaNames = this.props.personas.slice(numPersonasToShow).map(function (p) { return p.personaName; }).join(', ');
-	        return React.createElement("button", __assign({}, Utilities_1.getNativeProps(this.props.overflowButtonProps, Utilities_1.buttonProperties), { className: Utilities_1.css('ms-Persona', PersonaConsts_1.PERSONA_SIZE[personaSize], 'ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton'), title: personaNames }), '+' + numPersonasNotPictured);
+	        return React.createElement("button", __assign({}, Utilities_1.getNativeProps(this.props.overflowButtonProps, Utilities_1.buttonProperties), { className: Utilities_1.css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton'), title: personaNames }), '+' + numPersonasNotPictured);
 	    };
 	    Facepile.prototype._getIconElement = function (icon) {
-	        var personaSize = this.props.personaSize;
-	        return React.createElement("button", __assign({}, Utilities_1.getNativeProps(this.props.overflowButtonProps, Utilities_1.buttonProperties), { className: Utilities_1.css('ms-Persona', PersonaConsts_1.PERSONA_SIZE[personaSize], 'ms-Facepile-overflowButton', 'ms-Facepile-itemButton') }),
+	        return React.createElement("button", __assign({}, Utilities_1.getNativeProps(this.props.overflowButtonProps, Utilities_1.buttonProperties), { className: Utilities_1.css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton') }),
 	            React.createElement("i", { className: Utilities_1.css('ms-Icon', 'msIcon', "ms-Icon ms-Icon--" + icon), "aria-hidden": 'true' }));
 	    };
 	    Facepile.prototype._getAddNewElement = function () {
-	        var personaSize = this.props.personaSize;
-	        return React.createElement("button", __assign({}, Utilities_1.getNativeProps(this.props.addButtonProps, Utilities_1.buttonProperties), { className: Utilities_1.css('ms-Persona', PersonaConsts_1.PERSONA_SIZE[personaSize], 'ms-Facepile-addButton', 'ms-Facepile-itemButton') }),
+	        return React.createElement("button", __assign({}, Utilities_1.getNativeProps(this.props.addButtonProps, Utilities_1.buttonProperties), { className: Utilities_1.css('ms-Facepile-addButton', 'ms-Facepile-itemButton') }),
 	            React.createElement("i", { className: 'ms-Icon msIcon ms-Icon--AddFriend', "aria-hidden": 'true' }));
 	    };
 	    Facepile.prototype._onPersonaClick = function (persona, ev) {
@@ -25684,8 +25590,7 @@
 	}(React.Component));
 	Facepile.defaultProps = {
 	    maxDisplayablePersonas: 5,
-	    personas: [],
-	    personaSize: Persona_1.PersonaSize.extraSmall
+	    personas: []
 	};
 	exports.Facepile = Facepile;
 
@@ -25693,16 +25598,29 @@
 
 
 /***/ },
-/* 217 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	/* tslint:disable */
 	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Facepile{position:relative;width:auto}.ms-Facepile-clear{clear:both}.ms-Facepile-itemButton{position:relative;text-align:center;padding:0;margin-bottom:4px;border-radius:50%;vertical-align:top}.ms-Fabric.is-focusVisible .ms-Facepile-itemButton:focus{outline:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}html[dir=ltr] .ms-Facepile-itemButton{float:left}html[dir=rtl] .ms-Facepile-itemButton{float:right}html[dir=ltr] .ms-Facepile-itemButton{margin-right:4px}html[dir=rtl] .ms-Facepile-itemButton{margin-left:4px}.ms-Facepile-itemButton .ms-Persona-details{-webkit-box-flex:1;-ms-flex:1 0 auto;flex:1 0 auto}button.ms-Facepile-itemButton{display:inline;background:0 0;padding:0;cursor:pointer;border:none}button.ms-Facepile-addButton{font-size:14px;color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}button.ms-Facepile-addButton:focus,button.ms-Facepile-addButton:hover{background-color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": "}button.ms-Facepile-addButton:active{background-color:" }, { "theme": "themeDarker", "defaultValue": "#004578" }, { "rawString": "}button.ms-Facepile-addButton.is-disabled,button.ms-Facepile-addButton:disabled{background-color:" }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": "}button.ms-Facepile-overflowButton{font-size:14px;color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";background-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}button.ms-Facepile-descriptiveOverflowButton{font-size:12px;color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";background-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}" }]);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-Facepile{position:relative;min-height:32px;width:auto}.ms-Facepile-clear{clear:both}.ms-Facepile-itemButton{position:relative;height:32px;min-width:32px;line-height:32px;text-align:center;padding:0;margin-bottom:4px;outline:transparent;border-radius:50%;vertical-align:top}html[dir=ltr] .ms-Facepile-itemButton{float:left}html[dir=rtl] .ms-Facepile-itemButton{float:right}html[dir=ltr] .ms-Facepile-itemButton{margin-right:4px}html[dir=rtl] .ms-Facepile-itemButton{margin-left:4px}.ms-Facepile-itemButton .ms-Persona-details{-webkit-box-flex:1;-ms-flex:1 0 auto;flex:1 0 auto}button.ms-Facepile-itemButton{display:inline;background:0 0;padding:0;cursor:pointer;border:none}button.ms-Facepile-addButton{font-size:14px;color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}button.ms-Facepile-addButton:focus,button.ms-Facepile-addButton:hover{background-color:" }, { "theme": "themeDark", "defaultValue": "#005a9e" }, { "rawString": "}button.ms-Facepile-addButton:active{background-color:" }, { "theme": "themeDarker", "defaultValue": "#004578" }, { "rawString": "}button.ms-Facepile-addButton.is-disabled,button.ms-Facepile-addButton:disabled{background-color:" }, { "theme": "neutralTertiaryAlt", "defaultValue": "#c8c8c8" }, { "rawString": "}button.ms-Facepile-overflowButton{font-size:14px;color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";background-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}button.ms-Facepile-descriptiveOverflowButton{font-size:12px;color:" }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": ";background-color:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}" }]);
 	/* tslint:enable */ 
 
 	//# sourceMappingURL=Facepile.scss.js.map
+
+
+/***/ },
+/* 217 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(177));
+
+	//# sourceMappingURL=FocusTrapZone.js.map
 
 
 /***/ },
@@ -25713,9 +25631,9 @@
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(178));
+	__export(__webpack_require__(219));
 
-	//# sourceMappingURL=FocusTrapZone.js.map
+	//# sourceMappingURL=MessageBar.js.map
 
 
 /***/ },
@@ -25727,26 +25645,13 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(220));
-
-	//# sourceMappingURL=MessageBar.js.map
-
-
-/***/ },
-/* 220 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
 	__export(__webpack_require__(221));
-	__export(__webpack_require__(222));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 221 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25758,8 +25663,8 @@
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
 	var Button_1 = __webpack_require__(71);
-	var MessageBar_Props_1 = __webpack_require__(222);
-	__webpack_require__(223);
+	var MessageBar_Props_1 = __webpack_require__(221);
+	__webpack_require__(222);
 	var MessageBar = (function (_super) {
 	    __extends(MessageBar, _super);
 	    function MessageBar(props) {
@@ -25870,7 +25775,7 @@
 
 
 /***/ },
-/* 222 */
+/* 221 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -25899,7 +25804,7 @@
 
 
 /***/ },
-/* 223 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25912,21 +25817,21 @@
 
 
 /***/ },
-/* 224 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	function __export(m) {
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
-	__export(__webpack_require__(225));
-	__export(__webpack_require__(131));
+	__export(__webpack_require__(224));
+	__export(__webpack_require__(130));
 
 	//# sourceMappingURL=MarqueeSelection.js.map
 
 
 /***/ },
-/* 225 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25951,7 +25856,7 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(226);
+	__webpack_require__(225);
 	// We want to make the marquee selection start when the user drags a minimum distance. Otherwise we'd start
 	// the drag even if they just click an item without moving.
 	var MIN_DRAG_DISTANCE = 5;
@@ -26156,7 +26061,7 @@
 
 
 /***/ },
-/* 226 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26169,6 +26074,19 @@
 
 
 /***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(227));
+
+	//# sourceMappingURL=Nav.js.map
+
+
+/***/ },
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -26178,24 +26096,11 @@
 	}
 	__export(__webpack_require__(228));
 
-	//# sourceMappingURL=Nav.js.map
-
-
-/***/ },
-/* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(229));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 229 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26208,7 +26113,7 @@
 	var Utilities_1 = __webpack_require__(12);
 	var FocusZone_1 = __webpack_require__(34);
 	var Button_1 = __webpack_require__(71);
-	__webpack_require__(230);
+	__webpack_require__(229);
 	// The number pixels per indentation level for Nav links.
 	var _indentationSize = 14;
 	// Tne number of pixels of left margin when there is expand/collaps button
@@ -26370,7 +26275,7 @@
 
 
 /***/ },
-/* 230 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26383,6 +26288,19 @@
 
 
 /***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(231));
+
+	//# sourceMappingURL=Panel.js.map
+
+
+/***/ },
 /* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -26391,26 +26309,13 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(232));
-
-	//# sourceMappingURL=Panel.js.map
-
-
-/***/ },
-/* 232 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
 	__export(__webpack_require__(233));
-	__export(__webpack_require__(234));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 233 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26423,12 +26328,12 @@
 	var React = __webpack_require__(1);
 	/* tslint:enable:no-unused-variable */
 	var Utilities_1 = __webpack_require__(12);
-	var index_1 = __webpack_require__(178);
-	var Panel_Props_1 = __webpack_require__(234);
+	var index_1 = __webpack_require__(177);
+	var Panel_Props_1 = __webpack_require__(233);
 	var Layer_1 = __webpack_require__(55);
-	var Overlay_1 = __webpack_require__(181);
+	var Overlay_1 = __webpack_require__(180);
 	var index_2 = __webpack_require__(49);
-	__webpack_require__(235);
+	__webpack_require__(234);
 	var Panel = (function (_super) {
 	    __extends(Panel, _super);
 	    function Panel(props) {
@@ -26511,13 +26416,6 @@
 	                            header,
 	                            React.createElement("div", { className: 'ms-Panel-content' }, children)))))));
 	    };
-	    Panel.prototype.componentDidUpdate = function (prevProps, prevState) {
-	        if (prevState.isAnimatingClose === false &&
-	            this.state.isAnimatingClose === true &&
-	            this.props.onDismiss) {
-	            this.props.onDismiss();
-	        }
-	    };
 	    Panel.prototype.dismiss = function () {
 	        if (this.state.isOpen) {
 	            this.setState({
@@ -26549,8 +26447,8 @@
 	                isOpen: false,
 	                isAnimatingClose: false
 	            });
-	            if (this.props.onDismissed) {
-	                this.props.onDismissed();
+	            if (this.props.onDismiss) {
+	                this.props.onDismiss();
 	            }
 	        }
 	    };
@@ -26568,7 +26466,7 @@
 
 
 /***/ },
-/* 234 */
+/* 233 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26647,7 +26545,7 @@
 
 
 /***/ },
-/* 235 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26660,6 +26558,19 @@
 
 
 /***/ },
+/* 235 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(236));
+
+	//# sourceMappingURL=Pickers.js.map
+
+
+/***/ },
 /* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -26668,31 +26579,18 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(237));
-
-	//# sourceMappingURL=Pickers.js.map
-
-
-/***/ },
-/* 237 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(238));
+	__export(__webpack_require__(239));
 	__export(__webpack_require__(240));
 	__export(__webpack_require__(241));
-	__export(__webpack_require__(242));
-	__export(__webpack_require__(244));
+	__export(__webpack_require__(243));
+	__export(__webpack_require__(249));
 	__export(__webpack_require__(250));
-	__export(__webpack_require__(251));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 238 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26712,8 +26610,8 @@
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
 	var Button_1 = __webpack_require__(71);
-	var Spinner_1 = __webpack_require__(161);
-	__webpack_require__(239);
+	var Spinner_1 = __webpack_require__(160);
+	__webpack_require__(238);
 	var SuggestionsItem = (function (_super) {
 	    __extends(SuggestionsItem, _super);
 	    function SuggestionsItem() {
@@ -26721,7 +26619,7 @@
 	    }
 	    SuggestionsItem.prototype.render = function () {
 	        var _a = this.props, suggestionModel = _a.suggestionModel, RenderSuggestion = _a.RenderSuggestion, onClick = _a.onClick, className = _a.className;
-	        return (React.createElement(Button_1.DefaultButton, { onClick: onClick, className: Utilities_1.css('ms-Suggestions-item', { 'is-suggested': suggestionModel.selected }, className) },
+	        return (React.createElement(Button_1.Button, { onClick: onClick, className: Utilities_1.css('ms-Suggestions-item', { 'is-suggested': suggestionModel.selected }, className) },
 	            React.createElement(RenderSuggestion, __assign({}, suggestionModel.item))));
 	    };
 	    return SuggestionsItem;
@@ -26752,7 +26650,7 @@
 	                (onRenderNoResultFound ? onRenderNoResultFound(null, noResults) : noResults()) :
 	                this._renderSuggestions(),
 	            searchForMoreText && moreSuggestionsAvailable ?
-	                (React.createElement(Button_1.DefaultButton, { onClick: this._getMoreResults.bind(this), className: 'ms-SearchMore-button', buttonType: Button_1.ButtonType.icon, icon: 'Search', ref: this._resolveRef('_searchForMoreButton') }, searchForMoreText)) : (null)));
+	                (React.createElement(Button_1.Button, { onClick: this._getMoreResults.bind(this), className: 'ms-SearchMore-button', buttonType: Button_1.ButtonType.icon, icon: 'Search', ref: this._resolveRef('_searchForMoreButton') }, searchForMoreText)) : (null)));
 	    };
 	    Suggestions.prototype.focusSearchForMoreButton = function () {
 	        if (this._searchForMoreButton) {
@@ -26787,7 +26685,7 @@
 
 
 /***/ },
-/* 239 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -26800,7 +26698,7 @@
 
 
 /***/ },
-/* 240 */
+/* 239 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -26895,7 +26793,7 @@
 
 
 /***/ },
-/* 241 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27096,7 +26994,7 @@
 
 
 /***/ },
-/* 242 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27123,11 +27021,11 @@
 	var Utilities_1 = __webpack_require__(12);
 	var FocusZone_1 = __webpack_require__(34);
 	var Callout_1 = __webpack_require__(43);
-	var index_1 = __webpack_require__(131);
-	var Suggestions_1 = __webpack_require__(238);
-	var SuggestionsController_1 = __webpack_require__(240);
-	var BaseAutoFill_1 = __webpack_require__(241);
-	__webpack_require__(243);
+	var index_1 = __webpack_require__(130);
+	var Suggestions_1 = __webpack_require__(237);
+	var SuggestionsController_1 = __webpack_require__(239);
+	var BaseAutoFill_1 = __webpack_require__(240);
+	__webpack_require__(242);
 	var BasePicker = (function (_super) {
 	    __extends(BasePicker, _super);
 	    function BasePicker(basePickerProps) {
@@ -27292,15 +27190,11 @@
 	        var value = this.input.value;
 	        switch (ev.which) {
 	            case Utilities_1.KeyCodes.escape:
-	                if (this.state.suggestionsVisible) {
-	                    this.dismissSuggestions();
-	                    ev.preventDefault();
-	                    ev.stopPropagation();
-	                }
+	                this.dismissSuggestions();
 	                break;
 	            case Utilities_1.KeyCodes.tab:
 	            case Utilities_1.KeyCodes.enter:
-	                if (value && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
+	                if (value && this.suggestionStore.hasSelectedSuggestion()) {
 	                    this.completeSuggestion();
 	                    ev.preventDefault();
 	                    ev.stopPropagation();
@@ -27310,14 +27204,14 @@
 	                this.onBackspace(ev);
 	                break;
 	            case Utilities_1.KeyCodes.up:
-	                if (ev.target === this.input.inputElement && this.suggestionStore.previousSuggestion() && this.state.suggestionsVisible) {
+	                if (ev.target === this.input.inputElement && this.suggestionStore.previousSuggestion()) {
 	                    ev.preventDefault();
 	                    ev.stopPropagation();
 	                    this.onSuggestionSelect();
 	                }
 	                break;
 	            case Utilities_1.KeyCodes.down:
-	                if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
+	                if (ev.target === this.input.inputElement) {
 	                    if (this.suggestionStore.nextSuggestion()) {
 	                        ev.preventDefault();
 	                        ev.stopPropagation();
@@ -27452,30 +27346,20 @@
 	                    React.createElement("div", { className: 'ms-BasePicker-text' },
 	                        React.createElement(BaseAutoFill_1.BaseAutoFill, __assign({}, inputProps, { className: 'ms-BasePicker-input', ref: this._resolveRef('input'), onFocus: this.onInputFocus, onInputValueChange: this.onInputChange, suggestedDisplayValue: suggestedDisplayValue, "aria-activedescendant": 'sug-' + this.suggestionStore.currentIndex, "aria-owns": 'suggestion-list', "aria-expanded": 'true', "aria-haspopup": 'true', autoCapitalize: 'off', autoComplete: 'off', role: 'combobox' }))))),
 	            this.renderSuggestions(),
-	            React.createElement(FocusZone_1.FocusZone, { ref: this._resolveRef('focusZone'), className: 'ms-BasePicker-selectedItems', isInnerZoneKeystroke: this._isFocusZoneInnerKeystroke }, this.renderItems())));
+	            React.createElement(FocusZone_1.FocusZone, { ref: this._resolveRef('focusZone'), className: 'ms-BasePicker-selectedItems' }, this.renderItems())));
 	    };
 	    BasePickerListBelow.prototype.onBackspace = function (ev) {
 	        // override the existing backspace method to not do anything because the list items appear below.
 	    };
-	    BasePickerListBelow.prototype._isFocusZoneInnerKeystroke = function (ev) {
-	        switch (ev.which) {
-	            case Utilities_1.KeyCodes.down:
-	                return true;
-	        }
-	        return false;
-	    };
 	    return BasePickerListBelow;
 	}(BasePicker));
-	__decorate([
-	    Utilities_1.autobind
-	], BasePickerListBelow.prototype, "_isFocusZoneInnerKeystroke", null);
 	exports.BasePickerListBelow = BasePickerListBelow;
 
 	//# sourceMappingURL=BasePicker.js.map
 
 
 /***/ },
-/* 243 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27488,7 +27372,7 @@
 
 
 /***/ },
-/* 244 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27508,11 +27392,11 @@
 	/* tslint:disable */
 	var React = __webpack_require__(1);
 	/* tslint:enable */
-	var BasePicker_1 = __webpack_require__(242);
-	var SelectedItemDefault_1 = __webpack_require__(245);
-	var SuggestionItemDefault_1 = __webpack_require__(247);
-	var SelectedItemWithMenu_1 = __webpack_require__(248);
-	__webpack_require__(249);
+	var BasePicker_1 = __webpack_require__(241);
+	var SelectedItemDefault_1 = __webpack_require__(244);
+	var SuggestionItemDefault_1 = __webpack_require__(246);
+	var SelectedItemWithMenu_1 = __webpack_require__(247);
+	__webpack_require__(248);
 	var BasePeoplePicker = (function (_super) {
 	    __extends(BasePeoplePicker, _super);
 	    function BasePeoplePicker() {
@@ -27579,7 +27463,7 @@
 
 
 /***/ },
-/* 245 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27595,9 +27479,9 @@
 	var React = __webpack_require__(1);
 	/* tslint:enable */
 	var Utilities_1 = __webpack_require__(12);
-	var Persona_1 = __webpack_require__(196);
+	var Persona_1 = __webpack_require__(195);
 	var Button_1 = __webpack_require__(71);
-	__webpack_require__(246);
+	__webpack_require__(245);
 	exports.SelectedItemDefault = function (peoplePickerItemProps) {
 	    var item = peoplePickerItemProps.item, onRemoveItem = peoplePickerItemProps.onRemoveItem, index = peoplePickerItemProps.index, selected = peoplePickerItemProps.selected;
 	    return (React.createElement("div", { className: Utilities_1.css('ms-PickerPersona-container', {
@@ -27614,20 +27498,20 @@
 
 
 /***/ },
-/* 246 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	/* tslint:disable */
 	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-PickerPersona-container{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";margin:1px;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;max-width:100%}.ms-PickerPersona-container::-moz-focus-inner{border:0}.ms-PickerPersona-container{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-PickerPersona-container:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}.ms-PickerPersona-container:hover{background:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}.ms-PickerPersona-container.is-selected{background:" }, { "theme": "neutralQuaternary", "defaultValue": "#d0d0d0" }, { "rawString": "}.ms-PickerPersona-container.is-selected:hover{background:" }, { "theme": "neutralQuaternaryAlt", "defaultValue": "#dadada" }, { "rawString": "}.ms-PickerPersona-container .ms-PickerItem-content{-webkit-box-flex:0;-ms-flex:0 1 auto;flex:0 1 auto;min-width:0}.ms-PickerPersona-container .ms-PickerItem-content.ms-Button{-webkit-box-flex:0;-ms-flex:0 0 auto;flex:0 0 auto}.ms-PickerPersona-container .ms-Persona-details{-webkit-box-flex:0;-ms-flex:0 1 auto;flex:0 1 auto}.ms-PickerItem-container{display:inline-block}" }]);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-PickerPersona-container{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:" }, { "theme": "neutralLighter", "defaultValue": "#f4f4f4" }, { "rawString": ";margin:1px;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;max-width:100%}.ms-PickerPersona-container::-moz-focus-inner{border:0}.ms-PickerPersona-container{outline:transparent;position:relative}.ms-Fabric.is-focusVisible .ms-PickerPersona-container:focus:after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;border:1px solid " }, { "theme": "neutralSecondary", "defaultValue": "#666666" }, { "rawString": "}.ms-PickerPersona-container:hover{background:" }, { "theme": "neutralLight", "defaultValue": "#eaeaea" }, { "rawString": "}.ms-PickerPersona-container.is-selected{background:" }, { "theme": "neutralQuaternary", "defaultValue": "#d0d0d0" }, { "rawString": "}.ms-PickerPersona-container.is-selected:hover{background:" }, { "theme": "neutralQuaternaryAlt", "defaultValue": "#dadada" }, { "rawString": "}.ms-PickerPersona-container .ms-PickerItem-content{-webkit-box-flex:0;-ms-flex:0 1 auto;flex:0 1 auto;min-width:0}.ms-PickerPersona-container .ms-PickerItem-content.ms-Button{-webkit-box-flex:0;-ms-flex:0 0 auto;flex:0 0 auto}.ms-PickerPersona-container .ms-Persona-details{-webkit-box-flex:0;-ms-flex:0 1 auto;flex:0 1 auto}" }]);
 	/* tslint:enable */ 
 
 	//# sourceMappingURL=PickerItemsDefault.scss.js.map
 
 
 /***/ },
-/* 247 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27642,7 +27526,7 @@
 	/* tslint:disable */
 	var React = __webpack_require__(1);
 	/* tslint:enable */
-	var Persona_1 = __webpack_require__(196);
+	var Persona_1 = __webpack_require__(195);
 	exports.SuggestionItemNormal = function (personaProps) {
 	    return (React.createElement("div", { className: 'ms-PeoplePicker-personaContent' },
 	        React.createElement(Persona_1.Persona, __assign({}, personaProps, { presence: personaProps.presence !== undefined ? personaProps.presence : Persona_1.PersonaPresence.none, size: Persona_1.PersonaSize.small, className: 'ms-PeoplePicker-Persona' }))));
@@ -27656,7 +27540,7 @@
 
 
 /***/ },
-/* 248 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27675,10 +27559,9 @@
 	};
 	/* tslint:disable */
 	var React = __webpack_require__(1);
-	var Persona_1 = __webpack_require__(196);
+	var Persona_1 = __webpack_require__(195);
 	var ContextualMenu_1 = __webpack_require__(38);
 	var Button_1 = __webpack_require__(71);
-	var FocusZone_1 = __webpack_require__(34);
 	var SelectedItemWithMenu = (function (_super) {
 	    __extends(SelectedItemWithMenu, _super);
 	    function SelectedItemWithMenu(props) {
@@ -27690,16 +27573,15 @@
 	    }
 	    SelectedItemWithMenu.prototype.render = function () {
 	        var _a = this.props, item = _a.item, onRemoveItem = _a.onRemoveItem;
-	        return (React.createElement("div", { "data-is-focusable": true, className: 'ms-PickerItem-container' },
-	            React.createElement(FocusZone_1.FocusZone, { className: 'ms-PickerPersona-container' },
-	                React.createElement("div", { className: 'ms-PickerItem-content' },
-	                    React.createElement(Persona_1.Persona, __assign({}, item, { presence: item.presence !== undefined ? item.presence : Persona_1.PersonaPresence.none }))),
-	                React.createElement("div", { ref: 'ellipsisRef', className: 'ms-PickerItem-content' },
-	                    React.createElement(Button_1.Button, { icon: 'More', buttonType: Button_1.ButtonType.icon, onClick: this.onContextualMenu })),
-	                React.createElement("div", { className: 'ms-PickerItem-content' },
-	                    React.createElement(Button_1.Button, { icon: 'Cancel', buttonType: Button_1.ButtonType.icon, onClick: onRemoveItem })),
-	                this.state.contextualMenuVisible ? (React.createElement(ContextualMenu_1.ContextualMenu, { items: item.menuItems, shouldFocusOnMount: true, targetElement: this.refs.ellipsisRef, onDismiss: this._onCloseContextualMenu, directionalHint: ContextualMenu_1.DirectionalHint.bottomAutoEdge }))
-	                    : null)));
+	        return (React.createElement("div", { className: 'ms-PickerPersona-container' },
+	            React.createElement("div", { className: 'ms-PickerItem-content' },
+	                React.createElement(Persona_1.Persona, __assign({}, item, { presence: item.presence !== undefined ? item.presence : Persona_1.PersonaPresence.none }))),
+	            React.createElement("div", { ref: 'ellipsisRef', className: 'ms-PickerItem-content' },
+	                React.createElement(Button_1.Button, { icon: 'More', buttonType: Button_1.ButtonType.icon, onClick: this.onContextualMenu })),
+	            React.createElement("div", { className: 'ms-PickerItem-content' },
+	                React.createElement(Button_1.Button, { icon: 'Cancel', buttonType: Button_1.ButtonType.icon, onClick: onRemoveItem })),
+	            this.state.contextualMenuVisible ? (React.createElement(ContextualMenu_1.ContextualMenu, { items: item.menuItems, shouldFocusOnMount: true, targetElement: this.refs.ellipsisRef, onDismiss: this._onCloseContextualMenu, directionalHint: ContextualMenu_1.DirectionalHint.bottomAutoEdge }))
+	                : null));
 	    };
 	    SelectedItemWithMenu.prototype.onContextualMenu = function (ev) {
 	        this.setState({ contextualMenuVisible: true });
@@ -27715,7 +27597,7 @@
 
 
 /***/ },
-/* 249 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27728,7 +27610,7 @@
 
 
 /***/ },
-/* 250 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27748,8 +27630,8 @@
 	/* tslint:disable */
 	var React = __webpack_require__(1);
 	/* tslint:enable */
-	var BasePicker_1 = __webpack_require__(242);
-	var TagItem_1 = __webpack_require__(251);
+	var BasePicker_1 = __webpack_require__(241);
+	var TagItem_1 = __webpack_require__(250);
 	var TagPicker = (function (_super) {
 	    __extends(TagPicker, _super);
 	    function TagPicker() {
@@ -27770,7 +27652,7 @@
 
 
 /***/ },
-/* 251 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27778,7 +27660,7 @@
 	var React = __webpack_require__(1);
 	/* tslint:enable */
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(252);
+	__webpack_require__(251);
 	exports.TagItem = function (props) { return (React.createElement("div", { className: Utilities_1.css('ms-TagItem', {
 	        'is-selected': props.selected
 	    }), key: props.index, "data-selection-index": props.index, "data-is-focusable": true },
@@ -27790,7 +27672,7 @@
 
 
 /***/ },
-/* 252 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27803,6 +27685,19 @@
 
 
 /***/ },
+/* 252 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(253));
+
+	//# sourceMappingURL=Pivot.js.map
+
+
+/***/ },
 /* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -27811,28 +27706,15 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(254));
-
-	//# sourceMappingURL=Pivot.js.map
-
-
-/***/ },
-/* 254 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(255));
-	var PivotItem_1 = __webpack_require__(256);
+	var PivotItem_1 = __webpack_require__(255);
 	exports.PivotItem = PivotItem_1.PivotItem;
-	__export(__webpack_require__(257));
+	__export(__webpack_require__(256));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 255 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27844,10 +27726,10 @@
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
 	var FocusZone_1 = __webpack_require__(34);
-	var PivotItem_1 = __webpack_require__(256);
-	var Pivot_Props_1 = __webpack_require__(257);
-	var Pivot_Props_2 = __webpack_require__(257);
-	__webpack_require__(258);
+	var PivotItem_1 = __webpack_require__(255);
+	var Pivot_Props_1 = __webpack_require__(256);
+	var Pivot_Props_2 = __webpack_require__(256);
+	__webpack_require__(257);
 	var Pivot = (function (_super) {
 	    __extends(Pivot, _super);
 	    function Pivot(props) {
@@ -28017,7 +27899,7 @@
 
 
 /***/ },
-/* 256 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28043,7 +27925,7 @@
 
 
 /***/ },
-/* 257 */
+/* 256 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28074,7 +27956,7 @@
 
 
 /***/ },
-/* 258 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28087,6 +27969,19 @@
 
 
 /***/ },
+/* 258 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(259));
+
+	//# sourceMappingURL=ProgressIndicator.js.map
+
+
+/***/ },
 /* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -28096,24 +27991,11 @@
 	}
 	__export(__webpack_require__(260));
 
-	//# sourceMappingURL=ProgressIndicator.js.map
-
-
-/***/ },
-/* 260 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(261));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 261 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28126,7 +28008,7 @@
 	var React = __webpack_require__(1);
 	/* tslint:enable:no-unused-variable */
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(262);
+	__webpack_require__(261);
 	// if the percentComplete is near 0, don't animate it.
 	// This prevents animations on reset to 0 scenarios
 	var ZERO_THRESHOLD = 0.01;
@@ -28167,7 +28049,7 @@
 
 
 /***/ },
-/* 262 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28180,6 +28062,19 @@
 
 
 /***/ },
+/* 262 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(263));
+
+	//# sourceMappingURL=Rating.js.map
+
+
+/***/ },
 /* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -28188,26 +28083,13 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(264));
-
-	//# sourceMappingURL=Rating.js.map
-
-
-/***/ },
-/* 264 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
 	__export(__webpack_require__(265));
-	__export(__webpack_require__(266));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 265 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28218,8 +28100,8 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var Rating_Props_1 = __webpack_require__(266);
-	__webpack_require__(267);
+	var Rating_Props_1 = __webpack_require__(265);
+	__webpack_require__(266);
 	var Rating = (function (_super) {
 	    __extends(Rating, _super);
 	    function Rating(props) {
@@ -28312,7 +28194,7 @@
 
 
 /***/ },
-/* 266 */
+/* 265 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -28326,7 +28208,7 @@
 
 
 /***/ },
-/* 267 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28339,6 +28221,19 @@
 
 
 /***/ },
+/* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(268));
+
+	//# sourceMappingURL=SearchBox.js.map
+
+
+/***/ },
 /* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -28348,24 +28243,11 @@
 	}
 	__export(__webpack_require__(269));
 
-	//# sourceMappingURL=SearchBox.js.map
-
-
-/***/ },
-/* 269 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(270));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 270 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28390,7 +28272,7 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(271);
+	__webpack_require__(270);
 	var SearchBox = (function (_super) {
 	    __extends(SearchBox, _super);
 	    function SearchBox(props) {
@@ -28508,7 +28390,7 @@
 
 
 /***/ },
-/* 271 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28521,6 +28403,19 @@
 
 
 /***/ },
+/* 271 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(272));
+
+	//# sourceMappingURL=Slider.js.map
+
+
+/***/ },
 /* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -28530,24 +28425,11 @@
 	}
 	__export(__webpack_require__(273));
 
-	//# sourceMappingURL=Slider.js.map
-
-
-/***/ },
-/* 273 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(274));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 274 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28572,8 +28454,8 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	__webpack_require__(275);
-	var Label_1 = __webpack_require__(111);
+	__webpack_require__(274);
+	var Label_1 = __webpack_require__(110);
 	var ValuePosition;
 	(function (ValuePosition) {
 	    ValuePosition[ValuePosition["Previous"] = 0] = "Previous";
@@ -28761,7 +28643,7 @@
 
 
 /***/ },
-/* 275 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28774,6 +28656,19 @@
 
 
 /***/ },
+/* 275 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(276));
+
+	//# sourceMappingURL=TeachingBubble.js.map
+
+
+/***/ },
 /* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -28782,26 +28677,13 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(277));
-
-	//# sourceMappingURL=TeachingBubble.js.map
-
-
-/***/ },
-/* 277 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
 	__export(__webpack_require__(278));
-	__export(__webpack_require__(279));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 278 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28822,10 +28704,10 @@
 	var React = __webpack_require__(1);
 	/* tslint:enable:no-unused-variable */
 	var Utilities_1 = __webpack_require__(12);
-	var TeachingBubbleContent_1 = __webpack_require__(279);
+	var TeachingBubbleContent_1 = __webpack_require__(278);
 	var Callout_1 = __webpack_require__(43);
 	var DirectionalHint_1 = __webpack_require__(42);
-	__webpack_require__(280);
+	__webpack_require__(279);
 	var TeachingBubble = (function (_super) {
 	    __extends(TeachingBubble, _super);
 	    // Constructor
@@ -28857,7 +28739,7 @@
 
 
 /***/ },
-/* 279 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28879,8 +28761,8 @@
 	/* tslint:enable:no-unused-variable */
 	var Utilities_1 = __webpack_require__(12);
 	var Button_1 = __webpack_require__(71);
-	var Image_1 = __webpack_require__(102);
-	__webpack_require__(280);
+	var Image_1 = __webpack_require__(101);
+	__webpack_require__(279);
 	var TeachingBubbleContent = (function (_super) {
 	    __extends(TeachingBubbleContent, _super);
 	    // Constructor
@@ -28942,16 +28824,29 @@
 
 
 /***/ },
-/* 280 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	/* tslint:disable */
 	var load_themed_styles_1 = __webpack_require__(52);
-	load_themed_styles_1.loadStyles([{ "rawString": ".ms-TeachingBubble{display:block;max-width:364px}.ms-TeachingBubble-bodycontent{padding:20px}.ms-TeachingBubble-header--large:not(:last-child){margin-bottom:14px}.ms-TeachingBubble-headline{margin:0;color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-TeachingBubble-header--large .ms-TeachingBubble-headline{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:28px;font-weight:100;font-weight:100}.ms-TeachingBubble-header--small .ms-TeachingBubble-headline{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;font-weight:600}html[dir=ltr] .ms-TeachingBubble-header--small .ms-TeachingBubble-headline{margin-right:10px}html[dir=rtl] .ms-TeachingBubble-header--small .ms-TeachingBubble-headline{margin-left:10px}.ms-TeachingBubble-body:not(:last-child){margin-bottom:20px}.ms-TeachingBubble-subText{margin:0;font-size:14px;color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";font-weight:300}.ms-Button.ms-TeachingBubble-closebutton{position:absolute;top:0}html[dir=ltr] .ms-Button.ms-TeachingBubble-closebutton{right:0}html[dir=rtl] .ms-Button.ms-TeachingBubble-closebutton{left:0}.ms-Button.ms-TeachingBubble-closebutton.ms-Button--icon .ms-Icon{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";font-size:12px}html[dir=ltr] .ms-TeachingBubble-footer .ms-Button:not(:first-child){margin-left:20px}html[dir=rtl] .ms-TeachingBubble-footer .ms-Button:not(:first-child){margin-right:20px}.ms-TeachingBubble .ms-Callout-beak,.ms-TeachingBubble .ms-Callout-main,.ms-TeachingBubble .ms-Callout-smallbeak{background:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button.ms-TeachingBubble-primaryButton{background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-primaryButton .ms-Button-label{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button.ms-TeachingBubble-primaryButton:hover{background-color:" }, { "theme": "themeLighter", "defaultValue": "#deecf9" }, { "rawString": ";border-color:" }, { "theme": "themeLighter", "defaultValue": "#deecf9" }, { "rawString": "}.ms-Button.ms-TeachingBubble-primaryButton:focus{background-color:" }, { "theme": "themeLighter", "defaultValue": "#deecf9" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-primaryButton:active{background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-secondaryButton{background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-secondaryButton .ms-Button-label{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-secondaryButton:hover{background-color:" }, { "theme": "themeDarkAlt", "defaultValue": "#106ebe" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-secondaryButton:focus{background-color:" }, { "theme": "themeDarkAlt", "defaultValue": "#106ebe" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-secondaryButton:active{background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}" }]);
+	load_themed_styles_1.loadStyles([{ "rawString": ".ms-TeachingBubble{display:block;max-width:364px}.ms-TeachingBubble-bodycontent{padding:20px}.ms-TeachingBubble-header--large:not(:last-child){margin-bottom:14px}.ms-TeachingBubble-headline{margin:0;color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-TeachingBubble-header--large .ms-TeachingBubble-headline{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:28px;font-weight:100;font-weight:100}.ms-TeachingBubble-header--small .ms-TeachingBubble-headline{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;font-weight:600}html[dir=ltr] .ms-TeachingBubble-header--small .ms-TeachingBubble-headline{margin-right:10px}html[dir=rtl] .ms-TeachingBubble-header--small .ms-TeachingBubble-headline{margin-left:10px}.ms-TeachingBubble-body:not(:last-child){margin-bottom:20px}.ms-TeachingBubble-subText{margin:0;font-size:14px;color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";font-weight:300}.ms-Button.ms-TeachingBubble-closebutton{position:absolute;top:0}html[dir=ltr] .ms-Button.ms-TeachingBubble-closebutton{right:2px}html[dir=rtl] .ms-Button.ms-TeachingBubble-closebutton{left:2px}.ms-Button.ms-TeachingBubble-closebutton.ms-Button--icon .ms-Icon{color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";font-size:12px;padding:10px}html[dir=ltr] .ms-TeachingBubble-footer .ms-Button:not(:first-child){margin-left:20px}html[dir=rtl] .ms-TeachingBubble-footer .ms-Button:not(:first-child){margin-right:20px}.ms-TeachingBubble .ms-Callout-beak,.ms-TeachingBubble .ms-Callout-main,.ms-TeachingBubble .ms-Callout-smallbeak{background:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button.ms-TeachingBubble-primaryButton{background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-primaryButton .ms-Button-label{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": "}.ms-Button.ms-TeachingBubble-primaryButton:hover{background-color:" }, { "theme": "themeLighter", "defaultValue": "#deecf9" }, { "rawString": ";border-color:" }, { "theme": "themeLighter", "defaultValue": "#deecf9" }, { "rawString": "}.ms-Button.ms-TeachingBubble-primaryButton:focus{background-color:" }, { "theme": "themeLighter", "defaultValue": "#deecf9" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-primaryButton:active{background-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-secondaryButton{background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-secondaryButton .ms-Button-label{font-family:\"Segoe UI WestEuropean\",\"Segoe UI\",-apple-system,BlinkMacSystemFont,Roboto,\"Helvetica Neue\",sans-serif;-webkit-font-smoothing:antialiased;font-size:14px;font-weight:400;color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-secondaryButton:hover{background-color:" }, { "theme": "themeDarkAlt", "defaultValue": "#106ebe" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-secondaryButton:focus{background-color:" }, { "theme": "themeDarkAlt", "defaultValue": "#106ebe" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}.ms-Button.ms-TeachingBubble-secondaryButton:active{background-color:" }, { "theme": "themePrimary", "defaultValue": "#0078d7" }, { "rawString": ";border-color:" }, { "theme": "white", "defaultValue": "#ffffff" }, { "rawString": "}" }]);
 	/* tslint:enable */ 
 
 	//# sourceMappingURL=TeachingBubble.scss.js.map
+
+
+/***/ },
+/* 280 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(281));
+
+	//# sourceMappingURL=Toggle.js.map
 
 
 /***/ },
@@ -28964,24 +28859,11 @@
 	}
 	__export(__webpack_require__(282));
 
-	//# sourceMappingURL=Toggle.js.map
-
-
-/***/ },
-/* 282 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
-	__export(__webpack_require__(283));
-
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 283 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28998,8 +28880,8 @@
 	};
 	var React = __webpack_require__(1);
 	var Utilities_1 = __webpack_require__(12);
-	var Label_1 = __webpack_require__(111);
-	__webpack_require__(284);
+	var Label_1 = __webpack_require__(110);
+	__webpack_require__(283);
 	var Toggle = (function (_super) {
 	    __extends(Toggle, _super);
 	    function Toggle(props) {
@@ -29080,7 +28962,7 @@
 
 
 /***/ },
-/* 284 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29093,6 +28975,19 @@
 
 
 /***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	function __export(m) {
+	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+	}
+	__export(__webpack_require__(285));
+
+	//# sourceMappingURL=Tooltip.js.map
+
+
+/***/ },
 /* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29101,28 +28996,14 @@
 	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 	}
 	__export(__webpack_require__(286));
-
-	//# sourceMappingURL=Tooltip.js.map
-
-
-/***/ },
-/* 286 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	function __export(m) {
-	    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-	}
 	__export(__webpack_require__(287));
-	__export(__webpack_require__(288));
-	__export(__webpack_require__(290));
-	__export(__webpack_require__(42));
+	__export(__webpack_require__(289));
 
 	//# sourceMappingURL=index.js.map
 
 
 /***/ },
-/* 287 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29143,10 +29024,10 @@
 	var React = __webpack_require__(1);
 	/* tslint:enable:no-unused-variable */
 	var Utilities_1 = __webpack_require__(12);
-	var Tooltip_Props_1 = __webpack_require__(288);
+	var Tooltip_Props_1 = __webpack_require__(287);
 	var Callout_1 = __webpack_require__(43);
 	var DirectionalHint_1 = __webpack_require__(42);
-	__webpack_require__(289);
+	__webpack_require__(288);
 	var Tooltip = (function (_super) {
 	    __extends(Tooltip, _super);
 	    function Tooltip() {
@@ -29178,7 +29059,7 @@
 
 
 /***/ },
-/* 288 */
+/* 287 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29192,7 +29073,7 @@
 
 
 /***/ },
-/* 289 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29205,7 +29086,7 @@
 
 
 /***/ },
-/* 290 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29232,8 +29113,8 @@
 	var React = __webpack_require__(1);
 	/* tslint:enable:no-unused-variable */
 	var Utilities_1 = __webpack_require__(12);
-	var Tooltip_1 = __webpack_require__(287);
-	var Tooltip_Props_1 = __webpack_require__(288);
+	var Tooltip_1 = __webpack_require__(286);
+	var Tooltip_Props_1 = __webpack_require__(287);
 	var TooltipHost = (function (_super) {
 	    __extends(TooltipHost, _super);
 	    // Constructor
@@ -29290,7 +29171,7 @@
 
 
 /***/ },
-/* 291 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29333,7 +29214,7 @@
 
 
 /***/ },
-/* 292 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29352,9 +29233,10 @@
 	var React = __webpack_require__(1);
 	/* tslint:enable */
 	var Utilities_1 = __webpack_require__(12);
-	var Pickers_1 = __webpack_require__(236);
-	var PeoplePickerExampleData_1 = __webpack_require__(293);
-	__webpack_require__(294);
+	var Pickers_1 = __webpack_require__(235);
+	var PeoplePickerExampleData_1 = __webpack_require__(292);
+	var RestUtil_1 = __webpack_require__(293);
+	__webpack_require__(295);
 	var suggestionProps = {
 	    suggestionsHeaderText: 'Suggested People',
 	    noResultsFoundText: 'No results found',
@@ -29411,6 +29293,9 @@
 	    PeoplePickerExample.prototype._onFilterChanged = function (filterText, currentPersonas, limitResults) {
 	        if (filterText) {
 	            var filteredPersonas = this._filterPersonasByText(filterText);
+	            RestUtil_1.RestUtil.getUsers(filterText).then(function (result) {
+	                console.log(result);
+	            });
 	            filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
 	            filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
 	            return filteredPersonas;
@@ -29418,12 +29303,6 @@
 	        else {
 	            return [];
 	        }
-	    };
-	    PeoplePickerExample.prototype._listContainsPersona = function (persona, personas) {
-	        if (!personas || !personas.length || personas.length === 0) {
-	            return false;
-	        }
-	        return personas.filter(function (item) { return item.primaryText === persona.primaryText; }).length > 0;
 	    };
 	    PeoplePickerExample.prototype._filterPersonasByText = function (filterText) {
 	        var _this = this;
@@ -29436,6 +29315,12 @@
 	        var _this = this;
 	        return personas.filter(function (persona) { return !_this._listContainsPersona(persona, possibleDupes); });
 	    };
+	    PeoplePickerExample.prototype._listContainsPersona = function (persona, personas) {
+	        if (!personas || !personas.length || personas.length === 0) {
+	            return false;
+	        }
+	        return personas.filter(function (item) { return item.primaryText === persona.primaryText; }).length > 0;
+	    };
 	    return PeoplePickerExample;
 	}(Utilities_1.BaseComponent));
 	__decorate([
@@ -29445,7 +29330,7 @@
 
 
 /***/ },
-/* 293 */
+/* 292 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -29517,7 +29402,7 @@
 	        key: 7,
 	        imageUrl: './images/persona-female.png',
 	        imageInitials: 'PV',
-	        primaryText: 'Anny Lindqvist',
+	        primaryText: 'Annie Lindqvist2',
 	        secondaryText: 'Designer',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
@@ -29526,7 +29411,7 @@
 	        key: 8,
 	        imageUrl: './images/persona-male.png',
 	        imageInitials: 'AR',
-	        primaryText: 'Aron Reid',
+	        primaryText: 'Aaron Reid2',
 	        secondaryText: 'Designer',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
@@ -29535,7 +29420,7 @@
 	        key: 9,
 	        imageUrl: './images/persona-male.png',
 	        imageInitials: 'AL',
-	        primaryText: 'Alix Lundberg',
+	        primaryText: 'Alex Lundberg2',
 	        secondaryText: 'Software Developer',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
@@ -29544,7 +29429,7 @@
 	        key: 10,
 	        imageUrl: './images/persona-male.png',
 	        imageInitials: 'RK',
-	        primaryText: 'Roko Kular',
+	        primaryText: 'Roko Kolar2',
 	        secondaryText: 'Financial Analyst',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
@@ -29553,7 +29438,7 @@
 	        key: 11,
 	        imageUrl: './images/persona-male.png',
 	        imageInitials: 'CB',
-	        primaryText: 'Christian Bergqvest',
+	        primaryText: 'Christian Bergqvist2',
 	        secondaryText: 'Sr. Designer',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
@@ -29562,7 +29447,7 @@
 	        key: 12,
 	        imageUrl: './images/persona-female.png',
 	        imageInitials: 'VL',
-	        primaryText: 'Valintina Lovric',
+	        primaryText: 'Valentina Lovric2',
 	        secondaryText: 'Design Developer',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
@@ -29571,7 +29456,7 @@
 	        key: 13,
 	        imageUrl: './images/persona-male.png',
 	        imageInitials: 'MS',
-	        primaryText: 'Maor Sharet',
+	        primaryText: 'Maor Sharett2',
 	        secondaryText: 'UX Designer',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
@@ -29580,8 +29465,8 @@
 	        key: 14,
 	        imageUrl: './images/persona-female.png',
 	        imageInitials: 'VL',
-	        primaryText: 'Anny Lindqvest',
-	        secondaryText: 'SDE',
+	        primaryText: 'Another A Name',
+	        secondaryText: 'Extra',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
 	    },
@@ -29589,8 +29474,8 @@
 	        key: 15,
 	        imageUrl: './images/persona-male.png',
 	        imageInitials: 'MS',
-	        primaryText: 'Alix Lunberg',
-	        secondaryText: 'SE',
+	        primaryText: 'Another A Name (So Many A names!)',
+	        secondaryText: 'Extra extra',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
 	    },
@@ -29598,8 +29483,8 @@
 	        key: 16,
 	        imageUrl: './images/persona-female.png',
 	        imageInitials: 'VL',
-	        primaryText: 'Annie Lindqvest',
-	        secondaryText: 'SDET',
+	        primaryText: 'Another Anecdotal A Name',
+	        secondaryText: '3 extra',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
 	    },
@@ -29607,8 +29492,8 @@
 	        key: 17,
 	        imageUrl: './images/persona-male.png',
 	        imageInitials: 'MS',
-	        primaryText: 'Alixander Lundberg',
-	        secondaryText: 'Senior Manager of SDET',
+	        primaryText: 'Anerobic A Name',
+	        secondaryText: 'Lifts Weights',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
 	    },
@@ -29616,8 +29501,8 @@
 	        key: 18,
 	        imageUrl: './images/persona-female.png',
 	        imageInitials: 'VL',
-	        primaryText: 'Anny Lundqvist',
-	        secondaryText: 'Junior Manager of Software',
+	        primaryText: 'Aerobic A Name',
+	        secondaryText: 'Runs a lot',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
 	    },
@@ -29625,7 +29510,7 @@
 	        key: 13,
 	        imageUrl: './images/persona-male.png',
 	        imageInitials: 'MS',
-	        primaryText: 'Maor Shorett',
+	        primaryText: 'Maor Sharett2',
 	        secondaryText: 'UX Designer',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
@@ -29634,7 +29519,7 @@
 	        key: 12,
 	        imageUrl: './images/persona-female.png',
 	        imageInitials: 'VL',
-	        primaryText: 'Valentina Lovrics',
+	        primaryText: 'Valentina Lovric2',
 	        secondaryText: 'Design Developer',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
@@ -29643,7 +29528,7 @@
 	        key: 13,
 	        imageUrl: './images/persona-male.png',
 	        imageInitials: 'MS',
-	        primaryText: 'Maor Sharet',
+	        primaryText: 'Maor Sharett2',
 	        secondaryText: 'UX Designer',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
@@ -29652,7 +29537,7 @@
 	        key: 12,
 	        imageUrl: './images/persona-female.png',
 	        imageInitials: 'VL',
-	        primaryText: 'Valentina Lovrecs',
+	        primaryText: 'Valentina Lovric2',
 	        secondaryText: 'Design Developer',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
@@ -29661,7 +29546,7 @@
 	        key: 13,
 	        imageUrl: './images/persona-male.png',
 	        imageInitials: 'MS',
-	        primaryText: 'Maor Sharitt',
+	        primaryText: 'Maor Sharett2',
 	        secondaryText: 'UX Designer',
 	        tertiaryText: 'In a meeting',
 	        optionalText: 'Available at 4:00pm'
@@ -29672,7 +29557,109 @@
 
 
 /***/ },
+/* 293 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var es6_promise_1 = __webpack_require__(5);
+	var constants_1 = __webpack_require__(294);
+	var RestUtil;
+	(function (RestUtil) {
+	    var LIST_NAME = constants_1.constants.listName;
+	    function submit(columns, listData) {
+	        return new es6_promise_1.Promise(function (resolve, reject) {
+	            columns.__metadata = { "type": "" + listData };
+	            var data = JSON.stringify(columns);
+	            var req = new XMLHttpRequest;
+	            req.open('POST', _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/GetByTitle('" + LIST_NAME + "')/Items", true);
+	            req.setRequestHeader('Content-Type', 'application/json;odata=verbose');
+	            req.setRequestHeader('Accept', 'application/json;odata=verbose');
+	            req.setRequestHeader('X-RequestDigest', document.getElementById('__REQUESTDIGEST').value);
+	            req.onload = function () {
+	                console.log(req.statusText);
+	                if (req.status == 201) {
+	                    console.log("Success: " + req.status);
+	                    resolve(req.response);
+	                }
+	                else {
+	                    console.log("Fail: " + req.status);
+	                    reject(Error(req.statusText));
+	                }
+	            };
+	            req.onerror = function () {
+	                console.log("Error: " + req.status);
+	                reject(Error("Network Error"));
+	            };
+	            req.send(data);
+	        });
+	    }
+	    RestUtil.submit = submit;
+	    function getListData(data) {
+	        return new es6_promise_1.Promise(function (resolve, reject) {
+	            var req = new XMLHttpRequest;
+	            req.open('GET', _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/GetByTitle('" + LIST_NAME + "')?$select=" + data, true);
+	            req.setRequestHeader('Accept', 'application/json;odata=verbose');
+	            req.onload = function () {
+	                console.log(req.statusText);
+	                if (req.status == 200) {
+	                    console.log("Success: " + req.status);
+	                    var response = JSON.parse(req.response);
+	                    resolve(response.d["" + data]);
+	                }
+	                else {
+	                    console.log("Fail: " + req.status);
+	                    reject(Error(req.statusText));
+	                }
+	            };
+	            req.onerror = function () {
+	                console.log("Error: " + req.status);
+	                reject(Error("Network Error"));
+	            };
+	            req.send(null);
+	        });
+	    }
+	    RestUtil.getListData = getListData;
+	    function getUsers(queryText) {
+	        console.log(queryText);
+	        return new es6_promise_1.Promise(function (resolve, reject) {
+	            var req = new XMLHttpRequest;
+	            req.open('GET', _spPageContextInfo.webAbsoluteUrl + "/_api/web/siteusers?$select=Title&$filter=substringof('" + queryText + "', Title)", true);
+	            req.setRequestHeader('Accept', 'application/json;odata=verbose');
+	            req.onload = function () {
+	                console.log(req.statusText);
+	                if (req.status == 200) {
+	                    console.log("Success: " + req.status);
+	                    var response = JSON.parse(req.response);
+	                    resolve(response.d);
+	                }
+	                else {
+	                    console.log("Fail: " + req.status);
+	                    reject(Error(req.statusText));
+	                }
+	            };
+	            req.onerror = function () {
+	                console.log("Error: " + req.status);
+	                reject(Error("Network Error"));
+	            };
+	            req.send(null);
+	        });
+	    }
+	    RestUtil.getUsers = getUsers;
+	})(RestUtil = exports.RestUtil || (exports.RestUtil = {}));
+
+
+/***/ },
 /* 294 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.constants = {
+	    listName: "Testing UI Fabric"
+	};
+
+
+/***/ },
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29685,7 +29672,7 @@
 
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29705,9 +29692,9 @@
 	var es6_promise_1 = __webpack_require__(5);
 	/* tslint:enable */
 	var Utilities_1 = __webpack_require__(12);
-	var Pickers_1 = __webpack_require__(236);
-	var PeoplePickerExampleData_1 = __webpack_require__(293);
-	__webpack_require__(294);
+	var Pickers_1 = __webpack_require__(235);
+	var PeoplePickerExampleData_1 = __webpack_require__(292);
+	__webpack_require__(295);
 	var suggestionProps = {
 	    suggestionsHeaderText: 'Suggested People',
 	    noResultsFoundText: 'No results found',
@@ -29833,82 +29820,6 @@
 	    Utilities_1.autobind
 	], PeoplePickerTypesExample.prototype, "_dropDownSelected", null);
 	exports.PeoplePickerTypesExample = PeoplePickerTypesExample;
-
-
-/***/ },
-/* 296 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var es6_promise_1 = __webpack_require__(5);
-	var constants_1 = __webpack_require__(297);
-	var RestUtil;
-	(function (RestUtil) {
-	    var LIST_NAME = constants_1.constants.listName;
-	    function submit(columns, listData) {
-	        return new es6_promise_1.Promise(function (resolve, reject) {
-	            columns.__metadata = { "type": "" + listData };
-	            var data = JSON.stringify(columns);
-	            var req = new XMLHttpRequest;
-	            req.open('POST', _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/GetByTitle('" + LIST_NAME + "')/Items", true);
-	            req.setRequestHeader('Content-Type', 'application/json;odata=verbose');
-	            req.setRequestHeader('Accept', 'application/json;odata=verbose');
-	            req.setRequestHeader('X-RequestDigest', document.getElementById('__REQUESTDIGEST').value);
-	            req.onload = function () {
-	                console.log(req.statusText);
-	                if (req.status == 201) {
-	                    console.log("Success: " + req.status);
-	                    resolve(req.response);
-	                }
-	                else {
-	                    console.log("Fail: " + req.status);
-	                    reject(Error(req.statusText));
-	                }
-	            };
-	            req.onerror = function () {
-	                console.log("Error: " + req.status);
-	                reject(Error("Network Error"));
-	            };
-	            req.send(data);
-	        });
-	    }
-	    RestUtil.submit = submit;
-	    function getListData(data) {
-	        return new es6_promise_1.Promise(function (resolve, reject) {
-	            var req = new XMLHttpRequest;
-	            req.open('GET', _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/GetByTitle('" + LIST_NAME + "')?$select=" + data, true);
-	            req.setRequestHeader('Accept', 'application/json;odata=verbose');
-	            req.onload = function () {
-	                console.log(req.statusText);
-	                if (req.status == 200) {
-	                    console.log("Success: " + req.status);
-	                    var response = JSON.parse(req.response);
-	                    resolve(response.d["" + data]);
-	                }
-	                else {
-	                    console.log("Fail: " + req.status);
-	                    reject(Error(req.statusText));
-	                }
-	            };
-	            req.onerror = function () {
-	                console.log("Error: " + req.status);
-	                reject(Error("Network Error"));
-	            };
-	            req.send(null);
-	        });
-	    }
-	    RestUtil.getListData = getListData;
-	})(RestUtil = exports.RestUtil || (exports.RestUtil = {}));
-
-
-/***/ },
-/* 297 */
-/***/ function(module, exports) {
-
-	"use strict";
-	exports.constants = {
-	    listName: "Testing UI Fabric"
-	};
 
 
 /***/ }
