@@ -16,9 +16,7 @@ import {
     NormalPeoplePicker
 } from '../../node_modules/office-ui-fabric-react/lib/Pickers';
 import { IPersonaWithMenu } from '../../node_modules/office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
-import { people } from '../../node_modules/office-ui-fabric-react/lib/demo/pages/PeoplePickerPage/examples/PeoplePickerExampleData';
 import { RestUtil } from '../../utils/RestUtil';
-import '../../node_modules/office-ui-fabric-react/lib/demo/pages/PeoplePickerPage/examples/PeoplePicker.Types.Example.scss';
 
 //keeping this in for example state
 export interface IPeoplePickerExampleState {
@@ -66,12 +64,12 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
     constructor() {
         super();
         this._peopleList = [];
-        people.forEach((persona: IPersonaProps) => {
-            let target: IPersonaWithMenu = {};
+        // people.forEach((persona: IPersonaProps) => {
+        //     let target: IPersonaWithMenu = {};
 
-            assign(target, persona, { menuItems: this.contextualMenuItems });
-            this._peopleList.push(target);
-        });
+        //     assign(target, persona, { menuItems: this.contextualMenuItems });
+        //     this._peopleList.push(target);
+        // });
         this.state = {
             delayResults: false
         };
@@ -94,9 +92,7 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
     private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
         if (filterText) {
             let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
-            RestUtil.getUsers(filterText).then((result) => {
-                console.log(result);
-            });
+
             filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
             filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
             return filteredPersonas;
@@ -106,7 +102,11 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
     }
 
     private _filterPersonasByText(filterText: string): IPersonaProps[] {
-        return this._peopleList.filter(item => this._doesTextStartWith(item.primaryText, filterText));
+        let filteredPersonas = [];
+        RestUtil.getUsers(filterText).then((results) => {
+           filteredPersonas = results.filter(item => this._doesTextStartWith(item.primaryText, filterText));
+        });
+        return filteredPersonas;
     }
 
     private _doesTextStartWith(text: string, filterText: string): boolean {

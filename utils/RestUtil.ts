@@ -74,31 +74,35 @@ export module RestUtil {
     }
 
     export function getUsers(queryText) {
-        console.log(queryText);
         return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                let req = new XMLHttpRequest;
 
-            let req = new XMLHttpRequest;
+                req.open('GET', `${_spPageContextInfo.webAbsoluteUrl}/_vti_bin/listdata.svc/UserInformationList?$filter=startswith(Name,'${queryText}')`, true);
+                req.setRequestHeader('Accept', 'application/json;odata=verbose');
 
-            req.open('GET', `${_spPageContextInfo.webAbsoluteUrl}/_api/web/siteusers?$select=Title&$filter=substringof('${queryText}', Title)`, true);
-            req.setRequestHeader('Accept', 'application/json;odata=verbose');
-
-            req.onload = () => {
-                console.log(req.statusText);
-                if (req.status == 200) {
-                    console.log(`Success: ${req.status}`);
-                    let response = JSON.parse(req.response);
-                    resolve(response.d);
-                }
-                else {
-                    console.log(`Fail: ${req.status}`);
-                    reject(Error(req.statusText));
-                }
-            };
-            req.onerror = () => {
-                console.log(`Error: ${req.status}`);
-                reject(Error("Network Error"));
-            };
-            req.send(null);
+                req.onload = () => {
+                    console.log(req.statusText);
+                    if (req.status == 200) {
+                        console.log(`Success: ${req.status}`);
+                        let response = JSON.parse(req.response);
+                        resolve(response.d.results);
+                    }
+                    else {
+                        console.log(`Fail: ${req.status}`);
+                        reject(Error(req.statusText));
+                    }
+                };
+                req.onerror = () => {
+                    console.log(`Error: ${req.status}`);
+                    reject(Error("Network Error"));
+                };
+                req.send(null);
+            }, 2000);
         });
+    }
+
+    function buildUserList(responseObject) {
+
     }
 }
