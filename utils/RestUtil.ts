@@ -74,8 +74,7 @@ export module RestUtil {
     }
 
     export function getUsers(queryText) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
+        return new Promise((resolve, reject) => {          
                 let req = new XMLHttpRequest;
 
                 req.open('GET', `${_spPageContextInfo.webAbsoluteUrl}/_vti_bin/listdata.svc/UserInformationList?$filter=startswith(Name,'${queryText}')`, true);
@@ -86,6 +85,8 @@ export module RestUtil {
                     if (req.status == 200) {
                         console.log(`Success: ${req.status}`);
                         let response = JSON.parse(req.response);
+                        //need functionality to strip out the users info into an array format
+                        //reference the demo people data from office fabric code
                         resolve(response.d.results);
                     }
                     else {
@@ -98,11 +99,6 @@ export module RestUtil {
                     reject(Error("Network Error"));
                 };
                 req.send(null);
-            }, 2000);
         });
-    }
-
-    function buildUserList(responseObject) {
-
     }
 }

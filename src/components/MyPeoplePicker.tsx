@@ -91,27 +91,40 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
     @autobind
     private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
         if (filterText) {
-            let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
-            filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
-            filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+            RestUtil.getUsers(filterText).then((results) => {
+            let filteredPersonas:IPersonaProps[] = [];
+            //need to have REST call return an array of users
+            // call function that will build array of user info based on results
+            for (let result in results) {
+                filteredPersonas.push({
+                    key: result,
+                    primaryText: results[result]["Name"]
+                });
+                console.log(`Found ${results[result]["Name"]}`);
+            }
             return filteredPersonas;
+        });
+
+            //filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
+            //filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+            //below will need to happen to limit results
+            //return this._convertResultsToPromise(filteredPersonas);
+            
         } else {
             return [];
         }
     }
 
-    private _filterPersonasByText(filterText: string): IPersonaProps[] {
-        let filteredPersonas = [];
-        RestUtil.getUsers(filterText).then((results) => {
-           filteredPersonas = results.filter(item => this._doesTextStartWith(item.primaryText, filterText));
-        });
-        return filteredPersonas;
-    }
+    // private _filterPersonasByText(filterText: string): IPersonaProps[] {
+        
+        
+    //     //return filteredPersonas;
+    // }
 
-    private _doesTextStartWith(text: string, filterText: string): boolean {
-        return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
-    }
+    // private _buildUserArray(results: Object, userArray?: IPersonaProps[]) {
+        
+    // }
 
     private _removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]) {
         return personas.filter(persona => !this._listContainsPersona(persona, possibleDupes));
@@ -122,5 +135,9 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
             return false;
         }
         return personas.filter(item => item.primaryText === persona.primaryText).length > 0;
+    }
+    //need to use this function to delay the search results
+    private _convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {
+        return new Promise<IPersonaProps[]>((resolve, reject) => setTimeout(() => resolve(results), 2000));
     }
 }

@@ -29796,6 +29796,7 @@
 	Object.defineProperty(exports, "__esModule", { value: true });
 	/* tslint:disable */
 	var React = __webpack_require__(1);
+	var es6_promise_1 = __webpack_require__(5);
 	/* tslint:enable */
 	var Utilities_1 = __webpack_require__(12);
 	var Pickers_1 = __webpack_require__(236);
@@ -29855,26 +29856,33 @@
 	    };
 	    PeoplePickerExample.prototype._onFilterChanged = function (filterText, currentPersonas, limitResults) {
 	        if (filterText) {
-	            var filteredPersonas = this._filterPersonasByText(filterText);
-	            filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
-	            filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-	            return filteredPersonas;
+	            RestUtil_1.RestUtil.getUsers(filterText).then(function (results) {
+	                var filteredPersonas = [];
+	                //need to have REST call return an array of users
+	                // call function that will build array of user info based on results
+	                for (var result in results) {
+	                    filteredPersonas.push({
+	                        key: result,
+	                        primaryText: results[result]["Name"]
+	                    });
+	                    console.log("Found " + results[result]["Name"]);
+	                }
+	                return filteredPersonas;
+	            });
+	            //filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
+	            //filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+	            //below will need to happen to limit results
+	            //return this._convertResultsToPromise(filteredPersonas);
 	        }
 	        else {
 	            return [];
 	        }
 	    };
-	    PeoplePickerExample.prototype._filterPersonasByText = function (filterText) {
-	        var _this = this;
-	        var filteredPersonas = [];
-	        RestUtil_1.RestUtil.getUsers(filterText).then(function (results) {
-	            filteredPersonas = results.filter(function (item) { return _this._doesTextStartWith(item.primaryText, filterText); });
-	        });
-	        return filteredPersonas;
-	    };
-	    PeoplePickerExample.prototype._doesTextStartWith = function (text, filterText) {
-	        return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
-	    };
+	    // private _filterPersonasByText(filterText: string): IPersonaProps[] {
+	    //     //return filteredPersonas;
+	    // }
+	    // private _buildUserArray(results: Object, userArray?: IPersonaProps[]) {
+	    // }
 	    PeoplePickerExample.prototype._removeDuplicates = function (personas, possibleDupes) {
 	        var _this = this;
 	        return personas.filter(function (persona) { return !_this._listContainsPersona(persona, possibleDupes); });
@@ -29884,6 +29892,10 @@
 	            return false;
 	        }
 	        return personas.filter(function (item) { return item.primaryText === persona.primaryText; }).length > 0;
+	    };
+	    //need to use this function to delay the search results
+	    PeoplePickerExample.prototype._convertResultsToPromise = function (results) {
+	        return new es6_promise_1.Promise(function (resolve, reject) { return setTimeout(function () { return resolve(results); }, 2000); });
 	    };
 	    return PeoplePickerExample;
 	}(Utilities_1.BaseComponent));
@@ -29959,33 +29971,31 @@
 	    RestUtil.getListData = getListData;
 	    function getUsers(queryText) {
 	        return new es6_promise_1.Promise(function (resolve, reject) {
-	            setTimeout(function () {
-	                var req = new XMLHttpRequest;
-	                req.open('GET', _spPageContextInfo.webAbsoluteUrl + "/_vti_bin/listdata.svc/UserInformationList?$filter=startswith(Name,'" + queryText + "')", true);
-	                req.setRequestHeader('Accept', 'application/json;odata=verbose');
-	                req.onload = function () {
-	                    console.log(req.statusText);
-	                    if (req.status == 200) {
-	                        console.log("Success: " + req.status);
-	                        var response = JSON.parse(req.response);
-	                        resolve(response.d.results);
-	                    }
-	                    else {
-	                        console.log("Fail: " + req.status);
-	                        reject(Error(req.statusText));
-	                    }
-	                };
-	                req.onerror = function () {
-	                    console.log("Error: " + req.status);
-	                    reject(Error("Network Error"));
-	                };
-	                req.send(null);
-	            }, 2000);
+	            var req = new XMLHttpRequest;
+	            req.open('GET', _spPageContextInfo.webAbsoluteUrl + "/_vti_bin/listdata.svc/UserInformationList?$filter=startswith(Name,'" + queryText + "')", true);
+	            req.setRequestHeader('Accept', 'application/json;odata=verbose');
+	            req.onload = function () {
+	                console.log(req.statusText);
+	                if (req.status == 200) {
+	                    console.log("Success: " + req.status);
+	                    var response = JSON.parse(req.response);
+	                    //need functionality to strip out the users info into an array format
+	                    //reference the demo people data from office fabric code
+	                    resolve(response.d.results);
+	                }
+	                else {
+	                    console.log("Fail: " + req.status);
+	                    reject(Error(req.statusText));
+	                }
+	            };
+	            req.onerror = function () {
+	                console.log("Error: " + req.status);
+	                reject(Error("Network Error"));
+	            };
+	            req.send(null);
 	        });
 	    }
 	    RestUtil.getUsers = getUsers;
-	    function buildUserList(responseObject) {
-	    }
 	})(RestUtil = exports.RestUtil || (exports.RestUtil = {}));
 
 
