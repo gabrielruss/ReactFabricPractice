@@ -103,14 +103,11 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
                 });
                 console.log(`Found ${results[result]["Name"]}`);
             }
-            return filteredPersonas;
+            filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
+            filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+            return this._convertResultsToPromise(filteredPersonas);
         });
-
-            //filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
-            //filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-            //below will need to happen to limit results
-            //return this._convertResultsToPromise(filteredPersonas);
-            
+  
         } else {
             return [];
         }

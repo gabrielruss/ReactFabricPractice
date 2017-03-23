@@ -29855,6 +29855,7 @@
 	            React.createElement(Pickers_1.CompactPeoplePicker, { onResolveSuggestions: this._onFilterChanged, getTextFromItem: function (persona) { return persona.primaryText; }, pickerSuggestionsProps: suggestionProps, className: 'ms-PeoplePicker' })));
 	    };
 	    PeoplePickerExample.prototype._onFilterChanged = function (filterText, currentPersonas, limitResults) {
+	        var _this = this;
 	        if (filterText) {
 	            RestUtil_1.RestUtil.getUsers(filterText).then(function (results) {
 	                var filteredPersonas = [];
@@ -29867,12 +29868,10 @@
 	                    });
 	                    console.log("Found " + results[result]["Name"]);
 	                }
-	                return filteredPersonas;
+	                filteredPersonas = _this._removeDuplicates(filteredPersonas, currentPersonas);
+	                filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+	                return _this._convertResultsToPromise(filteredPersonas);
 	            });
-	            //filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
-	            //filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-	            //below will need to happen to limit results
-	            //return this._convertResultsToPromise(filteredPersonas);
 	        }
 	        else {
 	            return [];
