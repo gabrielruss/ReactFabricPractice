@@ -6,6 +6,7 @@ import { Button, ButtonType, Label } from '../../node_modules/office-ui-fabric-r
 
 import { MyTextField } from './MyTextField';
 import { PeoplePickerExample } from './MyPeoplePicker';
+import { PeoplePickerTypesExample } from './MyPeoplePickerOriginal';
 
 import { RestUtil } from '../../utils/RestUtil';
 
@@ -60,6 +61,7 @@ export class NewForm extends React.Component<any, any> {
                     onChanged={this._handleChanged} />
                 <Label>Gabriel Trimmed</Label>    
                 <PeoplePickerExample />
+                <PeoplePickerTypesExample />
                 <br/>   
                 <Button
                     onClick={this._onSave}

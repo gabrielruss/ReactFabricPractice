@@ -10319,6 +10319,7 @@
 	var index_1 = __webpack_require__(8);
 	var MyTextField_1 = __webpack_require__(291);
 	var MyPeoplePicker_1 = __webpack_require__(292);
+	var MyPeoplePickerOriginal_1 = __webpack_require__(295);
 	var RestUtil_1 = __webpack_require__(293);
 	var NewForm = (function (_super) {
 	    __extends(NewForm, _super);
@@ -10364,6 +10365,7 @@
 	            React.createElement(MyTextField_1.MyTextField, { label: "Title", name: "Title", required: true, onChanged: this._handleChanged }),
 	            React.createElement(index_1.Label, null, "Gabriel Trimmed"),
 	            React.createElement(MyPeoplePicker_1.PeoplePickerExample, null),
+	            React.createElement(MyPeoplePickerOriginal_1.PeoplePickerTypesExample, null),
 	            React.createElement("br", null),
 	            React.createElement(index_1.Button, { onClick: this._onSave, type: "submit", buttonType: index_1.ButtonType.primary, disabled: Object.keys(this.state.fieldsWithErrors).length !== 0 }, "Save")));
 	    };
@@ -29857,21 +29859,19 @@
 	    PeoplePickerExample.prototype._onFilterChanged = function (filterText, currentPersonas, limitResults) {
 	        var _this = this;
 	        if (filterText) {
+	            var filteredPersonas_1 = [];
 	            RestUtil_1.RestUtil.getUsers(filterText).then(function (results) {
-	                var filteredPersonas = [];
-	                //need to have REST call return an array of users
-	                // call function that will build array of user info based on results
 	                for (var result in results) {
-	                    filteredPersonas.push({
-	                        key: result,
+	                    filteredPersonas_1.push({
+	                        key: parseInt(result),
 	                        primaryText: results[result]["Name"]
 	                    });
 	                    console.log("Found " + results[result]["Name"]);
 	                }
-	                filteredPersonas = _this._removeDuplicates(filteredPersonas, currentPersonas);
-	                filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-	                return _this._convertResultsToPromise(filteredPersonas);
+	                filteredPersonas_1 = _this._removeDuplicates(filteredPersonas_1, currentPersonas);
+	                filteredPersonas_1 = limitResults ? filteredPersonas_1.splice(0, limitResults) : filteredPersonas_1;
 	            });
+	            return this._convertResultsToPromise(filteredPersonas_1);
 	        }
 	        else {
 	            return [];
@@ -29894,6 +29894,7 @@
 	    };
 	    //need to use this function to delay the search results
 	    PeoplePickerExample.prototype._convertResultsToPromise = function (results) {
+	        console.log("_convertResultsToPromise results: " + results);
 	        return new es6_promise_1.Promise(function (resolve, reject) { return setTimeout(function () { return resolve(results); }, 2000); });
 	    };
 	    return PeoplePickerExample;
@@ -30007,6 +30008,392 @@
 	exports.constants = {
 	    listName: "Testing UI Fabric"
 	};
+
+
+/***/ },
+/* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	/* tslint:disable */
+	var React = __webpack_require__(1);
+	var es6_promise_1 = __webpack_require__(5);
+	/* tslint:enable */
+	var Utilities_1 = __webpack_require__(12);
+	var Pickers_1 = __webpack_require__(236);
+	var PeoplePickerExampleData_1 = __webpack_require__(296);
+	var suggestionProps = {
+	    suggestionsHeaderText: 'Suggested People',
+	    noResultsFoundText: 'No results found',
+	    loadingText: 'Loading'
+	};
+	var PeoplePickerTypesExample = (function (_super) {
+	    __extends(PeoplePickerTypesExample, _super);
+	    function PeoplePickerTypesExample() {
+	        var _this = _super.call(this) || this;
+	        _this.contextualMenuItems = [
+	            {
+	                key: 'newItem',
+	                icon: 'circlePlus',
+	                name: 'New'
+	            },
+	            {
+	                key: 'upload',
+	                icon: 'upload',
+	                name: 'Upload'
+	            },
+	            {
+	                key: 'divider_1',
+	                name: '-',
+	            },
+	            {
+	                key: 'rename',
+	                name: 'Rename'
+	            },
+	            {
+	                key: 'properties',
+	                name: 'Properties'
+	            },
+	            {
+	                key: 'disabled',
+	                name: 'Disabled item',
+	                disabled: true
+	            }
+	        ];
+	        _this._peopleList = [];
+	        PeoplePickerExampleData_1.people.forEach(function (persona) {
+	            var target = {};
+	            Utilities_1.assign(target, persona, { menuItems: _this.contextualMenuItems });
+	            _this._peopleList.push(target);
+	        });
+	        _this.state = {
+	            currentPicker: 1,
+	            delayResults: true
+	        };
+	        return _this;
+	    }
+	    PeoplePickerTypesExample.prototype.render = function () {
+	        return (React.createElement("div", null,
+	            React.createElement(Pickers_1.CompactPeoplePicker, { onResolveSuggestions: this._onFilterChanged, getTextFromItem: function (persona) { return persona.primaryText; }, pickerSuggestionsProps: suggestionProps, className: 'ms-PeoplePicker' })));
+	    };
+	    PeoplePickerTypesExample.prototype._renderPreselectedItemsPicker = function () {
+	        return (React.createElement(Pickers_1.CompactPeoplePicker, { onResolveSuggestions: this._onFilterChanged, getTextFromItem: function (persona) { return persona.primaryText; }, className: 'ms-PeoplePicker', defaultSelectedItems: PeoplePickerExampleData_1.people.splice(0, 3), key: 'list', pickerSuggestionsProps: suggestionProps }));
+	    };
+	    PeoplePickerTypesExample.prototype._renderLimitedSearch = function () {
+	        var limitedSearchSuggestionProps = suggestionProps;
+	        limitedSearchSuggestionProps.searchForMoreText = 'Load all Results';
+	        return (React.createElement(Pickers_1.CompactPeoplePicker, { onResolveSuggestions: this._onFilterChangedWithLimit, getTextFromItem: function (persona) { return persona.primaryText; }, className: 'ms-PeoplePicker', onGetMoreResults: this._onFilterChanged, pickerSuggestionsProps: limitedSearchSuggestionProps }));
+	    };
+	    PeoplePickerTypesExample.prototype._onFilterChanged = function (filterText, currentPersonas, limitResults) {
+	        if (filterText) {
+	            var filteredPersonas = this._filterPersonasByText(filterText);
+	            filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
+	            filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+	            return this._convertResultsToPromise(filteredPersonas);
+	        }
+	        else {
+	            return [];
+	        }
+	    };
+	    PeoplePickerTypesExample.prototype._onFilterChangedWithLimit = function (filterText, currentPersonas) {
+	        return this._onFilterChanged(filterText, currentPersonas, 3);
+	    };
+	    // private _filterPromise(personasToReturn: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+	    //     if (this.state.delayResults) {
+	    //         return this._convertResultsToPromise(personasToReturn);
+	    //     } else {
+	    //         console.log(`_filterPromise personasToReturn: ${personasToReturn}`);
+	    //         return personasToReturn;
+	    //     }
+	    // }
+	    PeoplePickerTypesExample.prototype._listContainsPersona = function (persona, personas) {
+	        if (!personas || !personas.length || personas.length === 0) {
+	            return false;
+	        }
+	        return personas.filter(function (item) { return item.primaryText === persona.primaryText; }).length > 0;
+	    };
+	    PeoplePickerTypesExample.prototype._filterPersonasByText = function (filterText) {
+	        var _this = this;
+	        console.log("_filterPersonasByText filterText: " + filterText);
+	        return this._peopleList.filter(function (item) { return _this._doesTextStartWith(item.primaryText, filterText); });
+	    };
+	    PeoplePickerTypesExample.prototype._doesTextStartWith = function (text, filterText) {
+	        console.log("_doesTextStartWith text: " + text);
+	        return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
+	    };
+	    PeoplePickerTypesExample.prototype._convertResultsToPromise = function (results) {
+	        console.log("_convertResultsToPromise results: " + results);
+	        return new es6_promise_1.Promise(function (resolve, reject) { return setTimeout(function () { return resolve(results); }, 2000); });
+	    };
+	    PeoplePickerTypesExample.prototype._removeDuplicates = function (personas, possibleDupes) {
+	        var _this = this;
+	        return personas.filter(function (persona) { return !_this._listContainsPersona(persona, possibleDupes); });
+	    };
+	    PeoplePickerTypesExample.prototype._toggleChange = function (toggleState) {
+	        this.setState({ delayResults: toggleState });
+	    };
+	    PeoplePickerTypesExample.prototype._dropDownSelected = function (option) {
+	        this.setState({ currentPicker: option.key });
+	    };
+	    return PeoplePickerTypesExample;
+	}(Utilities_1.BaseComponent));
+	__decorate([
+	    Utilities_1.autobind
+	], PeoplePickerTypesExample.prototype, "_onFilterChanged", null);
+	__decorate([
+	    Utilities_1.autobind
+	], PeoplePickerTypesExample.prototype, "_onFilterChangedWithLimit", null);
+	__decorate([
+	    Utilities_1.autobind
+	], PeoplePickerTypesExample.prototype, "_toggleChange", null);
+	__decorate([
+	    Utilities_1.autobind
+	], PeoplePickerTypesExample.prototype, "_dropDownSelected", null);
+	exports.PeoplePickerTypesExample = PeoplePickerTypesExample;
+
+
+/***/ },
+/* 296 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.people = [
+	    {
+	        key: 0,
+	        imageUrl: './images/persona-female.png',
+	        imageInitials: 'PV',
+	        primaryText: 'Annie Lindqvist',
+	        secondaryText: 'Designer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 1,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'AR',
+	        primaryText: 'Aaron Reid',
+	        secondaryText: 'Designer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 2,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'AL',
+	        primaryText: 'Alex Lundberg',
+	        secondaryText: 'Software Developer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 3,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'RK',
+	        primaryText: 'Roko Kolar',
+	        secondaryText: 'Financial Analyst',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 4,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'CB',
+	        primaryText: 'Christian Bergqvist',
+	        secondaryText: 'Sr. Designer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 5,
+	        imageUrl: './images/persona-female.png',
+	        imageInitials: 'VL',
+	        primaryText: 'Valentina Lovric',
+	        secondaryText: 'Design Developer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 6,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'MS',
+	        primaryText: 'Maor Sharett',
+	        secondaryText: 'UX Designer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 7,
+	        imageUrl: './images/persona-female.png',
+	        imageInitials: 'PV',
+	        primaryText: 'Annie Lindqvist2',
+	        secondaryText: 'Designer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 8,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'AR',
+	        primaryText: 'Aaron Reid2',
+	        secondaryText: 'Designer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 9,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'AL',
+	        primaryText: 'Alex Lundberg2',
+	        secondaryText: 'Software Developer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 10,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'RK',
+	        primaryText: 'Roko Kolar2',
+	        secondaryText: 'Financial Analyst',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 11,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'CB',
+	        primaryText: 'Christian Bergqvist2',
+	        secondaryText: 'Sr. Designer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 12,
+	        imageUrl: './images/persona-female.png',
+	        imageInitials: 'VL',
+	        primaryText: 'Valentina Lovric2',
+	        secondaryText: 'Design Developer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 13,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'MS',
+	        primaryText: 'Maor Sharett2',
+	        secondaryText: 'UX Designer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 14,
+	        imageUrl: './images/persona-female.png',
+	        imageInitials: 'VL',
+	        primaryText: 'Another A Name',
+	        secondaryText: 'Extra',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 15,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'MS',
+	        primaryText: 'Another A Name (So Many A names!)',
+	        secondaryText: 'Extra extra',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 16,
+	        imageUrl: './images/persona-female.png',
+	        imageInitials: 'VL',
+	        primaryText: 'Another Anecdotal A Name',
+	        secondaryText: '3 extra',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 17,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'MS',
+	        primaryText: 'Anerobic A Name',
+	        secondaryText: 'Lifts Weights',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 18,
+	        imageUrl: './images/persona-female.png',
+	        imageInitials: 'VL',
+	        primaryText: 'Aerobic A Name',
+	        secondaryText: 'Runs a lot',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 13,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'MS',
+	        primaryText: 'Maor Sharett2',
+	        secondaryText: 'UX Designer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 12,
+	        imageUrl: './images/persona-female.png',
+	        imageInitials: 'VL',
+	        primaryText: 'Valentina Lovric2',
+	        secondaryText: 'Design Developer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 13,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'MS',
+	        primaryText: 'Maor Sharett2',
+	        secondaryText: 'UX Designer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 12,
+	        imageUrl: './images/persona-female.png',
+	        imageInitials: 'VL',
+	        primaryText: 'Valentina Lovric2',
+	        secondaryText: 'Design Developer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	    {
+	        key: 13,
+	        imageUrl: './images/persona-male.png',
+	        imageInitials: 'MS',
+	        primaryText: 'Maor Sharett2',
+	        secondaryText: 'UX Designer',
+	        tertiaryText: 'In a meeting',
+	        optionalText: 'Available at 4:00pm'
+	    },
+	];
+
+	//# sourceMappingURL=PeoplePickerExampleData.js.map
 
 
 /***/ }

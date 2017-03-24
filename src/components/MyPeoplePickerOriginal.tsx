@@ -18,8 +18,7 @@ import {
     NormalPeoplePicker
 } from '../../node_modules/office-ui-fabric-react/lib/Pickers';
 import { IPersonaWithMenu } from '../../node_modules/office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
-import { people } from '../../node_modules/office-ui-fabric-react/lib/demo/pages/PeoplePickerPage/examples/PeoplePickerExampleData';
-import '../../node_modules/office-ui-fabric-react/lib/demo/pages/PeoplePickerPage/examples/PeoplePicker.Types.Example.scss';
+import { people } from '../../Ignore/PeoplePickerExampleData';
 
 export interface IPeoplePickerExampleState {
     currentPicker?: number | string;
@@ -75,7 +74,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         });
         this.state = {
             currentPicker: 1,
-            delayResults: false
+            delayResults: true
         };
     }
 
@@ -123,10 +122,9 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
         if (filterText) {
             let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
-
             filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
             filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-            return this._filterPromise(filteredPersonas);
+            return this._convertResultsToPromise(filteredPersonas);
         } else {
             return [];
         }
@@ -137,13 +135,14 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         return this._onFilterChanged(filterText, currentPersonas, 3);
     }
 
-    private _filterPromise(personasToReturn: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
-        if (this.state.delayResults) {
-            return this._convertResultsToPromise(personasToReturn);
-        } else {
-            return personasToReturn;
-        }
-    }
+    // private _filterPromise(personasToReturn: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+    //     if (this.state.delayResults) {
+    //         return this._convertResultsToPromise(personasToReturn);
+    //     } else {
+    //         console.log(`_filterPromise personasToReturn: ${personasToReturn}`);
+    //         return personasToReturn;
+    //     }
+    // }
 
     private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]) {
         if (!personas || !personas.length || personas.length === 0) {
@@ -153,14 +152,17 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     }
 
     private _filterPersonasByText(filterText: string): IPersonaProps[] {
+        console.log(`_filterPersonasByText filterText: ${filterText}`);
         return this._peopleList.filter(item => this._doesTextStartWith(item.primaryText, filterText));
     }
 
     private _doesTextStartWith(text: string, filterText: string): boolean {
+        console.log(`_doesTextStartWith text: ${text}`);
         return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
     }
 
     private _convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {
+        console.log(`_convertResultsToPromise results: ${results}`);
         return new Promise<IPersonaProps[]>((resolve, reject) => setTimeout(() => resolve(results), 2000));
     }
 
