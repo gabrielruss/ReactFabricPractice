@@ -65,10 +65,11 @@ export class PeoplePickerExample extends BaseComponent<any, any> {
     }
 
     private _handleChange(items: IPersonaProps[], errorThrown?: string) {
-        // instead of sending items, send the PersonId: 1
+        let tempArray = [];
         for (let item in items){
-            this.state.userIds.results.push(items[item]["id"]);
+            tempArray.push(items[item]["id"]);
         }
+        this.state.userIds.results = tempArray;
         this.props.onChange(`${this.props.name}Id`, this.state.userIds, errorThrown);
     }
 
@@ -82,7 +83,11 @@ export class PeoplePickerExample extends BaseComponent<any, any> {
                     getTextFromItem={(persona: IPersonaProps) => persona.primaryText}
                     pickerSuggestionsProps={suggestionProps}
                     className={'ms-PeoplePicker'}
+                    
+                   
                 />
+                {/* make the inputProps thingy optional based on props passed from parent */}
+                 {/*inputProps={{disabled: this.state.userIds.results.length >= 1}}*/}
             </div>
         );
     }

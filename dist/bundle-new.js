@@ -29850,10 +29850,12 @@
 	        return _this;
 	    }
 	    PeoplePickerExample.prototype._handleChange = function (items, errorThrown) {
-	        // instead of sending items, send the PersonId: 1
+	        // NEED TO HANDLE DELETING A USER. CURRENTLY STILL SUBMITS THEM
+	        var tempArray = [];
 	        for (var item in items) {
-	            this.state.userIds.results.push(items[item]["id"]);
+	            tempArray.push(items[item]["id"]);
 	        }
+	        this.state.userIds.results = tempArray;
 	        this.props.onChange(this.props.name + "Id", this.state.userIds, errorThrown);
 	    };
 	    PeoplePickerExample.prototype.render = function () {
