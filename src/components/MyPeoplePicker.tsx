@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { Promise } from "es6-promise";
 /* tslint:enable */
+// NEED TO CLEAN UP IMPORTS
 import {
     BaseComponent,
     assign,
@@ -13,12 +14,13 @@ import {
     CompactPeoplePicker,
     IBasePickerSuggestionsProps,
     ListPeoplePicker,
-    NormalPeoplePicker
+    NormalPeoplePicker,
 } from '../../node_modules/office-ui-fabric-react/lib/Pickers';
+import { Button, ButtonType, Label } from '../../node_modules/office-ui-fabric-react/lib/index';
 import { IPersonaWithMenu } from '../../node_modules/office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { RestUtil } from '../../utils/RestUtil';
 
-//keeping this in for example state
+// keeping this in for example state
 export interface IPeoplePickerExampleState {
     delayResults?: boolean;
 }
@@ -61,24 +63,29 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
         }
     ];
 
-    constructor() {
-        super();
-        this._peopleList = [];
-        // people.forEach((persona: IPersonaProps) => {
-        //     let target: IPersonaWithMenu = {};
+    constructor(props: any) {
+        super(props);
+        this._handleChange = this._handleChange.bind(this);
 
-        //     assign(target, persona, { menuItems: this.contextualMenuItems });
-        //     this._peopleList.push(target);
-        // });
+        this._peopleList = [];
         this.state = {
             delayResults: false
+            // create a state for filteredPersonas
         };
+    }
+
+    private _handleChange(items: IPersonaProps[], errorThrown?: string) {
+        // instead of sending items, send the PersonId: 1
+        // http://stackoverflow.com/questions/14556418/saving-a-person-or-group-field-using-rest
+        this.props.onChange(this.props.name, items, errorThrown);
     }
 
     public render() {
         return (
             <div>
+                <Label>{this.props.label}</Label>
                 <CompactPeoplePicker
+                    onChange={this._handleChange}
                     onResolveSuggestions={this._onFilterChanged}
                     getTextFromItem={(persona: IPersonaProps) => persona.primaryText}
                     pickerSuggestionsProps={suggestionProps}
@@ -102,6 +109,7 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
             }
             filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
             filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+            // SET STATE FOR filteredPersonas???
         });
             return this._convertResultsToPromise(filteredPersonas);
         } else {
