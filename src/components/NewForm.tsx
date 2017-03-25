@@ -57,7 +57,8 @@ export class NewForm extends React.Component<any, any> {
                     label="Title"
                     name="Title"
                     required={true}
-                    onChanged={this._handleChanged} />    
+                    onChanged={this._handleChanged} /> 
+                {/* NEED TO PUT IN LOGIC TO HANDLE MULTIPLE USER FIELD VS SINGLE USER FIELD */}
                 <PeoplePickerExample 
                     label="People"
                     name="People"

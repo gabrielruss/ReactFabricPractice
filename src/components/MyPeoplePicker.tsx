@@ -5,7 +5,6 @@ import { Promise } from "es6-promise";
 // NEED TO CLEAN UP IMPORTS
 import {
     BaseComponent,
-    assign,
     autobind
 } from '../../node_modules/office-ui-fabric-react/lib/Utilities';
 import { IPersonaProps } from '../../node_modules/office-ui-fabric-react/lib/Persona';
@@ -13,17 +12,9 @@ import { IContextualMenuItem } from '../../node_modules/office-ui-fabric-react/l
 import {
     CompactPeoplePicker,
     IBasePickerSuggestionsProps,
-    ListPeoplePicker,
-    NormalPeoplePicker,
 } from '../../node_modules/office-ui-fabric-react/lib/Pickers';
-import { Button, ButtonType, Label } from '../../node_modules/office-ui-fabric-react/lib/index';
-import { IPersonaWithMenu } from '../../node_modules/office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
+import { Label } from '../../node_modules/office-ui-fabric-react/lib/index';
 import { RestUtil } from '../../utils/RestUtil';
-
-// keeping this in for example state
-export interface IPeoplePickerExampleState {
-    delayResults?: boolean;
-}
 
 const suggestionProps: IBasePickerSuggestionsProps = {
     suggestionsHeaderText: 'Suggested People',
@@ -31,8 +22,7 @@ const suggestionProps: IBasePickerSuggestionsProps = {
     loadingText: 'Loading'
 };
 
-export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExampleState> {
-    private _peopleList;
+export class PeoplePickerExample extends BaseComponent<any, any> {
     private contextualMenuItems: IContextualMenuItem[] = [
         {
             key: 'newItem',
@@ -66,18 +56,20 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
     constructor(props: any) {
         super(props);
         this._handleChange = this._handleChange.bind(this);
-
-        this._peopleList = [];
         this.state = {
-            delayResults: false
-            // create a state for filteredPersonas
+            delayResults: false,
+            userIds: {
+                results: []
+            } 
         };
     }
 
     private _handleChange(items: IPersonaProps[], errorThrown?: string) {
         // instead of sending items, send the PersonId: 1
-        // http://stackoverflow.com/questions/14556418/saving-a-person-or-group-field-using-rest
-        this.props.onChange(this.props.name, items, errorThrown);
+        for (let item in items){
+            this.state.userIds.results.push(items[item]["id"]);
+        }
+        this.props.onChange(`${this.props.name}Id`, this.state.userIds, errorThrown);
     }
 
     public render() {
@@ -103,13 +95,12 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
             for (let result in results) {
                 filteredPersonas.push({
                     key: parseInt(result),
-                    primaryText: results[result]["Name"]
+                    primaryText: results[result]["Name"],
+                    id: results[result]["Id"]
                 });
-                console.log(`Found ${results[result]["Name"]}`);
             }
             filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
             filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-            // SET STATE FOR filteredPersonas???
         });
             return this._convertResultsToPromise(filteredPersonas);
         } else {
@@ -127,9 +118,7 @@ export class PeoplePickerExample extends BaseComponent<any, IPeoplePickerExample
         }
         return personas.filter(item => item.primaryText === persona.primaryText).length > 0;
     }
-    //need to use this function to delay the search results
     private _convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {
-        console.log(`_convertResultsToPromise results: ${results}`);
         return new Promise<IPersonaProps[]>((resolve, reject) => setTimeout(() => resolve(results), 2000));
     }
 }
