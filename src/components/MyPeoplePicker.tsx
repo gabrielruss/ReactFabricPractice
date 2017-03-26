@@ -60,13 +60,13 @@ export class PeoplePickerExample extends BaseComponent<any, any> {
             delayResults: false,
             userIds: {
                 results: []
-            } 
+            }
         };
     }
 
     private _handleChange(items: IPersonaProps[], errorThrown?: string) {
         let tempArray = [];
-        for (let item in items){
+        for (let item in items) {
             tempArray.push(items[item]["id"]);
         }
         this.state.userIds.results = tempArray;
@@ -83,34 +83,36 @@ export class PeoplePickerExample extends BaseComponent<any, any> {
                     getTextFromItem={(persona: IPersonaProps) => persona.primaryText}
                     pickerSuggestionsProps={suggestionProps}
                     className={'ms-PeoplePicker'}
-                    
-                   
+
+
                 />
                 {/* make the inputProps thingy optional based on props passed from parent */}
-                 {/*inputProps={{disabled: this.state.userIds.results.length >= 1}}*/}
+                {/*inputProps={{disabled: this.state.userIds.results.length >= 1}}*/}
             </div>
         );
     }
 
     @autobind
     private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
-        if (filterText) {
-            let filteredPersonas:IPersonaProps[] = [];
-            RestUtil.getUsers(filterText).then((results) => {
-            for (let result in results) {
-                filteredPersonas.push({
-                    key: parseInt(result),
-                    primaryText: results[result]["Name"],
-                    id: results[result]["Id"]
+        return new Promise((resolve, reject) => {
+            if (filterText) {
+                let filteredPersonas: IPersonaProps[] = [];
+                RestUtil.getUsers(filterText).then((results) => {
+                    for (let result in results) {
+                        filteredPersonas.push({
+                            key: parseInt(result),
+                            primaryText: results[result]["Name"],
+                            id: results[result]["Id"]
+                        });
+                    }
+                    filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
+                    filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+                    resolve(this._convertResultsToPromise(filteredPersonas));
                 });
+            } else {
+                resolve([]);
             }
-            filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
-            filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
         });
-            return this._convertResultsToPromise(filteredPersonas);
-        } else {
-            return [];
-        }
     }
 
     private _removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]) {

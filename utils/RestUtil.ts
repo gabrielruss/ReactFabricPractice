@@ -81,9 +81,7 @@ export module RestUtil {
                 req.setRequestHeader('Accept', 'application/json;odata=verbose');
 
                 req.onload = () => {
-                    console.log(req.statusText);
                     if (req.status == 200) {
-                        console.log(`Success: ${req.status}`);
                         let response = JSON.parse(req.response);
                         //need functionality to strip out the users info into an array format
                         //reference the demo people data from office fabric code

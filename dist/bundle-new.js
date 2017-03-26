@@ -29850,7 +29850,6 @@
 	        return _this;
 	    }
 	    PeoplePickerExample.prototype._handleChange = function (items, errorThrown) {
-	        // NEED TO HANDLE DELETING A USER. CURRENTLY STILL SUBMITS THEM
 	        var tempArray = [];
 	        for (var item in items) {
 	            tempArray.push(items[item]["id"]);
@@ -29865,24 +29864,26 @@
 	    };
 	    PeoplePickerExample.prototype._onFilterChanged = function (filterText, currentPersonas, limitResults) {
 	        var _this = this;
-	        if (filterText) {
-	            var filteredPersonas_1 = [];
-	            RestUtil_1.RestUtil.getUsers(filterText).then(function (results) {
-	                for (var result in results) {
-	                    filteredPersonas_1.push({
-	                        key: parseInt(result),
-	                        primaryText: results[result]["Name"],
-	                        id: results[result]["Id"]
-	                    });
-	                }
-	                filteredPersonas_1 = _this._removeDuplicates(filteredPersonas_1, currentPersonas);
-	                filteredPersonas_1 = limitResults ? filteredPersonas_1.splice(0, limitResults) : filteredPersonas_1;
-	            });
-	            return this._convertResultsToPromise(filteredPersonas_1);
-	        }
-	        else {
-	            return [];
-	        }
+	        return new es6_promise_1.Promise(function (resolve, reject) {
+	            if (filterText) {
+	                var filteredPersonas_1 = [];
+	                RestUtil_1.RestUtil.getUsers(filterText).then(function (results) {
+	                    for (var result in results) {
+	                        filteredPersonas_1.push({
+	                            key: parseInt(result),
+	                            primaryText: results[result]["Name"],
+	                            id: results[result]["Id"]
+	                        });
+	                    }
+	                    filteredPersonas_1 = _this._removeDuplicates(filteredPersonas_1, currentPersonas);
+	                    filteredPersonas_1 = limitResults ? filteredPersonas_1.splice(0, limitResults) : filteredPersonas_1;
+	                    resolve(_this._convertResultsToPromise(filteredPersonas_1));
+	                });
+	            }
+	            else {
+	                resolve([]);
+	            }
+	        });
 	    };
 	    PeoplePickerExample.prototype._removeDuplicates = function (personas, possibleDupes) {
 	        var _this = this;
@@ -29975,9 +29976,7 @@
 	            req.open('GET', _spPageContextInfo.webAbsoluteUrl + "/_vti_bin/listdata.svc/UserInformationList?$filter=startswith(Name,'" + queryText + "')", true);
 	            req.setRequestHeader('Accept', 'application/json;odata=verbose');
 	            req.onload = function () {
-	                console.log(req.statusText);
 	                if (req.status == 200) {
-	                    console.log("Success: " + req.status);
 	                    var response = JSON.parse(req.response);
 	                    //need functionality to strip out the users info into an array format
 	                    //reference the demo people data from office fabric code
