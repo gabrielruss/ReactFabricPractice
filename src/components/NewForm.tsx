@@ -63,6 +63,7 @@ export class NewForm extends React.Component<any, any> {
                     label="People"
                     name="People"
                     onChange={this._handleChanged}
+                    multipleUsers={false}
                 />
                 <br/>   
                 <Button

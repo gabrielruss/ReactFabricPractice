@@ -1,7 +1,5 @@
-/* tslint:disable */
 import * as React from 'react';
 import { Promise } from "es6-promise";
-/* tslint:enable */
 // NEED TO CLEAN UP IMPORTS
 import {
     BaseComponent,
@@ -83,11 +81,10 @@ export class PeoplePickerExample extends BaseComponent<any, any> {
                     getTextFromItem={(persona: IPersonaProps) => persona.primaryText}
                     pickerSuggestionsProps={suggestionProps}
                     className={'ms-PeoplePicker'}
-
-
+                    inputProps={{ disabled: this.state.userIds.results.length >= 1 && !this.props.multipleUsers}}
                 />
                 {/* make the inputProps thingy optional based on props passed from parent */}
-                {/*inputProps={{disabled: this.state.userIds.results.length >= 1}}*/}
+                {/**/}
             </div>
         );
     }

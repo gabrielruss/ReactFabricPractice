@@ -10362,7 +10362,7 @@
 	    NewForm.prototype.render = function () {
 	        return (React.createElement("div", null,
 	            React.createElement(MyTextField_1.MyTextField, { label: "Title", name: "Title", required: true, onChanged: this._handleChanged }),
-	            React.createElement(MyPeoplePicker_1.PeoplePickerExample, { label: "People", name: "People", onChange: this._handleChanged }),
+	            React.createElement(MyPeoplePicker_1.PeoplePickerExample, { label: "People", name: "People", onChange: this._handleChanged, multipleUsers: false }),
 	            React.createElement("br", null),
 	            React.createElement(index_1.Button, { onClick: this._onSave, type: "submit", buttonType: index_1.ButtonType.primary, disabled: Object.keys(this.state.fieldsWithErrors).length !== 0 }, "Save")));
 	    };
@@ -29793,10 +29793,8 @@
 	    return c > 3 && r && Object.defineProperty(target, key, r), r;
 	};
 	Object.defineProperty(exports, "__esModule", { value: true });
-	/* tslint:disable */
 	var React = __webpack_require__(1);
 	var es6_promise_1 = __webpack_require__(5);
-	/* tslint:enable */
 	// NEED TO CLEAN UP IMPORTS
 	var Utilities_1 = __webpack_require__(12);
 	var Pickers_1 = __webpack_require__(236);
@@ -29860,7 +29858,7 @@
 	    PeoplePickerExample.prototype.render = function () {
 	        return (React.createElement("div", null,
 	            React.createElement(index_1.Label, null, this.props.label),
-	            React.createElement(Pickers_1.CompactPeoplePicker, { onChange: this._handleChange, onResolveSuggestions: this._onFilterChanged, getTextFromItem: function (persona) { return persona.primaryText; }, pickerSuggestionsProps: suggestionProps, className: 'ms-PeoplePicker' })));
+	            React.createElement(Pickers_1.CompactPeoplePicker, { onChange: this._handleChange, onResolveSuggestions: this._onFilterChanged, getTextFromItem: function (persona) { return persona.primaryText; }, pickerSuggestionsProps: suggestionProps, className: 'ms-PeoplePicker', inputProps: { disabled: this.state.userIds.results.length >= 1 && !this.props.multipleUsers } })));
 	    };
 	    PeoplePickerExample.prototype._onFilterChanged = function (filterText, currentPersonas, limitResults) {
 	        var _this = this;
