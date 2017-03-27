@@ -5,7 +5,7 @@ import { Promise } from "es6-promise";
 import { Button, ButtonType, Label } from '../../node_modules/office-ui-fabric-react/lib/index';
 
 import { MyTextField } from './MyTextField';
-import { PeoplePickerExample } from './MyPeoplePicker';
+import { CompactPeoplePickerBasic } from './CompactPeoplePickerBasic';
 
 import { RestUtil } from '../../utils/RestUtil';
 
@@ -58,7 +58,7 @@ export class NewForm extends React.Component<any, any> {
                     name="Title"
                     required={true}
                     onChanged={this._handleChanged} /> 
-                <PeoplePickerExample 
+                <CompactPeoplePickerBasic 
                     label="People"
                     name="People"
                     onChange={this._handleChanged}

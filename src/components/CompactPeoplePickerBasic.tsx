@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Promise } from "es6-promise";
-// NEED TO CLEAN UP IMPORTS
+
 import {
     BaseComponent,
     autobind
@@ -20,7 +20,7 @@ const suggestionProps: IBasePickerSuggestionsProps = {
     loadingText: 'Loading'
 };
 
-export class PeoplePickerExample extends BaseComponent<any, any> {
+export class CompactPeoplePickerBasic extends BaseComponent<any, any> {
     private contextualMenuItems: IContextualMenuItem[] = [
         {
             key: 'newItem',
