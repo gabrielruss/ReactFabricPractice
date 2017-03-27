@@ -10362,7 +10362,7 @@
 	    NewForm.prototype.render = function () {
 	        return (React.createElement("div", null,
 	            React.createElement(MyTextField_1.MyTextField, { label: "Title", name: "Title", required: true, onChanged: this._handleChanged }),
-	            React.createElement(MyPeoplePicker_1.PeoplePickerExample, { label: "People", name: "People", onChange: this._handleChanged, multipleUsers: false }),
+	            React.createElement(MyPeoplePicker_1.PeoplePickerExample, { label: "People", name: "People", onChange: this._handleChanged, multipleUsers: true }),
 	            React.createElement("br", null),
 	            React.createElement(index_1.Button, { onClick: this._onSave, type: "submit", buttonType: index_1.ButtonType.primary, disabled: Object.keys(this.state.fieldsWithErrors).length !== 0 }, "Save")));
 	    };
@@ -29849,11 +29849,15 @@
 	    }
 	    PeoplePickerExample.prototype._handleChange = function (items, errorThrown) {
 	        var tempArray = [];
+	        var toSend;
 	        for (var item in items) {
 	            tempArray.push(items[item]["id"]);
 	        }
 	        this.state.userIds.results = tempArray;
-	        this.props.onChange(this.props.name + "Id", this.state.userIds, errorThrown);
+	        (!this.props.multipleUsers)
+	            ? toSend = this.state.userIds.results[0]
+	            : toSend = this.state.userIds;
+	        this.props.onChange(this.props.name + "Id", toSend, errorThrown);
 	    };
 	    PeoplePickerExample.prototype.render = function () {
 	        return (React.createElement("div", null,

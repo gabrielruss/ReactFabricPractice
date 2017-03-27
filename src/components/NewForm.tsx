@@ -58,12 +58,11 @@ export class NewForm extends React.Component<any, any> {
                     name="Title"
                     required={true}
                     onChanged={this._handleChanged} /> 
-                {/* NEED TO PUT IN LOGIC TO HANDLE MULTIPLE USER FIELD VS SINGLE USER FIELD */}
                 <PeoplePickerExample 
                     label="People"
                     name="People"
                     onChange={this._handleChanged}
-                    multipleUsers={false}
+                    multipleUsers={true}
                 />
                 <br/>   
                 <Button

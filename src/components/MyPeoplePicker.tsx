@@ -64,11 +64,17 @@ export class PeoplePickerExample extends BaseComponent<any, any> {
 
     private _handleChange(items: IPersonaProps[], errorThrown?: string) {
         let tempArray = [];
+        let toSend;
         for (let item in items) {
             tempArray.push(items[item]["id"]);
         }
         this.state.userIds.results = tempArray;
-        this.props.onChange(`${this.props.name}Id`, this.state.userIds, errorThrown);
+
+        (!this.props.multipleUsers)
+            ? toSend = this.state.userIds.results[0]
+            : toSend = this.state.userIds;
+
+        this.props.onChange(`${this.props.name}Id`, toSend, errorThrown);
     }
 
     public render() {
@@ -81,10 +87,8 @@ export class PeoplePickerExample extends BaseComponent<any, any> {
                     getTextFromItem={(persona: IPersonaProps) => persona.primaryText}
                     pickerSuggestionsProps={suggestionProps}
                     className={'ms-PeoplePicker'}
-                    inputProps={{ disabled: this.state.userIds.results.length >= 1 && !this.props.multipleUsers}}
+                    inputProps={{ disabled: this.state.userIds.results.length >= 1 && !this.props.multipleUsers }}
                 />
-                {/* make the inputProps thingy optional based on props passed from parent */}
-                {/**/}
             </div>
         );
     }
